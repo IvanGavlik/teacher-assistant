@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teachers Center - AI-Powered Lesson Creator for Language Teachers</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <span class="logo-text">Teachers Center</span>
+            </a>
+
+            <!-- Navigation -->
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            Features
+                            <svg class="chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                                <path d="M2.5 4L5 6.5L7.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            For Teachers
+                            <svg class="chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                                <path d="M2.5 4L5 6.5L7.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            Resources
+                            <svg class="chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                                <path d="M2.5 4L5 6.5L7.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Pricing</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Right Actions -->
+            <div class="header-actions">
+                <a href="#" class="login-link">Log in</a>
+                <a href="#" class="btn btn-outline">Contact sales</a>
+                <a href="#" class="btn btn-primary">Get started for free</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <!-- Background images will be positioned here -->
+            <div class="hero-image hero-image-1">
+                <img src="assets/hero-1.jpg" alt="Design example">
+            </div>
+            <div class="hero-image hero-image-2">
+                <img src="assets/hero-2.jpg" alt="Design example">
+            </div>
+            <div class="hero-image hero-image-3">
+                <img src="assets/hero-3.jpg" alt="Design example">
+            </div>
+            <div class="hero-image hero-image-4">
+                <img src="assets/hero-4.jpg" alt="Design example">
+            </div>
+            <div class="hero-image hero-image-5">
+                <img src="assets/hero-5.jpg" alt="Design example">
+            </div>
+            <div class="hero-image hero-image-6">
+                <img src="assets/hero-6.jpg" alt="Design example">
+            </div>
+        </div>
+
+        <!-- Central Card -->
+        <div class="hero-card">
+            <h1 class="hero-title">
+                <span class="typing-text">Make this</span>
+                <span class="cursor">|</span>
+            </h1>
+            <a href="#" class="btn btn-primary hero-cta">Get started</a>
+        </div>
+
+        <!-- Carousel Controls -->
+        <div class="carousel-controls">
+            <button class="carousel-btn" aria-label="Previous">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <button class="carousel-btn carousel-btn-pause" aria-label="Pause">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <rect x="6" y="5" width="3" height="10" rx="1" fill="currentColor"/>
+                    <rect x="11" y="5" width="3" height="10" rx="1" fill="currentColor"/>
+                </svg>
+            </button>
+            <button class="carousel-btn" aria-label="Next">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Tagline -->
+        <div class="hero-tagline">
+            <p>Stop spending 3 hours preparing for 1 hour of teaching.</p>
+            <p>Generate vocabulary, grammar, reading, and exercises in seconds.</p>
+        </div>
+    </section>
+
+    <!-- Feature Video Section -->
+    <section class="feature-video-section">
+        <div class="feature-video-container">
+            <h2 class="feature-video-title">
+                Create lesson materials in seconds,<br>not hours
+            </h2>
+
+            <!-- Video Player -->
+            <div class="video-wrapper">
+                <div class="video-player">
+                    <video class="feature-video" muted loop autoplay playsinline>
+                        <source src="first-section-video/vocabulary.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="feature-tabs">
+                <button class="feature-tab active" data-tab="vocabulary">
+                    <span class="tab-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 4H16M4 8H16M4 12H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <rect x="12" y="11" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                    </span>
+                    Vocabulary
+                </button>
+                <button class="feature-tab" data-tab="grammar">
+                    <span class="tab-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M3 5H17M3 10H12M3 15H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M14 12L16 17L18 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    Grammar
+                </button>
+                <button class="feature-tab" data-tab="reading">
+                    <span class="tab-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M2 4C2 4 5 2 10 2C15 2 18 4 18 4V17C18 17 15 15 10 15C5 15 2 17 2 17V4Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10 2V15" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                    </span>
+                    Reading
+                </button>
+                <button class="feature-tab" data-tab="exercises">
+                    <span class="tab-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <rect x="3" y="3" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M7 10L9 12L13 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    Exercises
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="systems-section">
+        <div class="systems-container">
+            <h2 class="systems-title">Everything you need to teach any language, any level</h2>
+
+            <div class="systems-cards">
+                <!-- Card 1 -->
+                <div class="system-card">
+                    <div class="system-card-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2"/>
+                            <path d="M16 10V16L20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="system-card-title">Save 70% of your lesson prep time</h3>
+                    <p class="system-card-desc">Generate complete lesson materials in seconds instead of hours. More time teaching, less time preparing.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="system-card">
+                    <div class="system-card-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path d="M4 8H28M4 16H28M4 24H28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="10" cy="8" r="2" fill="currentColor"/>
+                            <circle cx="22" cy="16" r="2" fill="currentColor"/>
+                            <circle cx="16" cy="24" r="2" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="system-card-title">A1 to C2, all levels covered</h3>
+                    <p class="system-card-desc">Content automatically adapted to CEFR levels. Perfect for beginners and advanced learners alike.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="system-card">
+                    <div class="system-card-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect x="4" y="6" width="24" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M4 10H28" stroke="currentColor" stroke-width="2"/>
+                            <rect x="8" y="24" width="16" height="4" rx="1" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="system-card-title">Works in PowerPoint & Google Slides</h3>
+                    <p class="system-card-desc">Generate content directly in your presentation tools. Perfect for screen sharing in online classes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="ship-section">
+        <div class="ship-container">
+            <h2 class="ship-title">AI-powered content for every lesson type</h2>
+
+            <div class="ship-content">
+                <!-- Left: Features List -->
+                <div class="ship-features">
+                    <!-- Feature 1 - Expanded -->
+                    <div class="ship-feature active">
+                        <div class="ship-feature-header">
+                            <span class="ship-feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
+                                    <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
+                                    <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
+                                    <rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </span>
+                            <h3 class="ship-feature-title">Vocabulary Builder</h3>
+                        </div>
+                        <div class="ship-feature-body">
+                            <p class="ship-feature-desc">Generate flashcards, definitions, and example sentences for any topic. Perfect for building word lists at any CEFR level.</p>
+                            <a href="#" class="ship-feature-link">See vocabulary examples</a>
+                        </div>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="ship-feature">
+                        <div class="ship-feature-header">
+                            <span class="ship-feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M4 6H20M4 12H14M4 18H10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M16 14L18 19L20 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                            <h3 class="ship-feature-title">Grammar Explanations</h3>
+                        </div>
+                        <div class="ship-feature-body">
+                            <p class="ship-feature-desc">Clear explanations with examples and practice sentences. From simple tenses to complex conditionals.</p>
+                            <a href="#" class="ship-feature-link">Explore grammar tools</a>
+                        </div>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="ship-feature">
+                        <div class="ship-feature-header">
+                            <span class="ship-feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M4 5C4 5 7 3 12 3C17 3 20 5 20 5V19C20 19 17 17 12 17C7 17 4 19 4 19V5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 3V17" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </span>
+                            <h3 class="ship-feature-title">Reading & Comprehension</h3>
+                        </div>
+                        <div class="ship-feature-body">
+                            <p class="ship-feature-desc">Generate level-appropriate reading passages with comprehension questions. Stories, articles, and dialogues.</p>
+                            <a href="#" class="ship-feature-link">View reading samples</a>
+                        </div>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="ship-feature">
+                        <div class="ship-feature-header">
+                            <span class="ship-feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M8 12L11 15L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                            <h3 class="ship-feature-title">Exercises & Quizzes</h3>
+                        </div>
+                        <div class="ship-feature-body">
+                            <p class="ship-feature-desc">Multiple choice, fill-in-blanks, matching exercises. Instant assessment materials for any topic.</p>
+                            <a href="#" class="ship-feature-link">Try exercise creator</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Image Placeholder -->
+                <div class="ship-image">
+                    <div class="ship-image-placeholder">
+                        <span>Product Demo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages CTA Section -->
+    <section class="languages-section">
+        <div class="languages-background">
+            <!-- Floating language boxes -->
+            <div class="lang-box lang-box-1">
+                <span class="lang-label">English</span>
+                <p>Design your ideas</p>
+            </div>
+            <div class="lang-box lang-box-2">
+                <span class="lang-label">Español</span>
+                <p>Diseña tus ideas</p>
+            </div>
+            <div class="lang-box lang-box-3">
+                <span class="lang-label">Deutsch</span>
+                <p>Gestalte deine Ideen</p>
+            </div>
+            <div class="lang-box lang-box-4">
+                <span class="lang-label">Italiano</span>
+                <p>Progetta le tue idee</p>
+            </div>
+            <div class="lang-box lang-box-5">
+                <span class="lang-label">日本語</span>
+                <p>アイデアをデザイン</p>
+            </div>
+            <div class="lang-box lang-box-6">
+                <span class="lang-label">Suomi</span>
+                <p>Suunnittele ideasi</p>
+            </div>
+        </div>
+
+        <!-- Central Button -->
+        <a href="#" class="btn btn-primary languages-cta">Get started for free</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Logo & Social -->
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">Figma</a>
+                <div class="footer-social">
+                    <a href="#" class="social-link" aria-label="X">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Footer Links -->
+            <div class="footer-links">
+                <!-- Product Column -->
+                <div class="footer-column">
+                    <h4 class="footer-heading">Product</h4>
+                    <ul class="footer-list">
+                        <li><a href="#">Figma Design</a></li>
+                        <li><a href="#">Dev Mode</a></li>
+                        <li><a href="#">FigJam</a></li>
+                        <li><a href="#">Figma Slides</a></li>
+                        <li><a href="#">Figma Draw <span class="badge">NEW</span></a></li>
+                        <li><a href="#">Figma Buzz <span class="badge badge-beta">BETA</span></a></li>
+                        <li><a href="#">Figma Sites <span class="badge badge-beta">BETA</span></a></li>
+                        <li><a href="#">Figma Make <span class="badge">NEW</span></a></li>
+                        <li><a href="#">AI</a></li>
+                        <li><a href="#">Downloads</a></li>
+                        <li><a href="#">Release notes</a></li>
+                    </ul>
+                    <h4 class="footer-heading">Plans</h4>
+                    <ul class="footer-list">
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <!-- Use Cases Column -->
+                <div class="footer-column">
+                    <h4 class="footer-heading">Use Cases</h4>
+                    <ul class="footer-list">
+                        <li><a href="#">UI design</a></li>
+                        <li><a href="#">UX design</a></li>
+                        <li><a href="#">Wireframing</a></li>
+                        <li><a href="#">Diagramming</a></li>
+                        <li><a href="#">Prototyping</a></li>
+                        <li><a href="#">Brainstorming</a></li>
+                        <li><a href="#">Presentation Maker</a></li>
+                        <li><a href="#">Online whiteboard</a></li>
+                        <li><a href="#">Strategic planning</a></li>
+                        <li><a href="#">Mind mapping</a></li>
+                        <li><a href="#">Concept map</a></li>
+                        <li><a href="#">AI app builder</a></li>
+                        <li><a href="#">AI prototype generator</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources Column -->
+                <div class="footer-column">
+                    <h4 class="footer-heading">Resources</h4>
+                    <ul class="footer-list">
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Best practices</a></li>
+                        <li><a href="#">QR code generator</a></li>
+                        <li><a href="#">Color wheel</a></li>
+                        <li><a href="#">Colors</a></li>
+                        <li><a href="#">Color picker</a></li>
+                        <li><a href="#">Color palettes</a></li>
+                        <li><a href="#">Color palette generator</a></li>
+                        <li><a href="#">Color contrast checker</a></li>
+                        <li><a href="#">Font library</a></li>
+                        <li><a href="#">Lorem ipsum generator</a></li>
+                        <li><a href="#">Templates</a></li>
+                        <li><a href="#">Developers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company Column -->
+                <div class="footer-column">
+                    <h4 class="footer-heading">Company</h4>
+                    <ul class="footer-list">
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Customers</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Newsroom</a></li>
+                        <li><a href="#">Investors</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

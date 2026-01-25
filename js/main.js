@@ -236,3 +236,18 @@ featureTabs.forEach(tab => {
 if (featureVideo) {
     featureVideo.play();
 }
+
+// Ship Features Accordion
+const shipFeatures = document.querySelectorAll('.ship-feature');
+
+shipFeatures.forEach(feature => {
+    const header = feature.querySelector('.ship-feature-header');
+    if (header) {
+        header.addEventListener('click', () => {
+            // Remove active from all
+            shipFeatures.forEach(f => f.classList.remove('active'));
+            // Add active to clicked
+            feature.classList.add('active');
+        });
+    }
+});

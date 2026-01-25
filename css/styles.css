@@ -102,9 +102,10 @@ img {
     flex-shrink: 0;
 }
 
-.logo svg {
-    width: 28px;
-    height: 42px;
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-black);
 }
 
 /* Navigation */
@@ -530,6 +531,46 @@ img {
 }
 
 /* ================================
+   Stats Section
+   ================================ */
+.stats-section {
+    padding: 60px 24px;
+    background-color: var(--color-black);
+}
+
+.stats-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stat-item {
+    text-align: center;
+    flex: 1;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--color-gray);
+}
+
+.stat-divider {
+    width: 1px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ================================
    Systems Section
    ================================ */
 .systems-section {
@@ -630,15 +671,16 @@ img {
 
 .lang-box {
     position: absolute;
-    background-color: var(--color-white);
+    background-color: transparent;
     border-radius: 12px;
-    padding: 16px 20px;
+    padding: 20px 24px;
+    width: 200px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     border: 1px solid var(--color-border);
     animation: float 6s ease-in-out infinite;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
+    overflow: visible;
 }
-
 
 .lang-label {
     display: block;
@@ -651,46 +693,48 @@ img {
 }
 
 .lang-box p {
-    font-size: 1rem;
+    font-size: 0.875rem;
     font-weight: 500;
     color: var(--color-black);
-    white-space: nowrap;
+    line-height: 1.4;
 }
 
-/* Position each language box */
+/* Position each language box - arranged around center button */
 .lang-box-1 {
-    left: 8%;
-    top: 20%;
+    left: 5%;
+    top: 12%;
     animation-delay: 0s;
 }
 
 .lang-box-2 {
-    right: 10%;
-    top: 15%;
+    right: 5%;
+    top: 12%;
     animation-delay: 1s;
 }
 
 .lang-box-3 {
     left: 5%;
-    bottom: 30%;
+    bottom: 8%;
     animation-delay: 2s;
 }
 
 .lang-box-4 {
-    right: 8%;
-    bottom: 25%;
+    right: 5%;
+    bottom: 8%;
     animation-delay: 0.5s;
 }
 
 .lang-box-5 {
-    left: 15%;
+    left: 20%;
     top: 50%;
+    transform: translateY(-50%);
     animation-delay: 1.5s;
 }
 
 .lang-box-6 {
-    right: 15%;
-    top: 55%;
+    right: 20%;
+    top: 50%;
+    transform: translateY(-50%);
     animation-delay: 2.5s;
 }
 
@@ -703,51 +747,103 @@ img {
     }
 }
 
-/* Central Button */
-.languages-cta {
+/* Central Content */
+.languages-center {
     position: relative;
     z-index: 10;
+    text-align: center;
+}
+
+.languages-title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: var(--color-black);
+    margin-bottom: 12px;
+}
+
+.languages-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-gray);
+    margin-bottom: 32px;
+}
+
+.languages-cta {
     padding: 24px 64px;
     font-size: 1.5rem;
     border-radius: 12px;
 }
 
-/* Hover animation on language boxes */
+/* Hover animation on language boxes - triggered by button hover */
 
-.languages-section:has(.languages-cta:hover) .lang-box-1 {
-    transform: scale(1.1) rotate(-3deg);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    animation-delay: 0s;
+/* Flag border setup - gradient border effect */
+.lang-box::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 16px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -2;
 }
 
-.languages-section:has(.languages-cta:hover) .lang-box-2 {
-    transform: scale(1.15) rotate(2deg);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    animation-delay: 0.1s;
+.lang-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-white);
+    border-radius: 11px;
+    z-index: -1;
 }
 
-.languages-section:has(.languages-cta:hover) .lang-box-3 {
-    transform: scale(1.1) rotate(3deg);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    animation-delay: 0.2s;
+/* English - UK flag: blue, white, red */
+.lang-box-1::before {
+    background: linear-gradient(to right, #012169 33%, #FFFFFF 33%, #FFFFFF 66%, #C8102E 66%);
 }
 
-.languages-section:has(.languages-cta:hover) .lang-box-4 {
-    transform: scale(1.12) rotate(-2deg);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    animation-delay: 0.15s;
+/* German - black, red, gold */
+.lang-box-2::before {
+    background: linear-gradient(to right, #000000 33%, #DD0000 33%, #DD0000 66%, #FFCE00 66%);
 }
 
-.languages-section:has(.languages-cta:hover) .lang-box-5 {
-    transform: scale(1.08) rotate(4deg);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    animation-delay: 0.25s;
+/* Spanish - red, yellow, red */
+.lang-box-3::before {
+    background: linear-gradient(to right, #AA151B 25%, #F1BF00 25%, #F1BF00 75%, #AA151B 75%);
 }
 
+/* French - blue, white, red */
+.lang-box-4::before {
+    background: linear-gradient(to right, #002395 33%, #FFFFFF 33%, #FFFFFF 66%, #ED2939 66%);
+}
+
+/* Italian - green, white, red */
+.lang-box-5::before {
+    background: linear-gradient(to right, #009246 33%, #FFFFFF 33%, #FFFFFF 66%, #CE2B37 66%);
+}
+
+/* Portuguese - green, red */
+.lang-box-6::before {
+    background: linear-gradient(to right, #006600 40%, #FF0000 40%);
+}
+
+/* Show flag borders on button hover */
+.languages-section:has(.languages-cta:hover) .lang-box::before {
+    opacity: 1;
+}
+
+.languages-section:has(.languages-cta:hover) .lang-box {
+    border-color: transparent;
+    animation: none;
+}
+
+.languages-section:has(.languages-cta:hover) .lang-box-5,
 .languages-section:has(.languages-cta:hover) .lang-box-6 {
-    transform: scale(1.1) rotate(-4deg);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    animation-delay: 0.05s;
+    transform: translateY(-50%);
 }
 
 @keyframes float-excited {
@@ -998,6 +1094,23 @@ img {
         width: 100%;
     }
 
+    .stats-container {
+        flex-wrap: wrap;
+        gap: 24px;
+    }
+
+    .stat-item {
+        flex: 1 1 40%;
+    }
+
+    .stat-divider {
+        display: none;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
     .systems-title {
         font-size: 1.75rem;
     }
@@ -1024,18 +1137,32 @@ img {
 
     .lang-box {
         padding: 12px 16px;
+        width: 150px;
     }
 
     .lang-box p {
-        font-size: 0.875rem;
+        font-size: 0.75rem;
     }
 
-    .lang-box-1 { left: 2%; top: 12%; }
+    .lang-box-1 { left: 2%; top: 8%; }
     .lang-box-2 { right: 2%; top: 8%; }
-    .lang-box-3 { left: 2%; bottom: 20%; }
-    .lang-box-4 { right: 2%; bottom: 15%; }
+    .lang-box-3 { left: 2%; bottom: 12%; }
+    .lang-box-4 { right: 2%; bottom: 12%; }
     .lang-box-5 { display: none; }
     .lang-box-6 { display: none; }
+
+    .languages-title {
+        font-size: 1.75rem;
+    }
+
+    .languages-subtitle {
+        font-size: 1rem;
+    }
+
+    .languages-cta {
+        padding: 18px 40px;
+        font-size: 1.125rem;
+    }
 
     .footer-container {
         flex-direction: column;
@@ -1138,6 +1265,10 @@ img {
 
     .lang-box p {
         font-size: 1.125rem;
+    }
+
+    .languages-title {
+        font-size: 3rem;
     }
 
     .languages-cta {

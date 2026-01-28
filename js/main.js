@@ -251,3 +251,193 @@ shipFeatures.forEach(feature => {
         });
     }
 });
+
+// ================================
+// Cookie Consent
+// ================================
+const cookieBanner = document.getElementById('cookieBanner');
+const cookieModal = document.getElementById('cookieModal');
+const cookieAccept = document.getElementById('cookieAccept');
+const cookieReject = document.getElementById('cookieReject');
+const cookieSettings = document.getElementById('cookieSettings');
+const cookieModalClose = document.getElementById('cookieModalClose');
+const cookieModalSave = document.getElementById('cookieModalSave');
+const cookieModalReject = document.getElementById('cookieModalReject');
+const footerCookieSettings = document.getElementById('footerCookieSettings');
+const analyticsCookies = document.getElementById('analyticsCookies');
+const marketingCookies = document.getElementById('marketingCookies');
+
+// Check if user has already made a choice
+function checkCookieConsent() {
+    const consent = localStorage.getItem('cookieConsent');
+    if (!consent) {
+        cookieBanner.classList.add('show');
+    }
+}
+
+// Save cookie preferences
+function saveCookiePreferences(analytics, marketing) {
+    const preferences = {
+        essential: true,
+        analytics: analytics,
+        marketing: marketing,
+        timestamp: new Date().toISOString()
+    };
+    localStorage.setItem('cookieConsent', JSON.stringify(preferences));
+    cookieBanner.classList.remove('show');
+    cookieModal.classList.remove('show');
+}
+
+// Accept all cookies
+if (cookieAccept) {
+    cookieAccept.addEventListener('click', () => {
+        saveCookiePreferences(true, true);
+    });
+}
+
+// Reject all cookies
+if (cookieReject) {
+    cookieReject.addEventListener('click', () => {
+        saveCookiePreferences(false, false);
+    });
+}
+
+// Open settings modal
+if (cookieSettings) {
+    cookieSettings.addEventListener('click', () => {
+        cookieModal.classList.add('show');
+    });
+}
+
+// Close settings modal
+if (cookieModalClose) {
+    cookieModalClose.addEventListener('click', () => {
+        cookieModal.classList.remove('show');
+    });
+}
+
+// Save preferences from modal
+if (cookieModalSave) {
+    cookieModalSave.addEventListener('click', () => {
+        saveCookiePreferences(
+            analyticsCookies ? analyticsCookies.checked : false,
+            marketingCookies ? marketingCookies.checked : false
+        );
+    });
+}
+
+// Reject all from modal
+if (cookieModalReject) {
+    cookieModalReject.addEventListener('click', () => {
+        saveCookiePreferences(false, false);
+    });
+}
+
+// Footer cookie settings link
+if (footerCookieSettings) {
+    footerCookieSettings.addEventListener('click', (e) => {
+        e.preventDefault();
+        // Load saved preferences into modal
+        const consent = localStorage.getItem('cookieConsent');
+        if (consent) {
+            const prefs = JSON.parse(consent);
+            if (analyticsCookies) analyticsCookies.checked = prefs.analytics;
+            if (marketingCookies) marketingCookies.checked = prefs.marketing;
+        }
+        cookieModal.classList.add('show');
+    });
+}
+
+// Close modal when clicking outside
+if (cookieModal) {
+    cookieModal.addEventListener('click', (e) => {
+        if (e.target === cookieModal) {
+            cookieModal.classList.remove('show');
+        }
+    });
+}
+
+// Initialize cookie consent check
+checkCookieConsent();
+
+// ================================
+// Login/Signup Modal
+// ================================
+const loginModal = document.getElementById('loginModal');
+const loginModalClose = document.getElementById('loginModalClose');
+const loginForm = document.getElementById('loginForm');
+const getStartedButtons = document.querySelectorAll('.btn-primary');
+
+// Open login modal when clicking "Get started for free" buttons
+getStartedButtons.forEach(button => {
+    if (button.textContent.trim().toLowerCase().includes('get started')) {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+});
+
+// Close login modal
+if (loginModalClose) {
+    loginModalClose.addEventListener('click', () => {
+        loginModal.classList.remove('show');
+        document.body.style.overflow = '';
+    });
+}
+
+// Close modal when clicking outside
+if (loginModal) {
+    loginModal.addEventListener('click', (e) => {
+        if (e.target === loginModal) {
+            loginModal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+    });
+}
+
+// Handle form submission
+if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+        console.log('Login attempt:', { email, password });
+        // Here you would typically send the data to your backend
+        alert('Login functionality would be implemented here.');
+    });
+}
+
+// Handle Google login
+const loginGoogle = document.getElementById('loginGoogle');
+if (loginGoogle) {
+    loginGoogle.addEventListener('click', () => {
+        console.log('Google login clicked');
+        // Here you would implement Google OAuth
+        alert('Google login would be implemented here.');
+    });
+}
+
+// Handle Microsoft login
+const loginMicrosoft = document.getElementById('loginMicrosoft');
+if (loginMicrosoft) {
+    loginMicrosoft.addEventListener('click', () => {
+        console.log('Microsoft login clicked');
+        // Here you would implement Microsoft OAuth
+        alert('Microsoft login would be implemented here.');
+    });
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        if (loginModal && loginModal.classList.contains('show')) {
+            loginModal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+        if (cookieModal && cookieModal.classList.contains('show')) {
+            cookieModal.classList.remove('show');
+        }
+    }
+});

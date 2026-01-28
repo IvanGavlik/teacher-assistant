@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teachers Center - AI-Powered Lesson Creator for Language Teachers</title>
+    <title>Teacher Assistant - AI-Powered Lesson Creator for Language Teachers</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,10 +16,11 @@
         <div class="header-container">
             <!-- Logo -->
             <a href="#" class="logo">
-                <span class="logo-text">Teachers Center</span>
+                <img src="assets/logo-web.svg" alt="TA" class="logo-icon">
+                <span class="logo-text">Teacher Assistant</span>
             </a>
 
-            <!-- Navigation -->
+            <!-- Navigation - commented out for now
             <nav class="main-nav">
                 <ul class="nav-list">
                     <li class="nav-item">
@@ -50,10 +52,11 @@
                     </li>
                 </ul>
             </nav>
+            -->
 
             <!-- Right Actions -->
             <div class="header-actions">
-                <a href="#" class="login-link">Log in</a>
+               <!-- <a href="#" class="login-link">Log in</a -->
                 <a href="#" class="btn btn-primary">Get started for free</a>
             </div>
 
@@ -257,6 +260,37 @@
         </div>
     </section>
 
+    <!-- Testimonial Section -->
+    <section class="testimonial-section">
+        <div class="testimonial-container">
+            <div class="testimonial-content">
+                <div class="testimonial-quote-icon">
+                    <svg width="100" height="80" viewBox="0 0 100 80" fill="none">
+                        <path d="M0 30C0 13.431 13.431 0 30 0C46.569 0 50 13.431 50 30C50 40 45 50 30 65C25 70 20 75 15 80H0V65C10 55 15 45 15 35C15 32 13 30 10 30H0V30Z" fill="#2DD4BF"/>
+                        <path d="M50 30C50 13.431 63.431 0 80 0C96.569 0 100 13.431 100 30C100 40 95 50 80 65C75 70 70 75 65 80H50V65C60 55 65 45 65 35C65 32 63 30 60 30H50V30Z" fill="#2DD4BF"/>
+                    </svg>
+                </div>
+                <blockquote class="testimonial-text">
+                    Teacher Assistant has completely transformed how I prepare my lessons. What used to take me hours now takes minutes, and my students love the variety of materials.
+                </blockquote>
+            </div>
+            <div class="testimonial-author">
+                <div class="testimonial-school">
+                    <span class="school-name">International Language Academy</span>
+                </div>
+                <div class="testimonial-person">
+                    <div class="testimonial-avatar">
+                        <img src="https://i.pravatar.cc/80?img=32" alt="Sarah Mitchell">
+                    </div>
+                    <div class="testimonial-info">
+                        <span class="testimonial-name">Sarah Mitchell</span>
+                        <span class="testimonial-title">ESL Teacher</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Features Section -->
     <section class="ship-section">
         <div class="ship-container">
@@ -346,6 +380,37 @@
         </div>
     </section>
 
+    <!-- Testimonial Section 2 -->
+    <section class="testimonial-section">
+        <div class="testimonial-container">
+            <div class="testimonial-content">
+                <div class="testimonial-quote-icon">
+                    <svg width="100" height="80" viewBox="0 0 100 80" fill="none">
+                        <path d="M0 30C0 13.431 13.431 0 30 0C46.569 0 50 13.431 50 30C50 40 45 50 30 65C25 70 20 75 15 80H0V65C10 55 15 45 15 35C15 32 13 30 10 30H0V30Z" fill="#2DD4BF"/>
+                        <path d="M50 30C50 13.431 63.431 0 80 0C96.569 0 100 13.431 100 30C100 40 95 50 80 65C75 70 70 75 65 80H50V65C60 55 65 45 65 35C65 32 63 30 60 30H50V30Z" fill="#2DD4BF"/>
+                    </svg>
+                </div>
+                <blockquote class="testimonial-text">
+                    Finally, a tool that understands what language teachers actually need. The CEFR-aligned content is spot on, and I can create a week's worth of materials in one sitting.
+                </blockquote>
+            </div>
+            <div class="testimonial-author">
+                <div class="testimonial-school">
+                    <span class="school-name">Berlin Language School</span>
+                </div>
+                <div class="testimonial-person">
+                    <div class="testimonial-avatar">
+                        <img src="https://i.pravatar.cc/80?img=11" alt="Marcus Weber">
+                    </div>
+                    <div class="testimonial-info">
+                        <span class="testimonial-name">Marcus Weber</span>
+                        <span class="testimonial-title">German Teacher</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Languages CTA Section -->
     <section class="languages-section">
         <div class="languages-background">
@@ -387,7 +452,10 @@
         <div class="footer-container">
             <!-- Logo & Social -->
             <div class="footer-brand">
-                <a href="#" class="footer-logo">Teachers Center</a>
+                <a href="#" class="footer-logo">
+                    <img src="assets/logo-web.svg" alt="TA" class="logo-icon">
+                    Teacher Assistant
+                </a>
                 <div class="footer-social">
                     <a href="#" class="social-link" aria-label="X">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -482,11 +550,119 @@
                     <ul class="footer-list">
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#" id="footerCookieSettings">Cookie Settings</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h3 class="cookie-title">We value your privacy</h3>
+                <p class="cookie-description">We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.</p>
+            </div>
+            <div class="cookie-actions">
+                <button class="cookie-btn cookie-btn-settings" id="cookieSettings">Cookie Settings</button>
+                <button class="cookie-btn cookie-btn-reject" id="cookieReject">Reject All</button>
+                <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div class="cookie-modal" id="cookieModal">
+        <div class="cookie-modal-content">
+            <div class="cookie-modal-header">
+                <h3>Cookie Settings</h3>
+                <button class="cookie-modal-close" id="cookieModalClose">&times;</button>
+            </div>
+            <div class="cookie-modal-body">
+                <div class="cookie-option">
+                    <div class="cookie-option-info">
+                        <h4>Essential Cookies</h4>
+                        <p>These cookies are necessary for the website to function and cannot be switched off.</p>
+                    </div>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" checked disabled>
+                        <span class="cookie-toggle-slider always-on"></span>
+                    </label>
+                </div>
+                <div class="cookie-option">
+                    <div class="cookie-option-info">
+                        <h4>Analytics Cookies</h4>
+                        <p>These cookies help us understand how visitors interact with our website.</p>
+                    </div>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" id="analyticsCookies">
+                        <span class="cookie-toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="cookie-option">
+                    <div class="cookie-option-info">
+                        <h4>Marketing Cookies</h4>
+                        <p>These cookies are used to deliver personalized advertisements.</p>
+                    </div>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" id="marketingCookies">
+                        <span class="cookie-toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="cookie-modal-footer">
+                <button class="cookie-btn cookie-btn-reject" id="cookieModalReject">Reject All</button>
+                <button class="cookie-btn cookie-btn-accept" id="cookieModalSave">Save Preferences</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login/Signup Modal -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-modal-content">
+            <button class="login-modal-close" id="loginModalClose">&times;</button>
+            <h2 class="login-title">Welcome to Teacher Assistant</h2>
+
+            <div class="login-options">
+                <button class="login-btn login-btn-google" id="loginGoogle">
+                    <svg width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    Continue with Google
+                </button>
+
+                <button class="login-btn login-btn-microsoft" id="loginMicrosoft">
+                    <svg width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="#F25022" d="M1 1h10v10H1z"/>
+                        <path fill="#00A4EF" d="M1 13h10v10H1z"/>
+                        <path fill="#7FBA00" d="M13 1h10v10H13z"/>
+                        <path fill="#FFB900" d="M13 13h10v10H13z"/>
+                    </svg>
+                    Continue with Microsoft
+                </button>
+            </div>
+
+            <div class="login-divider">
+                <span>or</span>
+            </div>
+
+            <form class="login-form" id="loginForm">
+                <div class="login-input-group">
+                    <label for="loginEmail">EMAIL</label>
+                    <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                </div>
+                <div class="login-input-group">
+                    <label for="loginPassword">PASSWORD</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="login-btn login-btn-email">Continue with email</button>
+            </form>
+        </div>
+    </div>
 
     <script src="js/main.js"></script>
 </body>

@@ -108,6 +108,12 @@ img {
     color: var(--color-black);
 }
 
+.logo-icon {
+    height: 36px;
+    width: auto;
+    margin-right: 10px;
+}
+
 /* Navigation */
 .main-nav {
     display: none;
@@ -648,6 +654,99 @@ img {
 }
 
 /* ================================
+   Testimonial Section
+   ================================ */
+.testimonial-section {
+    padding: 100px 24px;
+    background-color: var(--color-white);
+}
+
+.testimonial-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 60px;
+}
+
+.testimonial-content {
+    flex: 1;
+    max-width: 700px;
+}
+
+.testimonial-quote-icon {
+    margin-bottom: 24px;
+}
+
+.testimonial-quote-icon svg {
+    width: 80px;
+    height: 64px;
+}
+
+.testimonial-text {
+    font-size: 2.25rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--color-black);
+    margin: 0;
+}
+
+.testimonial-author {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.testimonial-school {
+    text-align: right;
+}
+
+.school-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-black);
+}
+
+.testimonial-person {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.testimonial-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #2DD4BF;
+}
+
+.testimonial-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.testimonial-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-black);
+}
+
+.testimonial-title {
+    font-size: 0.875rem;
+    color: #2DD4BF;
+    font-weight: 500;
+}
+
+/* ================================
    Languages CTA Section
    ================================ */
 .languages-section {
@@ -912,8 +1011,14 @@ img {
     font-size: 2rem;
     font-weight: 600;
     color: var(--color-white);
-    display: block;
+    display: flex;
+    align-items: center;
     margin-bottom: 24px;
+}
+
+.footer-logo .logo-icon {
+    height: 47px;
+    margin-right: 14px;
 }
 
 .footer-social {
@@ -1166,6 +1271,27 @@ img {
         padding-left: 0;
     }
 
+    .testimonial-section {
+        padding: 60px 24px;
+    }
+
+    .testimonial-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .testimonial-text {
+        font-size: 1.5rem;
+    }
+
+    .testimonial-author {
+        align-items: flex-start;
+    }
+
+    .testimonial-school {
+        text-align: left;
+    }
+
     .lang-box {
         padding: 12px 16px;
         width: 150px;
@@ -1307,5 +1433,444 @@ img {
     .languages-cta {
         padding: 28px 80px;
         font-size: 1.75rem;
+    }
+}
+
+/* ================================
+   Cookie Consent Banner
+   ================================ */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--color-white);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    padding: 24px;
+    z-index: 1000;
+    display: none;
+}
+
+.cookie-banner.show {
+    display: block;
+}
+
+.cookie-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.cookie-text {
+    flex: 1;
+}
+
+.cookie-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-black);
+    margin-bottom: 8px;
+}
+
+.cookie-description {
+    font-size: 0.875rem;
+    color: var(--color-gray);
+    line-height: 1.5;
+}
+
+.cookie-actions {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.cookie-btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.cookie-btn-accept {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+.cookie-btn-accept:hover {
+    background-color: #333;
+}
+
+.cookie-btn-reject {
+    background-color: transparent;
+    color: var(--color-black);
+    border: 1px solid var(--color-border);
+}
+
+.cookie-btn-reject:hover {
+    background-color: var(--color-light-gray);
+}
+
+.cookie-btn-settings {
+    background-color: transparent;
+    color: var(--color-gray);
+}
+
+.cookie-btn-settings:hover {
+    color: var(--color-black);
+}
+
+/* Cookie Settings Modal */
+.cookie-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    padding: 24px;
+}
+
+.cookie-modal.show {
+    display: flex;
+}
+
+.cookie-modal-content {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.cookie-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.cookie-modal-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-black);
+}
+
+.cookie-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-gray);
+    padding: 0;
+    line-height: 1;
+}
+
+.cookie-modal-close:hover {
+    color: var(--color-black);
+}
+
+.cookie-modal-body {
+    padding: 24px;
+}
+
+.cookie-option {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.cookie-option:last-child {
+    border-bottom: none;
+}
+
+.cookie-option-info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-black);
+    margin-bottom: 4px;
+}
+
+.cookie-option-info p {
+    font-size: 0.875rem;
+    color: var(--color-gray);
+    line-height: 1.4;
+}
+
+.cookie-toggle {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 28px;
+    flex-shrink: 0;
+}
+
+.cookie-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.cookie-toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-border);
+    transition: 0.3s;
+    border-radius: 28px;
+}
+
+.cookie-toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 3px;
+    bottom: 3px;
+    background-color: var(--color-white);
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+.cookie-toggle input:checked + .cookie-toggle-slider {
+    background-color: var(--color-black);
+}
+
+.cookie-toggle input:checked + .cookie-toggle-slider:before {
+    transform: translateX(20px);
+}
+
+.cookie-toggle-slider.always-on {
+    background-color: var(--color-black);
+    cursor: not-allowed;
+}
+
+.cookie-modal-footer {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    padding: 24px;
+    border-top: 1px solid var(--color-border);
+}
+
+/* Cookie Banner Responsive */
+@media (max-width: 767px) {
+    .cookie-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cookie-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .cookie-btn {
+        width: 100%;
+    }
+
+    .cookie-modal-footer {
+        flex-direction: column;
+    }
+
+    .cookie-modal-footer .cookie-btn {
+        width: 100%;
+    }
+}
+
+/* ================================
+   Login/Signup Modal
+   ================================ */
+.login-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1002;
+    padding: 24px;
+}
+
+.login-modal.show {
+    display: flex;
+}
+
+.login-modal-content {
+    background-color: var(--color-white);
+    border-radius: 16px;
+    max-width: 420px;
+    width: 100%;
+    padding: 48px 40px;
+    position: relative;
+}
+
+.login-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--color-gray);
+    padding: 0;
+    line-height: 1;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-modal-close:hover {
+    color: var(--color-black);
+}
+
+.login-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--color-black);
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.login-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 14px 24px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+.login-btn:hover {
+    background-color: var(--color-light-gray);
+}
+
+.login-btn svg {
+    flex-shrink: 0;
+}
+
+.login-btn-google {
+    background-color: var(--color-white);
+}
+
+.login-btn-microsoft {
+    background-color: var(--color-white);
+}
+
+.login-btn-email {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border-color: var(--color-black);
+}
+
+.login-btn-email:hover {
+    background-color: #333;
+}
+
+.login-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 24px 0;
+}
+
+.login-divider::before,
+.login-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.login-divider span {
+    padding: 0 16px;
+    color: var(--color-gray);
+    font-size: 0.875rem;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.login-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.login-input-group label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.login-input-group input {
+    padding: 14px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--color-black);
+    background-color: var(--color-light-gray);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-input-group input:focus {
+    outline: none;
+    border-color: var(--color-black);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.login-input-group input::placeholder {
+    color: #999;
+}
+
+/* Login Modal Responsive */
+@media (max-width: 767px) {
+    .login-modal-content {
+        padding: 40px 24px;
+    }
+
+    .login-title {
+        font-size: 1.5rem;
     }
 }

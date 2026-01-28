@@ -1,0 +1,16 @@
+<svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer circle - red -->
+  <circle cx="50" cy="50" r="48" fill="none" stroke="#E53E3E" stroke-width="4"/>
+
+  <!-- Inner circle - lighter red/orange -->
+  <circle cx="50" cy="50" r="42" fill="none" stroke="#FC8181" stroke-width="2"/>
+
+  <!-- Letters TA - red -->
+  <text x="50" y="68" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700" fill="#E53E3E" text-anchor="middle">TA</text>
+
+  <!-- Small decorative line at top - lighter red -->
+  <line x1="30" y1="18" x2="70" y2="18" stroke="#FC8181" stroke-width="2"/>
+
+  <!-- Small decorative line at bottom - lighter red -->
+  <line x1="30" y1="82" x2="70" y2="82" stroke="#FC8181" stroke-width="2"/>
+</svg>

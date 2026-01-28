@@ -680,6 +680,7 @@ img {
     animation: float 6s ease-in-out infinite;
     transition: all 0.3s ease;
     overflow: visible;
+    z-index: 1;
 }
 
 .lang-label {
@@ -736,6 +737,20 @@ img {
     top: 50%;
     transform: translateY(-50%);
     animation-delay: 2.5s;
+}
+
+.lang-box-7 {
+    left: 50%;
+    top: 18%;
+    transform: translateX(-50%);
+    animation-delay: 3s;
+}
+
+.lang-box-8 {
+    left: 50%;
+    bottom: 12%;
+    transform: translateX(-50%);
+    animation-delay: 3.5s;
 }
 
 @keyframes float {
@@ -801,9 +816,9 @@ img {
     z-index: -1;
 }
 
-/* English - UK flag: blue, white, red */
+/* English - UK Union Jack: blue, red, white, red, blue */
 .lang-box-1::before {
-    background: linear-gradient(to right, #012169 33%, #FFFFFF 33%, #FFFFFF 66%, #C8102E 66%);
+    background: linear-gradient(to right, #012169 20%, #C8102E 20%, #C8102E 35%, #FFFFFF 35%, #FFFFFF 65%, #C8102E 65%, #C8102E 80%, #012169 80%);
 }
 
 /* German - black, red, gold */
@@ -831,6 +846,16 @@ img {
     background: linear-gradient(to right, #006600 40%, #FF0000 40%);
 }
 
+/* Japanese - red edges, white, red circle center */
+.lang-box-7::before {
+    background: radial-gradient(circle, #BC002D 25%, #FFFFFF 25%, #FFFFFF 85%, #BC002D 85%);
+}
+
+/* Turkish - red with white */
+.lang-box-8::before {
+    background: linear-gradient(to right, #E30A17 70%, #FFFFFF 70%);
+}
+
 /* Show flag borders on button hover */
 .languages-section:has(.languages-cta:hover) .lang-box::before {
     opacity: 1;
@@ -839,11 +864,17 @@ img {
 .languages-section:has(.languages-cta:hover) .lang-box {
     border-color: transparent;
     animation: none;
+    transform: translateZ(0);
 }
 
 .languages-section:has(.languages-cta:hover) .lang-box-5,
 .languages-section:has(.languages-cta:hover) .lang-box-6 {
-    transform: translateY(-50%);
+    transform: translateY(-50%) translateZ(0);
+}
+
+.languages-section:has(.languages-cta:hover) .lang-box-7,
+.languages-section:has(.languages-cta:hover) .lang-box-8 {
+    transform: translateX(-50%) translateZ(0);
 }
 
 @keyframes float-excited {
@@ -1150,6 +1181,8 @@ img {
     .lang-box-4 { right: 2%; bottom: 12%; }
     .lang-box-5 { display: none; }
     .lang-box-6 { display: none; }
+    .lang-box-7 { display: none; }
+    .lang-box-8 { display: none; }
 
     .languages-title {
         font-size: 1.75rem;

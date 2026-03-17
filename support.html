@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support — Teacher Assistant</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/support.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo-web.svg" alt="TA" class="logo-icon">
+                <span class="logo-text">Teacher Assistant</span>
+            </a>
+            <div class="header-actions">
+                <a href="#" class="btn btn-primary">Get started for free</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Support Hero -->
+    <section class="support-hero">
+        <div class="support-hero-container">
+            <p class="support-eyebrow">Support</p>
+            <h1 class="support-hero-title">How can we help?</h1>
+            <p class="support-hero-subtitle">Report a bug, browse video tutorials, or check what's changed in the latest release. We're here to make sure everything works.</p>
+        </div>
+    </section>
+
+    <!-- Bug Report Section -->
+    <section class="support-report">
+        <div class="support-report-inner">
+            <div class="support-section-header">
+                <p class="support-eyebrow">Report a problem</p>
+                <h2>Found a bug or plugin issue?</h2>
+                <p>Tell us exactly what happened and we'll get it fixed. The more detail you provide — steps to reproduce, plugin version, browser — the faster we can help.</p>
+            </div>
+
+            <form class="support-form" id="supportForm">
+                <div class="support-form-row">
+                    <div class="support-field">
+                        <label for="supportName">Your name</label>
+                        <input type="text" id="supportName" placeholder="Sarah Mitchell" required>
+                    </div>
+                    <div class="support-field">
+                        <label for="supportEmail">Email</label>
+                        <input type="email" id="supportEmail" placeholder="sarah@school.com" required>
+                    </div>
+                </div>
+
+                <div class="support-form-row">
+                    <div class="support-field">
+                        <label for="supportType">Problem type</label>
+                        <select id="supportType">
+                            <option value="" disabled selected>Select type</option>
+                            <option value="bug">Bug — something isn't working</option>
+                            <option value="plugin-powerpoint">Plugin issue — PowerPoint Add-in</option>
+                            <option value="plugin-slides">Plugin issue — Google Slides</option>
+                            <option value="content">Content quality issue</option>
+                            <option value="account">Account or billing</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="support-field">
+                        <label for="supportVersion">Plugin / app version</label>
+                        <input type="text" id="supportVersion" placeholder="e.g. v1.3.0">
+                    </div>
+                </div>
+
+                <div class="support-field">
+                    <label for="supportDescription">Describe the problem</label>
+                    <textarea id="supportDescription" placeholder="What happened? What did you expect to happen? Include any error messages you saw..." required></textarea>
+                </div>
+
+                <div class="support-field">
+                    <label for="supportSteps">Steps to reproduce (optional)</label>
+                    <textarea id="supportSteps" placeholder="1. Open PowerPoint&#10;2. Click Teacher Assistant tab&#10;3. ..."></textarea>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit report</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Video Tutorials Section -->
+    <section class="support-tutorials">
+        <div class="support-tutorials-inner">
+            <div class="support-section-header">
+                <p class="support-eyebrow">Learn</p>
+                <h2>Video tutorials</h2>
+                <p>Short, focused videos showing you exactly how to get the most out of Teacher Assistant.</p>
+            </div>
+
+            <div class="tutorials-grid">
+                <!-- Tutorial 1 -->
+                <a href="#" class="tutorial-card">
+                    <div class="tutorial-thumb">
+                        <span class="tutorial-thumb-label">Video</span>
+                        <div class="tutorial-play">
+                            <svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor">
+                                <path d="M1 1L13 8L1 15V1Z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="tutorial-body">
+                        <span class="tutorial-tag">Getting started</span>
+                        <span class="tutorial-title">Your first lesson in 60 seconds</span>
+                        <span class="tutorial-duration">1:02</span>
+                    </div>
+                </a>
+
+                <!-- Tutorial 2 -->
+                <a href="#" class="tutorial-card">
+                    <div class="tutorial-thumb">
+                        <span class="tutorial-thumb-label">Video</span>
+                        <div class="tutorial-play">
+                            <svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor">
+                                <path d="M1 1L13 8L1 15V1Z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="tutorial-body">
+                        <span class="tutorial-tag">PowerPoint Add-in</span>
+                        <span class="tutorial-title">Installing and using the PowerPoint plugin</span>
+                        <span class="tutorial-duration">3:45</span>
+                    </div>
+                </a>
+
+                <!-- Tutorial 3 -->
+                <a href="#" class="tutorial-card">
+                    <div class="tutorial-thumb">
+                        <span class="tutorial-thumb-label">Video</span>
+                        <div class="tutorial-play">
+                            <svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor">
+                                <path d="M1 1L13 8L1 15V1Z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="tutorial-body">
+                        <span class="tutorial-tag">Vocabulary</span>
+                        <span class="tutorial-title">Building vocabulary lists for any CEFR level</span>
+                        <span class="tutorial-duration">2:30</span>
+                    </div>
+                </a>
+
+                <!-- Tutorial 4 -->
+                <a href="#" class="tutorial-card">
+                    <div class="tutorial-thumb">
+                        <span class="tutorial-thumb-label">Video</span>
+                        <div class="tutorial-play">
+                            <svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor">
+                                <path d="M1 1L13 8L1 15V1Z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="tutorial-body">
+                        <span class="tutorial-tag">Grammar</span>
+                        <span class="tutorial-title">Generating grammar explanations and exercises</span>
+                        <span class="tutorial-duration">4:10</span>
+                    </div>
+                </a>
+
+                <!-- Tutorial 5 -->
+                <a href="#" class="tutorial-card">
+                    <div class="tutorial-thumb">
+                        <span class="tutorial-thumb-label">Video</span>
+                        <div class="tutorial-play">
+                            <svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor">
+                                <path d="M1 1L13 8L1 15V1Z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="tutorial-body">
+                        <span class="tutorial-tag">Reading</span>
+                        <span class="tutorial-title">Creating reading passages with comprehension questions</span>
+                        <span class="tutorial-duration">3:20</span>
+                    </div>
+                </a>
+
+                <!-- Tutorial 6 -->
+                <a href="#" class="tutorial-card">
+                    <div class="tutorial-thumb">
+                        <span class="tutorial-thumb-label">Video</span>
+                        <div class="tutorial-play">
+                            <svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor">
+                                <path d="M1 1L13 8L1 15V1Z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="tutorial-body">
+                        <span class="tutorial-tag">Exercises</span>
+                        <span class="tutorial-title">Quizzes, fill-in-blanks and matching exercises</span>
+                        <span class="tutorial-duration">2:55</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Version History Section -->
+    <section class="support-versions">
+        <div class="support-versions-inner">
+            <div class="support-section-header">
+                <p class="support-eyebrow">Changelog</p>
+                <h2>Version history</h2>
+                <p>Every release, from the current version back to where we started.</p>
+            </div>
+
+            <div class="version-list">
+
+                <!-- v1.3.0 — Current -->
+                <div class="version-item">
+                    <div class="version-meta">
+                        <span class="version-number version-current">v1.3.0</span>
+                        <span class="version-date">Mar 2026</span>
+                        <span class="version-badge">Latest</span>
+                    </div>
+                    <div class="version-body">
+                        <p class="version-title">Quiz Generator + PowerPoint stability</p>
+                        <ul class="version-changes">
+                            <li>Added Quiz Generator — multiple choice, true/false, and short answer formats</li>
+                            <li>Fixed PowerPoint Add-in crash on Office 365 version 2402</li>
+                            <li>Improved generation speed by 40% for grammar and reading content</li>
+                            <li>Added Japanese and Turkish language support</li>
+                            <li>Resolved token timeout errors on long reading passages</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- v1.2.0 -->
+                <div class="version-item">
+                    <div class="version-meta">
+                        <span class="version-number">v1.2.0</span>
+                        <span class="version-date">Jan 2026</span>
+                    </div>
+                    <div class="version-body">
+                        <p class="version-title">Homework Creator (Beta) + Google Slides preview</p>
+                        <ul class="version-changes">
+                            <li>Introduced Homework Creator — auto-generates take-home assignments from lesson topics</li>
+                            <li>Early access preview of Google Slides integration</li>
+                            <li>Added C1 and C2 level support across all content types</li>
+                            <li>Flashcard export now supports Anki (.apkg) format</li>
+                            <li>Fixed duplicate content bug when generating exercises in bulk</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- v1.1.0 -->
+                <div class="version-item">
+                    <div class="version-meta">
+                        <span class="version-number">v1.1.0</span>
+                        <span class="version-date">Oct 2025</span>
+                    </div>
+                    <div class="version-body">
+                        <p class="version-title">Flashcard Maker + multilingual expansion</p>
+                        <ul class="version-changes">
+                            <li>New Flashcard Maker — generate printable and digital flashcard sets</li>
+                            <li>Added Italian and Portuguese language support</li>
+                            <li>Improved CEFR-level accuracy for B2 and above content</li>
+                            <li>PowerPoint Add-in now supports Office for Mac</li>
+                            <li>Performance improvements for reading passage generation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- v1.0.1 -->
+                <div class="version-item">
+                    <div class="version-meta">
+                        <span class="version-number">v1.0.1</span>
+                        <span class="version-date">Aug 2025</span>
+                    </div>
+                    <div class="version-body">
+                        <p class="version-title">Bug fixes and reliability improvements</p>
+                        <ul class="version-changes">
+                            <li>Fixed login loop affecting Google OAuth on Safari</li>
+                            <li>Resolved PowerPoint Add-in installation failure on Windows 10</li>
+                            <li>Fixed incorrect CEFR level assignment for A1 vocabulary</li>
+                            <li>Improved error messages when generation fails</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- v1.0.0 -->
+                <div class="version-item">
+                    <div class="version-meta">
+                        <span class="version-number">v1.0.0</span>
+                        <span class="version-date">Jun 2025</span>
+                    </div>
+                    <div class="version-body">
+                        <p class="version-title">Initial release</p>
+                        <ul class="version-changes">
+                            <li>Launched Vocabulary Builder, Grammar Explanations, Reading &amp; Comprehension, and Exercises &amp; Quizzes</li>
+                            <li>Support for English, German, Spanish, and French</li>
+                            <li>CEFR levels A1 through B2</li>
+                            <li>PowerPoint Add-in (Windows)</li>
+                            <li>Google and Microsoft OAuth sign-in</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">
+                    <img src="assets/logo-web.svg" alt="TA" class="logo-icon">
+                    Teacher Assistant
+                </a>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4 class="footer-heading">Company</h4>
+                    <ul class="footer-list">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="support.html">Support</a></li>
+                    </ul>
+                    <h4 class="footer-heading">Legal</h4>
+                    <ul class="footer-list">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="legal-notice.html">Legal Notice</a></li>
+                        <li><a href="#" id="footerCookieSettings">Cookie Settings</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h3 class="cookie-title">We value your privacy</h3>
+                <p class="cookie-description">We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.</p>
+            </div>
+            <div class="cookie-actions">
+                <button class="cookie-btn cookie-btn-settings" id="cookieSettings">Cookie Settings</button>
+                <button class="cookie-btn cookie-btn-reject" id="cookieReject">Reject All</button>
+                <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div class="cookie-modal" id="cookieModal">
+        <div class="cookie-modal-content">
+            <div class="cookie-modal-header">
+                <h3>Cookie Settings</h3>
+                <button class="cookie-modal-close" id="cookieModalClose">&times;</button>
+            </div>
+            <div class="cookie-modal-body">
+                <div class="cookie-option">
+                    <div class="cookie-option-info">
+                        <h4>Essential Cookies</h4>
+                        <p>These cookies are necessary for the website to function and cannot be switched off.</p>
+                    </div>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" checked disabled>
+                        <span class="cookie-toggle-slider always-on"></span>
+                    </label>
+                </div>
+                <div class="cookie-option">
+                    <div class="cookie-option-info">
+                        <h4>Analytics Cookies</h4>
+                        <p>These cookies help us understand how visitors interact with our website.</p>
+                    </div>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" id="analyticsCookies">
+                        <span class="cookie-toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="cookie-option">
+                    <div class="cookie-option-info">
+                        <h4>Marketing Cookies</h4>
+                        <p>These cookies are used to deliver personalized advertisements.</p>
+                    </div>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" id="marketingCookies">
+                        <span class="cookie-toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="cookie-modal-footer">
+                <button class="cookie-btn cookie-btn-reject" id="cookieModalReject">Reject All</button>
+                <button class="cookie-btn cookie-btn-accept" id="cookieModalSave">Save Preferences</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login/Signup Modal -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-modal-content">
+            <button class="login-modal-close" id="loginModalClose">&times;</button>
+            <h2 class="login-title">Welcome to Teacher Assistant</h2>
+            <div class="login-options">
+                <button class="login-btn login-btn-google" id="loginGoogle">
+                    <svg width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    Continue with Google
+                </button>
+                <button class="login-btn login-btn-microsoft" id="loginMicrosoft">
+                    <svg width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="#F25022" d="M1 1h10v10H1z"/>
+                        <path fill="#00A4EF" d="M1 13h10v10H1z"/>
+                        <path fill="#7FBA00" d="M13 1h10v10H13z"/>
+                        <path fill="#FFB900" d="M13 13h10v10H13z"/>
+                    </svg>
+                    Continue with Microsoft
+                </button>
+            </div>
+            <div class="login-divider">
+                <span>or</span>
+            </div>
+            <form class="login-form" id="loginForm">
+                <div class="login-input-group">
+                    <label for="loginEmail">EMAIL</label>
+                    <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                </div>
+                <div class="login-input-group">
+                    <label for="loginPassword">PASSWORD</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="login-btn login-btn-email">Continue with email</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

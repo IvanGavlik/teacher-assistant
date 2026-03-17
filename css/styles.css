@@ -1045,9 +1045,9 @@ img {
 /* Footer Links */
 .footer-links {
     display: flex;
-    flex: 1;
     gap: 40px;
-    justify-content: space-between;
+    justify-content: flex-end;
+    margin-left: auto;
 }
 
 .footer-column {

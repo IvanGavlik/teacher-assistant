@@ -85,6 +85,15 @@
     line-height: 1.6;
     color: var(--color-black);
     font-weight: 500;
+    text-decoration: none;
+}
+
+a.contact-info-value {
+    color: #2DD4BF;
+}
+
+a.contact-info-value:hover {
+    text-decoration: underline;
 }
 
 .contact-info-note {

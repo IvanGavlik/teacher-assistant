@@ -65,11 +65,9 @@
                         <label for="supportType">Problem type</label>
                         <select id="supportType">
                             <option value="" disabled selected>Select type</option>
-                            <option value="bug">Bug — something isn't working</option>
                             <option value="plugin-powerpoint">Plugin issue — PowerPoint Add-in</option>
                             <option value="plugin-slides">Plugin issue — Google Slides</option>
                             <option value="content">Content quality issue</option>
-                            <option value="account">Account or billing</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
@@ -222,74 +220,21 @@
 
             <div class="version-list">
 
-                <!-- v1.3.0 — Current -->
+                <!-- v1.1.0 — Current -->
                 <div class="version-item">
                     <div class="version-meta">
-                        <span class="version-number version-current">v1.3.0</span>
-                        <span class="version-date">Mar 2026</span>
+                        <span class="version-number version-current">v1.1.0</span>
+                        <span class="version-date">Apr 2026</span>
                         <span class="version-badge">Latest</span>
                     </div>
                     <div class="version-body">
-                        <p class="version-title">Quiz Generator + PowerPoint stability</p>
+                        <p class="version-title">Quiz &amp; Homework slides + slide preview</p>
                         <ul class="version-changes">
-                            <li>Added Quiz Generator — multiple choice, true/false, and short answer formats</li>
-                            <li>Fixed PowerPoint Add-in crash on Office 365 version 2402</li>
-                            <li>Improved generation speed by 40% for grammar and reading content</li>
-                            <li>Added Japanese and Turkish language support</li>
-                            <li>Resolved token timeout errors on long reading passages</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- v1.2.0 -->
-                <div class="version-item">
-                    <div class="version-meta">
-                        <span class="version-number">v1.2.0</span>
-                        <span class="version-date">Jan 2026</span>
-                    </div>
-                    <div class="version-body">
-                        <p class="version-title">Homework Creator (Beta) + Google Slides preview</p>
-                        <ul class="version-changes">
-                            <li>Introduced Homework Creator — auto-generates take-home assignments from lesson topics</li>
-                            <li>Early access preview of Google Slides integration</li>
-                            <li>Added C1 and C2 level support across all content types</li>
-                            <li>Flashcard export now supports Anki (.apkg) format</li>
-                            <li>Fixed duplicate content bug when generating exercises in bulk</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- v1.1.0 -->
-                <div class="version-item">
-                    <div class="version-meta">
-                        <span class="version-number">v1.1.0</span>
-                        <span class="version-date">Oct 2025</span>
-                    </div>
-                    <div class="version-body">
-                        <p class="version-title">Flashcard Maker + multilingual expansion</p>
-                        <ul class="version-changes">
-                            <li>New Flashcard Maker — generate printable and digital flashcard sets</li>
-                            <li>Added Italian and Portuguese language support</li>
-                            <li>Improved CEFR-level accuracy for B2 and above content</li>
-                            <li>PowerPoint Add-in now supports Office for Mac</li>
-                            <li>Performance improvements for reading passage generation</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- v1.0.1 -->
-                <div class="version-item">
-                    <div class="version-meta">
-                        <span class="version-number">v1.0.1</span>
-                        <span class="version-date">Aug 2025</span>
-                    </div>
-                    <div class="version-body">
-                        <p class="version-title">Bug fixes and reliability improvements</p>
-                        <ul class="version-changes">
-                            <li>Fixed login loop affecting Google OAuth on Safari</li>
-                            <li>Resolved PowerPoint Add-in installation failure on Windows 10</li>
-                            <li>Fixed incorrect CEFR level assignment for A1 vocabulary</li>
-                            <li>Improved error messages when generation fails</li>
+                            <li>Added Quiz slide type — generates multiple choice questions directly as PowerPoint slides</li>
+                            <li>Added Homework slide type — auto-generates structured take-home assignment slides</li>
+                            <li>New slide preview panel — review and navigate all generated slides before inserting into your presentation</li>
+                            <li>Improved error messages for quota limits, connection issues, and authentication failures</li>
+                            <li>General stability improvements to the PowerPoint Add-in</li>
                         </ul>
                     </div>
                 </div>
@@ -298,16 +243,17 @@
                 <div class="version-item">
                     <div class="version-meta">
                         <span class="version-number">v1.0.0</span>
-                        <span class="version-date">Jun 2025</span>
+                        <span class="version-date">Mar 2026</span>
                     </div>
                     <div class="version-body">
                         <p class="version-title">Initial release</p>
                         <ul class="version-changes">
-                            <li>Launched Vocabulary Builder, Grammar Explanations, Reading &amp; Comprehension, and Exercises &amp; Quizzes</li>
-                            <li>Support for English, German, Spanish, and French</li>
-                            <li>CEFR levels A1 through B2</li>
-                            <li>PowerPoint Add-in (Windows)</li>
-                            <li>Google and Microsoft OAuth sign-in</li>
+                            <li>Launched PowerPoint Add-in with AI-powered slide generation via real-time WebSocket streaming</li>
+                            <li>Vocabulary slide type — word, definition, translation, and example sentence per slide</li>
+                            <li>Grammar slide type — rule explanation with structured examples</li>
+                            <li>Reading slide type — passage with comprehension content</li>
+                            <li>CEFR level support (A1–C2) across all content types</li>
+                            <li>Powered by GPT-4 via a dedicated Clojure backend</li>
                         </ul>
                     </div>
                 </div>

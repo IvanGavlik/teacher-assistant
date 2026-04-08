@@ -116,6 +116,74 @@
 }
 
 /* ===========================
+   Position Drawer
+=========================== */
+.position-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.position-card.drawer-open {
+    border-radius: 12px 12px 0 0;
+    border-bottom-color: transparent;
+    box-shadow: none;
+}
+
+.position-drawer {
+    display: none;
+    padding: 32px;
+    border: 1px solid var(--color-border);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    background-color: var(--color-gray-light);
+}
+
+.position-drawer.open {
+    display: block;
+}
+
+.position-drawer-section {
+    margin-bottom: 28px;
+}
+
+.position-drawer-section:last-child {
+    margin-bottom: 0;
+}
+
+.position-drawer-section h4 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-black);
+    margin-bottom: 10px;
+}
+
+.position-drawer-section p,
+.position-drawer-section li {
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    color: var(--color-gray);
+}
+
+.position-drawer-section ul {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    list-style: disc;
+}
+
+.position-drawer-section a {
+    color: #2DD4BF;
+    text-decoration: none;
+}
+
+.position-drawer-section a:hover {
+    text-decoration: underline;
+}
+
+/* ===========================
    Perks Section
 =========================== */
 .careers-perks {

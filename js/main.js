@@ -199,42 +199,25 @@ if (mobileMenuBtn) {
     });
 }
 
-// Feature Tabs
-const featureTabs = document.querySelectorAll('.feature-tab');
-const featureVideo = document.querySelector('.feature-video');
+// Vimeo playlist: video 1 then video 2, then loop
+const vimeoPlaylist = [1186039329, 1186040172];
+let vimeoIndex = 0;
 
-// Video sources for each tab
-const videoSources = {
-    vocabulary: 'first-section-video/vocabulary.mp4',
-    grammar: 'first-section-video/grammar.mp4',
-    reading: 'first-section-video/reading.mp4',
-    exercises: 'first-section-video/exercises.mp4'
-};
+const vimeoIframe = document.getElementById('vimeo-player');
+if (vimeoIframe) {
+    const vimeoPlayer = new Vimeo.Player(vimeoIframe);
 
-function switchVideo(tabName) {
-    if (featureVideo && videoSources[tabName]) {
-        featureVideo.src = videoSources[tabName];
-        featureVideo.load();
-        featureVideo.play();
-    }
-}
-
-featureTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        // Remove active class from all tabs
-        featureTabs.forEach(t => t.classList.remove('active'));
-        // Add active class to clicked tab
-        tab.classList.add('active');
-
-        // Switch video based on tab
-        const tabType = tab.dataset.tab;
-        switchVideo(tabType);
+    vimeoPlayer.ready().then(function() {
+        vimeoPlayer.setPlaybackRate(4);
     });
-});
 
-// Autoplay prompt video on page load
-if (featureVideo) {
-    featureVideo.play();
+    vimeoPlayer.on('ended', function() {
+        vimeoIndex = (vimeoIndex + 1) % vimeoPlaylist.length;
+        vimeoPlayer.loadVideo(vimeoPlaylist[vimeoIndex]).then(function() {
+            vimeoPlayer.setPlaybackRate(4);
+            vimeoPlayer.play();
+        });
+    });
 }
 
 // Ship Features Accordion
@@ -244,10 +227,9 @@ shipFeatures.forEach(feature => {
     const header = feature.querySelector('.ship-feature-header');
     if (header) {
         header.addEventListener('click', () => {
-            // Remove active from all
+            const isActive = feature.classList.contains('active');
             shipFeatures.forEach(f => f.classList.remove('active'));
-            // Add active to clicked
-            feature.classList.add('active');
+            if (!isActive) feature.classList.add('active');
         });
     }
 });

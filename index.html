@@ -133,56 +133,21 @@
     <section class="feature-video-section">
         <div class="feature-video-container">
             <h2 class="feature-video-title">
-                Create lesson materials in seconds,<br>not hours
+                Create lesson materials in minutes,<br>not hours
             </h2>
 
             <!-- Video Player -->
             <div class="video-wrapper">
                 <div class="video-player">
-                    <video class="feature-video" muted loop autoplay playsinline>
-                        <source src="first-section-video/vocabulary.mp4" type="video/mp4">
-                    </video>
+                    <iframe
+                        id="vimeo-player"
+                        src="https://player.vimeo.com/video/1186039329?badge=0&autopause=0&autoplay=1&muted=1&player_id=0&app_id=58479"
+                        frameborder="0"
+                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                    </iframe>
                 </div>
-            </div>
-
-            <!-- Tab Buttons -->
-            <div class="feature-tabs">
-                <button class="feature-tab active" data-tab="vocabulary">
-                    <span class="tab-icon">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M4 4H16M4 8H16M4 12H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            <rect x="12" y="11" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                        </svg>
-                    </span>
-                    Vocabulary
-                </button>
-                <button class="feature-tab" data-tab="grammar">
-                    <span class="tab-icon">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M3 5H17M3 10H12M3 15H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            <path d="M14 12L16 17L18 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </span>
-                    Grammar
-                </button>
-                <button class="feature-tab" data-tab="reading">
-                    <span class="tab-icon">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M2 4C2 4 5 2 10 2C15 2 18 4 18 4V17C18 17 15 15 10 15C5 15 2 17 2 17V4Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M10 2V15" stroke="currentColor" stroke-width="1.5"/>
-                        </svg>
-                    </span>
-                    Reading
-                </button>
-                <button class="feature-tab" data-tab="exercises">
-                    <span class="tab-icon">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <rect x="3" y="3" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
-                            <path d="M7 10L9 12L13 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </span>
-                    Exercises
-                </button>
             </div>
         </div>
     </section>
@@ -297,10 +262,10 @@
             <h2 class="ship-title">AI-powered content for every lesson type</h2>
 
             <div class="ship-content">
-                <!-- Left: Features List -->
+                <!-- Left: Vocabulary + Grammar -->
                 <div class="ship-features">
-                    <!-- Feature 1 - Expanded -->
-                    <div class="ship-feature active">
+                    <!-- Feature 1 -->
+                    <div class="ship-feature">
                         <div class="ship-feature-header">
                             <span class="ship-feature-icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -314,7 +279,6 @@
                         </div>
                         <div class="ship-feature-body">
                             <p class="ship-feature-desc">Generate flashcards, definitions, and example sentences for any topic. Perfect for building word lists at any CEFR level.</p>
-                            <!-- <a href="#" class="ship-feature-link">See vocabulary examples</a> -->
                         </div>
                     </div>
 
@@ -331,10 +295,12 @@
                         </div>
                         <div class="ship-feature-body">
                             <p class="ship-feature-desc">Clear explanations with examples and practice sentences. From simple tenses to complex conditionals.</p>
-                            <!-- <a href="#" class="ship-feature-link">Explore grammar tools</a> -->
                         </div>
                     </div>
+                </div>
 
+                <!-- Right: Reading + Exercises -->
+                <div class="ship-features">
                     <!-- Feature 3 -->
                     <div class="ship-feature">
                         <div class="ship-feature-header">
@@ -348,7 +314,6 @@
                         </div>
                         <div class="ship-feature-body">
                             <p class="ship-feature-desc">Generate level-appropriate reading passages with comprehension questions. Stories, articles, and dialogues.</p>
-                            <!-- <a href="#" class="ship-feature-link">View reading samples</a> -->
                         </div>
                     </div>
 
@@ -365,15 +330,7 @@
                         </div>
                         <div class="ship-feature-body">
                             <p class="ship-feature-desc">Multiple choice, fill-in-blanks, matching exercises. Instant assessment materials for any topic.</p>
-                            <!-- <a href="#" class="ship-feature-link">Try exercise creator</a> -->
                         </div>
-                    </div>
-                </div>
-
-                <!-- Right: Image Placeholder -->
-                <div class="ship-image">
-                    <div class="ship-image-placeholder">
-                        <span>Product Demo</span>
                     </div>
                 </div>
             </div>
@@ -609,6 +566,7 @@
         </div>
     </div>
 
+    <script src="https://player.vimeo.com/api/player.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

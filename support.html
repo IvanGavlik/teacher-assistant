@@ -48,15 +48,17 @@
                 <p>Tell us exactly what happened and we'll get it fixed. The more detail you provide — steps to reproduce, plugin version, browser — the faster we can help.</p>
             </div>
 
-            <form class="support-form" id="supportForm">
+            <form class="support-form" id="supportForm" novalidate>
                 <div class="support-form-row">
                     <div class="support-field">
                         <label for="supportName">Your name</label>
-                        <input type="text" id="supportName" placeholder="Sarah Mitchell" required>
+                        <input type="text" id="supportName" placeholder="Sarah Mitchell">
+                        <span class="field-error" id="err-name"></span>
                     </div>
                     <div class="support-field">
                         <label for="supportEmail">Email</label>
-                        <input type="email" id="supportEmail" placeholder="sarah@school.com" required>
+                        <input type="email" id="supportEmail" placeholder="sarah@school.com">
+                        <span class="field-error" id="err-email"></span>
                     </div>
                 </div>
 
@@ -79,7 +81,8 @@
 
                 <div class="support-field">
                     <label for="supportDescription">Describe the problem</label>
-                    <textarea id="supportDescription" placeholder="What happened? What did you expect to happen? Include any error messages you saw..." required></textarea>
+                    <textarea id="supportDescription" placeholder="What happened? What did you expect to happen? Include any error messages you saw..."></textarea>
+                    <span class="field-error" id="err-description"></span>
                 </div>
 
                 <div class="support-field">
@@ -91,6 +94,20 @@
                     <button type="submit" class="btn btn-primary">Submit report</button>
                 </div>
             </form>
+
+            <div id="supportSuccess" hidden>
+                <div class="support-success">
+                    <div class="support-success-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <circle cx="16" cy="16" r="16" fill="#2DD4BF"/>
+                            <path d="M9 16.5L13.5 21L23 11" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="support-success-title">Report submitted</h3>
+                    <p class="support-success-text">Thanks for reaching out. We'll look into it and get back to you at your email address.</p>
+                    <button id="supportReset" class="btn btn-primary">Send another report</button>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -396,5 +413,6 @@
     </div>
 
     <script src="js/main.js"></script>
+    <script src="js/support.js"></script>
 </body>
 </html>

@@ -347,6 +347,63 @@
 }
 
 /* ===========================
+   Form validation states
+=========================== */
+.support-field input.is-invalid,
+.support-field select.is-invalid,
+.support-field textarea.is-invalid {
+    border-color: #ef4444;
+    background-color: #fff5f5;
+}
+
+.field-error {
+    display: none;
+    font-size: 0.8125rem;
+    color: #ef4444;
+    margin-top: 4px;
+}
+
+.field-error.is-visible {
+    display: block;
+}
+
+.support-form-error {
+    font-size: 0.875rem;
+    color: #ef4444;
+    margin-bottom: 12px;
+}
+
+/* ===========================
+   Success panel
+=========================== */
+.support-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 60px 24px;
+    gap: 16px;
+}
+
+.support-success-icon {
+    margin-bottom: 8px;
+}
+
+.support-success-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-black);
+}
+
+.support-success-text {
+    font-size: 1rem;
+    color: var(--color-gray);
+    line-height: 1.6;
+    max-width: 420px;
+    margin-bottom: 8px;
+}
+
+/* ===========================
    Responsive
 =========================== */
 @media (max-width: 900px) {

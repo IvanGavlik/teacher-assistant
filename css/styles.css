@@ -408,21 +408,6 @@ img {
     background-color: #333;
 }
 
-/* Hero Tagline */
-.hero-tagline {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    z-index: 20;
-}
-
-.hero-tagline p {
-    font-size: 1.25rem;
-    color: var(--color-black);
-    line-height: 1.6;
-}
 
 /* ================================
    Feature Video Section
@@ -1205,7 +1190,11 @@ img {
 
 /* Mobile - stack cards */
 @media (max-width: 767px) {
-    /* Header - show CTA, hide useless hamburger */
+    /* Header - show CTA, hide useless hamburger, hide logo text */
+    .logo-text {
+        display: none;
+    }
+
     .header-actions {
         display: flex;
     }
@@ -1229,7 +1218,11 @@ img {
     }
 
     .hero {
-        padding-bottom: 80px;
+        min-height: auto;
+        justify-content: flex-start;
+        padding-top: calc(var(--header-height) + 40px);
+        padding-bottom: 48px;
+        background: linear-gradient(180deg, #f0fdfb 0%, #ffffff 60%);
     }
 
     .hero-card {
@@ -1243,17 +1236,6 @@ img {
         margin-bottom: 16px;
     }
 
-    .hero-tagline {
-        left: 24px;
-        right: 24px;
-        transform: none;
-        bottom: 24px;
-        text-align: center;
-    }
-
-    .hero-tagline p {
-        font-size: 0.875rem;
-    }
 
     /* Hide video section on mobile */
     .feature-video-section {

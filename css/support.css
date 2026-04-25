@@ -73,6 +73,8 @@
     margin: 0 auto;
 }
 
+[hidden] { display: none !important; }
+
 .support-form {
     display: flex;
     flex-direction: column;

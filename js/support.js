@@ -71,6 +71,13 @@
     }
 
     function showSuccess() {
+        form.reset();
+        Object.keys(fields).forEach((key) => {
+            fields[key].input.classList.remove('is-invalid');
+            fields[key].error.classList.remove('is-visible');
+            fields[key].error.textContent = '';
+        });
+        clearFormError();
         form.hidden = true;
         if (sectionHeader) sectionHeader.hidden = true;
         successPanel.hidden = false;

@@ -199,12 +199,14 @@ if (mobileMenuBtn) {
     });
 }
 
-// Vimeo playlist: video 1 then video 2, then loop
+// Vimeo playlist: video 1 then video 2, then loop (desktop only)
 const vimeoPlaylist = [1186039329, 1186040172];
 let vimeoIndex = 0;
 
 const vimeoIframe = document.getElementById('vimeo-player');
-if (vimeoIframe) {
+if (vimeoIframe && window.innerWidth >= 768) {
+    vimeoIframe.src = vimeoIframe.dataset.src;
+
     const vimeoPlayer = new Vimeo.Player(vimeoIframe);
 
     vimeoPlayer.ready().then(function() {

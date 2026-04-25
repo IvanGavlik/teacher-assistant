@@ -1205,6 +1205,67 @@ img {
 
 /* Mobile - stack cards */
 @media (max-width: 767px) {
+    /* Header - show CTA, hide useless hamburger */
+    .header-actions {
+        display: flex;
+    }
+
+    .header-actions .btn-primary {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+
+    .mobile-menu-btn {
+        display: none;
+    }
+
+    /* Hero - hide decorative background images and carousel */
+    .hero-background {
+        display: none;
+    }
+
+    .carousel-controls {
+        display: none;
+    }
+
+    .hero {
+        padding-bottom: 80px;
+    }
+
+    .hero-card {
+        padding: 24px;
+        width: calc(100vw - 48px);
+    }
+
+    .hero-title {
+        font-size: 1.625rem;
+        min-height: 4rem;
+        margin-bottom: 16px;
+    }
+
+    .hero-tagline {
+        left: 24px;
+        right: 24px;
+        transform: none;
+        bottom: 24px;
+        text-align: center;
+    }
+
+    .hero-tagline p {
+        font-size: 0.875rem;
+    }
+
+    /* Hide video section on mobile */
+    .feature-video-section {
+        display: none;
+    }
+
+    /* Remove full-screen min-height on content sections */
+    .systems-section {
+        min-height: auto;
+        padding: 60px 24px;
+    }
+
     .systems-cards {
         flex-direction: column;
         align-items: center;
@@ -1248,7 +1309,6 @@ img {
         max-width: 100%;
     }
 
-
     .ship-feature-body {
         padding-left: 0;
     }
@@ -1272,6 +1332,11 @@ img {
 
     .testimonial-school {
         text-align: left;
+    }
+
+    /* Languages section - cap min-height to prevent oversized blank section */
+    .languages-section {
+        min-height: 600px;
     }
 
     .lang-box {
@@ -1305,19 +1370,59 @@ img {
         font-size: 1.125rem;
     }
 
+    .footer {
+        padding: 44px 24px 36px;
+    }
+
     .footer-container {
         flex-direction: column;
-        gap: 40px;
+        gap: 0;
+    }
+
+    .footer-brand {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 28px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-logo {
+        font-size: 1.25rem;
+        margin-bottom: 0;
+    }
+
+    .footer-logo .logo-icon {
+        height: 32px;
+        margin-right: 10px;
     }
 
     .footer-links {
         flex-wrap: wrap;
         gap: 32px;
+        padding-top: 28px;
     }
 
     .footer-column {
         flex: 1 1 45%;
         min-width: 140px;
+    }
+
+    .footer-heading {
+        margin-bottom: 12px;
+    }
+
+    .footer-column .footer-heading:not(:first-child) {
+        margin-top: 24px;
+    }
+
+    .footer-list {
+        gap: 0;
+    }
+
+    .footer-list a {
+        padding: 9px 0;
+        font-size: 1rem;
     }
 }
 

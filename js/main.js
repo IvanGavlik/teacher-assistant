@@ -345,80 +345,175 @@ if (cookieModal) {
 checkCookieConsent();
 
 // ================================
-// Login/Signup Modal
+// Trial Signup Modal
 // ================================
-const loginModal = document.getElementById('loginModal');
-const loginModalClose = document.getElementById('loginModalClose');
-const loginForm = document.getElementById('loginForm');
-const getStartedButtons = document.querySelectorAll('.btn-primary');
+const trialModal = document.getElementById('trialModal');
+const trialModalClose = document.getElementById('trialModalClose');
+const trialForm = document.getElementById('trialForm');
+const trialFormError = document.getElementById('trialFormError');
+const trialSuccess = document.getElementById('trialSuccess');
+const trialSuccessEmail = document.getElementById('trialSuccessEmail');
+const trialReset = document.getElementById('trialReset');
+const trialFormWrap = document.getElementById('trialFormWrap');
 
-// Open login modal when clicking "Get started for free" buttons
-getStartedButtons.forEach(button => {
-    if (button.textContent.trim().toLowerCase().includes('get started')) {
+const trialFields = {
+    name: {
+        input: document.getElementById('trialName'),
+        error: document.getElementById('trial-err-name'),
+    },
+    email: {
+        input: document.getElementById('trialEmail'),
+        error: document.getElementById('trial-err-email'),
+    },
+};
+
+function validateTrialField(key) {
+    const { input, error } = trialFields[key];
+    const val = input.value.trim();
+    let msg = '';
+
+    if (key === 'name') {
+        if (!val) msg = 'Your first name is required.';
+        else if (val.length > 100) msg = 'Name must be 100 characters or fewer.';
+    } else if (key === 'email') {
+        if (!val) msg = 'Email address is required.';
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) msg = 'Enter a valid email address.';
+    }
+
+    const valid = msg === '';
+    error.textContent = msg;
+    input.classList.toggle('is-invalid', !valid);
+    error.classList.toggle('is-visible', !valid);
+    return valid;
+}
+
+if (trialFields.name.input) {
+    Object.keys(trialFields).forEach((key) => {
+        trialFields[key].input.addEventListener('blur', () => validateTrialField(key));
+        trialFields[key].input.addEventListener('input', () => {
+            if (trialFields[key].input.classList.contains('is-invalid')) validateTrialField(key);
+        });
+    });
+}
+
+function resetTrialModal() {
+    if (trialFormWrap) trialFormWrap.hidden = false;
+    if (trialSuccess) trialSuccess.hidden = true;
+    if (trialFormError) trialFormError.hidden = true;
+}
+
+function openTrialModal() {
+    if (trialModal) {
+        resetTrialModal();
+        trialModal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeTrialModal() {
+    if (trialModal) {
+        trialModal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+}
+
+function showTrialSuccess(email) {
+    if (trialForm) trialForm.reset();
+    Object.keys(trialFields).forEach((key) => {
+        if (trialFields[key].input) {
+            trialFields[key].input.classList.remove('is-invalid');
+            trialFields[key].error.classList.remove('is-visible');
+            trialFields[key].error.textContent = '';
+        }
+    });
+    if (trialFormWrap) trialFormWrap.hidden = true;
+    if (trialSuccessEmail) trialSuccessEmail.textContent = email;
+    if (trialSuccess) trialSuccess.hidden = false;
+}
+
+document.querySelectorAll('.btn-primary').forEach(button => {
+    const label = button.textContent.trim().toLowerCase();
+    if (label.includes('get early access') && !button.closest('#trialModal')) {
         button.addEventListener('click', (e) => {
             e.preventDefault();
-            loginModal.classList.add('show');
-            document.body.style.overflow = 'hidden';
+            openTrialModal();
         });
     }
 });
 
-// Close login modal
-if (loginModalClose) {
-    loginModalClose.addEventListener('click', () => {
-        loginModal.classList.remove('show');
-        document.body.style.overflow = '';
+if (trialModalClose) {
+    trialModalClose.addEventListener('click', closeTrialModal);
+}
+
+if (trialModal) {
+    trialModal.addEventListener('click', (e) => {
+        if (e.target === trialModal) closeTrialModal();
     });
 }
 
-// Close modal when clicking outside
-if (loginModal) {
-    loginModal.addEventListener('click', (e) => {
-        if (e.target === loginModal) {
-            loginModal.classList.remove('show');
-            document.body.style.overflow = '';
-        }
-    });
+if (trialReset) {
+    trialReset.addEventListener('click', resetTrialModal);
 }
 
-// Handle form submission
-if (loginForm) {
-    loginForm.addEventListener('submit', (e) => {
+if (trialForm) {
+    trialForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const email = document.getElementById('loginEmail').value;
-        const password = document.getElementById('loginPassword').value;
-        console.log('Login attempt:', { email, password });
-        // Here you would typically send the data to your backend
-        alert('Login functionality would be implemented here.');
-    });
-}
+        if (trialFormError) trialFormError.hidden = true;
 
-// Handle Google login
-const loginGoogle = document.getElementById('loginGoogle');
-if (loginGoogle) {
-    loginGoogle.addEventListener('click', () => {
-        console.log('Google login clicked');
-        // Here you would implement Google OAuth
-        alert('Google login would be implemented here.');
-    });
-}
+        const allValid = Object.keys(trialFields).map(validateTrialField).every(Boolean);
+        if (!allValid) return;
 
-// Handle Microsoft login
-const loginMicrosoft = document.getElementById('loginMicrosoft');
-if (loginMicrosoft) {
-    loginMicrosoft.addEventListener('click', () => {
-        console.log('Microsoft login clicked');
-        // Here you would implement Microsoft OAuth
-        alert('Microsoft login would be implemented here.');
+        const submitBtn = trialForm.querySelector('[type="submit"]');
+        const originalLabel = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+
+        const name = trialFields.name.input.value.trim();
+        const email = trialFields.email.input.value.trim();
+
+        try {
+            const res = await fetch('https://web-compose.onrender.com/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    'app-id': 'teacher-assistant',
+                    'service-id': 'trial-signup',
+                    name,
+                    email,
+                    message: 'Free trial signup request.',
+                }),
+            });
+
+            if (res.ok) {
+                showTrialSuccess(email);
+            } else if (res.status === 429) {
+                if (trialFormError) {
+                    trialFormError.textContent = 'Too many requests. Please wait a few minutes and try again.';
+                    trialFormError.hidden = false;
+                }
+            } else {
+                if (trialFormError) {
+                    trialFormError.textContent = 'Something went wrong. Please try again.';
+                    trialFormError.hidden = false;
+                }
+            }
+        } catch {
+            if (trialFormError) {
+                trialFormError.textContent = 'Could not connect. Check your internet connection and try again.';
+                trialFormError.hidden = false;
+            }
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalLabel;
+        }
     });
 }
 
 // Close modal with Escape key
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        if (loginModal && loginModal.classList.contains('show')) {
-            loginModal.classList.remove('show');
-            document.body.style.overflow = '';
+        if (trialModal && trialModal.classList.contains('show')) {
+            closeTrialModal();
         }
         if (cookieModal && cookieModal.classList.contains('show')) {
             cookieModal.classList.remove('show');

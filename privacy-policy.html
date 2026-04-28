@@ -20,7 +20,7 @@
                 <span class="logo-text">Teacher Assistant</span>
             </a>
             <div class="header-actions">
-                <a href="#" class="btn btn-primary">Get started for free</a>
+                <a href="#" class="btn btn-primary">Get early access</a>
             </div>
             <button class="mobile-menu-btn" aria-label="Toggle menu">
                 <span></span>
@@ -284,45 +284,70 @@
         </div>
     </div>
 
-    <!-- Login/Signup Modal -->
-    <div class="login-modal" id="loginModal">
-        <div class="login-modal-content">
-            <button class="login-modal-close" id="loginModalClose">&times;</button>
-            <h2 class="login-title">Welcome to Teacher Assistant</h2>
-            <div class="login-options">
-                <button class="login-btn login-btn-google" id="loginGoogle">
-                    <svg width="20" height="20" viewBox="0 0 24 24">
-                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                    </svg>
-                    Continue with Google
-                </button>
-                <button class="login-btn login-btn-microsoft" id="loginMicrosoft">
-                    <svg width="20" height="20" viewBox="0 0 24 24">
-                        <path fill="#F25022" d="M1 1h10v10H1z"/>
-                        <path fill="#00A4EF" d="M1 13h10v10H1z"/>
-                        <path fill="#7FBA00" d="M13 1h10v10H13z"/>
-                        <path fill="#FFB900" d="M13 13h10v10H13z"/>
-                    </svg>
-                    Continue with Microsoft
-                </button>
+    <!-- Trial Signup Modal -->
+    <div class="trial-modal" id="trialModal">
+        <div class="trial-modal-content">
+            <button class="trial-modal-close" id="trialModalClose">&times;</button>
+
+            <p class="trial-eyebrow">Free trial &middot; No credit card required</p>
+            <h2 class="trial-title">Get early access</h2>
+
+            <div id="trialFormWrap">
+                <form class="trial-form" id="trialForm" novalidate>
+                    <div class="trial-form-row">
+                        <div class="trial-field">
+                            <label for="trialName">First name</label>
+                            <input type="text" id="trialName" placeholder="Sarah" autocomplete="given-name">
+                            <span class="trial-field-error" id="trial-err-name"></span>
+                        </div>
+                        <div class="trial-field">
+                            <label for="trialEmail">Email</label>
+                            <input type="email" id="trialEmail" placeholder="sarah@school.com" autocomplete="email">
+                            <span class="trial-field-error" id="trial-err-email"></span>
+                        </div>
+                    </div>
+                    <ul class="trial-trust">
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <circle cx="8" cy="8" r="7" fill="#2DD4BF" fill-opacity="0.15"/>
+                                <path d="M4.5 8.5L6.5 10.5L11.5 5.5" stroke="#2DD4BF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Works in PowerPoint
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <circle cx="8" cy="8" r="7" fill="#2DD4BF" fill-opacity="0.15"/>
+                                <path d="M4.5 8.5L6.5 10.5L11.5 5.5" stroke="#2DD4BF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            A1–C2, 6+ languages supported
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <circle cx="8" cy="8" r="7" fill="#2DD4BF" fill-opacity="0.15"/>
+                                <path d="M4.5 8.5L6.5 10.5L11.5 5.5" stroke="#2DD4BF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Trusted by language teachers
+                        </li>
+                    </ul>
+                    <p class="trial-form-error" id="trialFormError" hidden></p>
+                    <button type="submit" class="btn btn-primary trial-submit">Get early access</button>
+                </form>
+
+                <p class="trial-next-step">We'll send you the add-in install link — takes 2 minutes to set up.</p>
             </div>
-            <div class="login-divider">
-                <span>or</span>
+
+            <div class="trial-success" id="trialSuccess" hidden>
+                <div class="trial-success-icon">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                        <circle cx="24" cy="24" r="24" fill="#2DD4BF" fill-opacity="0.12"/>
+                        <circle cx="24" cy="24" r="16" fill="#2DD4BF"/>
+                        <path d="M17 24.5L21.5 29L31 19" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3 class="trial-success-title">You're in! Check your inbox.</h3>
+                <p class="trial-success-text">We've sent the install link to <strong id="trialSuccessEmail"></strong>. It takes about 2 minutes to set up.</p>
+                <button class="trial-success-reset" id="trialReset">Send to a different email</button>
             </div>
-            <form class="login-form" id="loginForm">
-                <div class="login-input-group">
-                    <label for="loginEmail">EMAIL</label>
-                    <input type="email" id="loginEmail" placeholder="Enter your email" required>
-                </div>
-                <div class="login-input-group">
-                    <label for="loginPassword">PASSWORD</label>
-                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
-                </div>
-                <button type="submit" class="login-btn login-btn-email">Continue with email</button>
-            </form>
         </div>
     </div>
 

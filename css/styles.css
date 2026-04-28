@@ -1765,9 +1765,9 @@ img {
 }
 
 /* ================================
-   Login/Signup Modal
+   Trial Signup Modal
    ================================ */
-.login-modal {
+.trial-modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -1781,20 +1781,20 @@ img {
     padding: 24px;
 }
 
-.login-modal.show {
+.trial-modal.show {
     display: flex;
 }
 
-.login-modal-content {
+.trial-modal-content {
     background-color: var(--color-white);
     border-radius: 16px;
-    max-width: 420px;
+    max-width: 480px;
     width: 100%;
     padding: 48px 40px;
     position: relative;
 }
 
-.login-modal-close {
+.trial-modal-close {
     position: absolute;
     top: 16px;
     right: 16px;
@@ -1812,134 +1812,198 @@ img {
     justify-content: center;
 }
 
-.login-modal-close:hover {
+.trial-modal-close:hover {
     color: var(--color-black);
 }
 
-.login-title {
+.trial-eyebrow {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #2DD4BF;
+    margin-bottom: 10px;
+}
+
+.trial-title {
     font-size: 1.75rem;
     font-weight: 600;
     color: var(--color-black);
-    text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
+    line-height: 1.2;
 }
 
-.login-options {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.login-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    width: 100%;
-    padding: 14px 24px;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: 1px solid var(--color-border);
-    background-color: var(--color-white);
-    color: var(--color-black);
-}
-
-.login-btn:hover {
-    background-color: var(--color-light-gray);
-}
-
-.login-btn svg {
-    flex-shrink: 0;
-}
-
-.login-btn-google {
-    background-color: var(--color-white);
-}
-
-.login-btn-microsoft {
-    background-color: var(--color-white);
-}
-
-.login-btn-email {
-    background-color: var(--color-black);
-    color: var(--color-white);
-    border-color: var(--color-black);
-}
-
-.login-btn-email:hover {
-    background-color: #333;
-}
-
-.login-divider {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin: 24px 0;
-}
-
-.login-divider::before,
-.login-divider::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid var(--color-border);
-}
-
-.login-divider span {
-    padding: 0 16px;
-    color: var(--color-gray);
-    font-size: 0.875rem;
-}
-
-.login-form {
+.trial-form {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    margin-bottom: 16px;
 }
 
-.login-input-group {
+.trial-form-row {
+    display: flex;
+    gap: 16px;
+}
+
+.trial-field {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 7px;
+    flex: 1;
 }
 
-.login-input-group label {
-    font-size: 0.75rem;
+.trial-field label {
+    font-size: 0.8125rem;
     font-weight: 600;
-    color: var(--color-gray);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.login-input-group input {
-    padding: 14px 16px;
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    font-size: 1rem;
+    letter-spacing: 1px;
     color: var(--color-black);
-    background-color: var(--color-light-gray);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.login-input-group input:focus {
+.trial-field input {
+    font-family: var(--font-family);
+    font-size: 0.9375rem;
+    color: var(--color-black);
+    background-color: var(--color-gray-light);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 13px 16px;
     outline: none;
-    border-color: var(--color-black);
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
 }
 
-.login-input-group input::placeholder {
-    color: #999;
+.trial-field input::placeholder {
+    color: var(--color-gray);
 }
 
-/* Login Modal Responsive */
+.trial-field input:focus {
+    border-color: #2DD4BF;
+    background-color: var(--color-white);
+}
+
+.trial-field input.is-invalid {
+    border-color: #ef4444;
+    background-color: #fff5f5;
+}
+
+.trial-field-error {
+    display: none;
+    font-size: 0.8125rem;
+    color: #ef4444;
+}
+
+.trial-field-error.is-visible {
+    display: block;
+}
+
+.trial-submit {
+    width: 100%;
+    padding: 15px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    margin-top: 4px;
+}
+
+.trial-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.trial-form-error {
+    font-size: 0.875rem;
+    color: #ef4444;
+    margin-top: -8px;
+}
+
+.trial-next-step {
+    font-size: 0.875rem;
+    color: var(--color-gray);
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.trial-divider {
+    height: 1px;
+    background-color: var(--color-border);
+    margin-bottom: 20px;
+}
+
+.trial-trust {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.trial-trust li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.875rem;
+    color: var(--color-gray);
+}
+
+.trial-trust li svg {
+    flex-shrink: 0;
+}
+
+.trial-success:not([hidden]) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 0 8px;
+    gap: 12px;
+}
+
+.trial-success-icon {
+    margin-bottom: 4px;
+}
+
+.trial-success-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-black);
+}
+
+.trial-success-text {
+    font-size: 0.9375rem;
+    color: var(--color-gray);
+    line-height: 1.6;
+    max-width: 340px;
+}
+
+.trial-success-reset {
+    margin-top: 8px;
+    background: none;
+    border: none;
+    font-size: 0.875rem;
+    color: var(--color-gray);
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    font-family: var(--font-family);
+}
+
+.trial-success-reset:hover {
+    color: var(--color-black);
+}
+
+/* Trial Modal Responsive */
 @media (max-width: 767px) {
-    .login-modal-content {
+    .trial-modal-content {
         padding: 40px 24px;
     }
 
-    .login-title {
+    .trial-title {
         font-size: 1.5rem;
+    }
+
+    .trial-form-row {
+        flex-direction: column;
+        gap: 16px;
     }
 }

@@ -182,9 +182,70 @@ a.contact-info-value:hover {
 }
 
 /* ===========================
+   Validation & Errors
+=========================== */
+.contact-field input.is-invalid,
+.contact-field select.is-invalid,
+.contact-field textarea.is-invalid {
+    border-color: #ef4444;
+    background-color: #fff5f5;
+}
+
+.contact-field-error {
+    display: none;
+    font-size: 0.8125rem;
+    color: #ef4444;
+}
+
+.contact-field-error.is-visible {
+    display: block;
+}
+
+.contact-form-error {
+    font-size: 0.875rem;
+    color: #ef4444;
+    margin-bottom: 8px;
+}
+
+/* ===========================
+   Success Panel
+=========================== */
+.contact-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 60px 24px;
+    gap: 16px;
+}
+
+.contact-success-icon {
+    margin-bottom: 8px;
+}
+
+.contact-success-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-black);
+}
+
+.contact-success-text {
+    font-size: 1rem;
+    color: var(--color-gray);
+    line-height: 1.6;
+    max-width: 420px;
+    margin-bottom: 8px;
+}
+
+/* ===========================
    Responsive
 =========================== */
 @media (max-width: 767px) {
+    .contact-hero {
+        padding-top: calc(var(--header-height) + 40px);
+        padding-bottom: 48px;
+    }
+
     .contact-hero-title {
         font-size: 2rem;
     }
@@ -193,9 +254,13 @@ a.contact-info-value:hover {
         font-size: 1rem;
     }
 
+    .contact-body {
+        padding: 48px 24px 80px;
+    }
+
     .contact-body-inner {
         flex-direction: column;
-        gap: 48px;
+        gap: 32px;
     }
 
     .contact-info {
@@ -203,14 +268,18 @@ a.contact-info-value:hover {
         width: 100%;
     }
 
+    .contact-info-block {
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .contact-form-wrap {
+        width: 100%;
+    }
+
     .contact-form-row {
         flex-direction: column;
         gap: 20px;
-    }
-
-    .contact-submit {
-        width: 100%;
-        text-align: center;
     }
 
     .contact-submit .btn {

@@ -1,85 +1,211 @@
 /* ===========================
-   About Hero
+   Shared: eyebrow left-align override, monogram avatar
 =========================== */
-.about-hero {
-    padding-top: calc(var(--header-height) + 80px);
-    padding-bottom: 80px;
-    padding-left: var(--container-padding);
-    padding-right: var(--container-padding);
-    background-color: var(--color-white);
-    text-align: center;
+.about-eyebrow-left {
+    text-align: left;
 }
 
-.about-hero-container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.about-eyebrow {
-    font-size: 0.875rem;
+.avatar-monogram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-accent-tint), rgba(45, 212, 191, 0.3));
+    border: 3px solid var(--color-accent);
+    color: var(--color-accent-dark);
+    font-family: var(--font-display);
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #2DD4BF;
-    margin-bottom: 16px;
+    flex-shrink: 0;
 }
 
-.about-hero-title {
-    font-size: 3rem;
-    font-weight: 500;
-    line-height: 1.15;
-    color: var(--color-black);
-    margin-bottom: 24px;
+.avatar-monogram-lg {
+    width: 200px;
+    height: 200px;
+    font-size: 3.75rem;
 }
 
-.about-hero-subtitle {
-    font-size: 1.25rem;
-    line-height: 1.7;
-    color: var(--color-gray);
-    max-width: 620px;
-    margin: 0 auto;
+.avatar-monogram-md {
+    width: 120px;
+    height: 120px;
+    font-size: 2.25rem;
 }
 
 /* ===========================
-   Mission Section
+   Hero
 =========================== */
-.about-mission {
-    min-height: auto;
-    padding: 100px 24px;
+.about-hero {
+    padding: calc(var(--header-height) + 56px) 24px 80px;
+    background: linear-gradient(180deg, #f7fefd 0%, #ffffff 55%);
 }
 
-.about-mission-grid {
-    display: flex;
-    gap: 80px;
-    align-items: flex-start;
+.about-hero-grid {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: center;
 }
 
-.about-mission-quote {
-    flex: 1;
+.about-hero-copy {
+    max-width: 620px;
 }
 
-.about-mission-quote h2 {
-    font-size: 2.25rem;
-    font-weight: 500;
-    line-height: 1.3;
+.about-hero-title {
+    font-family: var(--font-display);
+    font-size: 2.375rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.25px;
     color: var(--color-black);
+    margin-bottom: 20px;
 }
 
-.about-mission-text {
-    flex: 1;
+.about-hero-subtitle {
+    font-size: 1.125rem;
+    line-height: 1.65;
+    color: var(--color-gray);
+    max-width: 560px;
+    margin-bottom: 24px;
+}
+
+.about-hero-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+}
+
+.about-avatar-caption {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-gray);
+}
+
+/* ===========================
+   Founder Letter
+=========================== */
+.founder-letter {
+    padding: 90px 24px;
+    background-color: var(--color-white);
+    scroll-margin-top: var(--header-height);
+}
+
+.founder-letter-container {
+    max-width: 620px;
+    margin: 0 auto;
+    border-left: 3px solid var(--color-accent);
+    padding-left: 32px;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.about-mission-text p {
-    font-size: 1.0625rem;
-    line-height: 1.75;
-    color: var(--color-gray);
+.founder-letter-container p {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--color-black);
+}
+
+.founder-letter-emphasis {
+    font-weight: 600;
+    color: var(--color-accent-dark);
 }
 
 /* ===========================
-   Values Section
+   Workflow (The Idea)
+=========================== */
+.workflow {
+    padding: 100px 24px;
+    background-color: var(--color-gray-light);
+}
+
+.workflow-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.workflow-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.workflow-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 28px;
+    text-align: left;
+}
+
+.workflow-label {
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+    color: var(--color-gray);
+    margin-bottom: 16px;
+}
+
+.workflow-new .workflow-label {
+    color: var(--color-accent-dark);
+}
+
+.workflow-chain {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.step-chip-accent {
+    background-color: var(--color-accent-tint);
+    color: var(--color-accent-dark);
+}
+
+.workflow-arrow {
+    color: var(--color-gray);
+    font-size: 0.875rem;
+}
+
+/* ===========================
+   What We're Building
+=========================== */
+.about-what {
+    padding: 100px 24px;
+    background-color: var(--color-white);
+}
+
+.about-what .features-container {
+    text-align: center;
+}
+
+.about-lead-paragraph {
+    font-size: 1.0625rem;
+    color: var(--color-gray);
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+}
+
+.features-grid-narrow {
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.about-showcase-link {
+    margin-top: 40px;
+}
+
+/* ===========================
+   Values Section (principles)
 =========================== */
 .about-values {
     padding: 100px 24px;
@@ -88,71 +214,68 @@
 
 .about-section-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 48px;
+}
+
+.systems-cards-4 {
+    flex-wrap: wrap;
+}
+
+.systems-cards-4 .system-card {
+    flex: 1 1 220px;
 }
 
 /* ===========================
-   Team Section
+   Why a developer (honesty)
 =========================== */
-.about-team {
-    min-height: auto;
+.about-honesty {
     padding: 100px 24px;
-    background-color: var(--color-white);
+    background-color: var(--color-gray-light);
 }
 
-.about-team-card {
+.about-honesty-container {
+    max-width: 700px;
+    margin: 0 auto;
     text-align: center;
 }
 
-.about-team-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 0 auto 20px;
-    border: 3px solid #2DD4BF;
+/* ===========================
+   Building with teachers
+=========================== */
+.about-collab {
+    padding: 100px 24px;
+    background-color: var(--color-white);
+    text-align: center;
 }
 
-.about-team-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.about-collab-container {
+    max-width: 620px;
+    margin: 0 auto;
 }
 
-.about-team-role {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #2DD4BF;
-    margin-bottom: 12px;
+.about-collab-container .btn {
+    margin-top: 8px;
 }
 
 /* ===========================
-   Author Card
+   Founder Card
 =========================== */
+.about-team {
+    padding: 100px 24px;
+    background-color: var(--color-gray-light);
+}
+
 .about-author {
     display: flex;
-    gap: 56px;
+    gap: 48px;
     align-items: flex-start;
-    max-width: 860px;
+    max-width: 780px;
     margin: 0 auto;
-    background: var(--color-gray-light);
-    border-radius: 16px;
-    padding: 48px;
-}
-
-.about-author-photo {
-    flex-shrink: 0;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid #2DD4BF;
-}
-
-.about-author-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-md);
+    padding: 44px;
 }
 
 .about-author-body {
@@ -160,78 +283,159 @@
 }
 
 .about-author-name {
+    font-family: var(--font-display);
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--color-black);
     margin-bottom: 6px;
 }
 
+.about-team-role {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-accent-dark);
+    margin-bottom: 12px;
+}
+
 .about-author-bio {
     font-size: 1.0625rem;
     line-height: 1.75;
     color: var(--color-gray);
-    margin-top: 16px;
+    margin-top: 14px;
 }
 
 .about-author-links {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
-    margin-top: 28px;
+    margin-top: 24px;
 }
 
 .about-author-links a {
     font-size: 0.875rem;
-    font-weight: 500;
-    color: #2DD4BF;
+    font-weight: 600;
+    color: var(--color-accent-dark);
     text-decoration: none;
     border-bottom: 1px solid transparent;
     transition: border-color 0.2s;
 }
 
 .about-author-links a:hover {
-    border-bottom-color: #2DD4BF;
-}
-
-@media (max-width: 767px) {
-    .about-author {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 32px 24px;
-        gap: 28px;
-    }
-
-    .about-author-links {
-        justify-content: center;
-    }
+    border-bottom-color: var(--color-accent-dark);
 }
 
 /* ===========================
-   CTA Section
+   Closing
 =========================== */
-.about-cta {
-    min-height: 60vh;
+.about-closing {
+    padding: 110px 24px;
+    background-color: var(--color-white);
+    text-align: center;
+}
+
+.about-closing-container {
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+.about-closing-headline {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-black);
+    margin-bottom: 20px;
+}
+
+.about-closing-text {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: var(--color-gray);
+    margin-bottom: 12px;
+}
+
+.about-closing-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 28px;
+    flex-wrap: wrap;
 }
 
 /* ===========================
    Responsive
 =========================== */
-@media (max-width: 767px) {
+@media (min-width: 1024px) {
+    .about-hero-grid {
+        grid-template-columns: 1.1fr 0.9fr;
+    }
+
     .about-hero-title {
-        font-size: 2rem;
+        font-size: 2.875rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .about-hero {
+        padding: calc(var(--header-height) + 32px) 20px 56px;
+    }
+
+    .about-hero-title {
+        font-size: 1.875rem;
     }
 
     .about-hero-subtitle {
         font-size: 1rem;
     }
 
-    .about-mission-grid {
-        flex-direction: column;
-        gap: 32px;
+    .avatar-monogram-lg {
+        width: 140px;
+        height: 140px;
+        font-size: 2.5rem;
     }
 
-    .about-mission-quote h2 {
-        font-size: 1.75rem;
+    .founder-letter,
+    .workflow,
+    .about-what,
+    .about-values,
+    .about-honesty,
+    .about-collab,
+    .about-team,
+    .about-closing {
+        padding: 60px 20px;
+    }
+
+    .founder-letter-container {
+        padding-left: 20px;
+    }
+
+    .founder-letter-container p {
+        font-size: 1.0625rem;
+    }
+
+    .workflow-card {
+        padding: 20px;
+    }
+
+    .about-author {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 32px 24px;
+        gap: 24px;
+    }
+
+    .about-author-links {
+        justify-content: center;
+    }
+
+    .about-closing-headline {
+        font-size: 1.625rem;
+    }
+
+    .about-closing-cta {
+        flex-direction: column;
+        gap: 14px;
     }
 }

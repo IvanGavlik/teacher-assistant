@@ -1,205 +1,307 @@
-// Typing Animation
-const typingTexts = [
-    'Generate 10 food vocabulary words for A1 German',
-    'Create a past tense exercise for B1 English',
-    'Build a reading passage about travel for A2 Spanish',
-    'Make flashcards for business vocabulary',
-    'Generate grammar explanation for conditionals'
-];
+// ================================
+// Analytics scaffold
+// ================================
+// Pushes events to window.dataLayer so a GTM/GA4/PostHog container can pick
+// them up later without touching this file again. No analytics vendor is
+// wired in yet — this only fires when analytics cookies have been accepted.
+window.dataLayer = window.dataLayer || [];
 
-let textIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let typingSpeed = 100;
-
-const typingElement = document.querySelector('.typing-text');
-
-function typeText() {
-    const currentText = typingTexts[textIndex];
-
-    if (isDeleting) {
-        typingElement.textContent = currentText.substring(0, charIndex - 1);
-        charIndex--;
-        typingSpeed = 50;
-    } else {
-        typingElement.textContent = currentText.substring(0, charIndex + 1);
-        charIndex++;
-        typingSpeed = 100;
+function analyticsAllowed() {
+    try {
+        const consent = JSON.parse(localStorage.getItem('cookieConsent') || 'null');
+        return !!(consent && consent.analytics);
+    } catch {
+        return false;
     }
-
-    if (!isDeleting && charIndex === currentText.length) {
-        typingSpeed = 2000;
-        isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        textIndex = (textIndex + 1) % typingTexts.length;
-        typingSpeed = 500;
-    }
-
-    setTimeout(typeText, typingSpeed);
 }
 
-// Carousel functionality
-const heroBackground = document.querySelector('.hero-background');
-const heroImages = document.querySelectorAll('.hero-image');
-const prevBtn = document.querySelector('.carousel-btn[aria-label="Previous"]');
-const pauseBtn = document.querySelector('.carousel-btn-pause');
-const nextBtn = document.querySelector('.carousel-btn[aria-label="Next"]');
+function trackEvent(name, params) {
+    if (!analyticsAllowed()) return;
+    window.dataLayer.push(Object.assign({ event: name }, params || {}));
+}
 
-let currentSlide = 0;
-let isPaused = false;
-let autoPlayInterval;
-const slideInterval = 4000; // 4 seconds between slides
+// UTM / acquisition capture (stored once per session, sent with the lead form)
+function captureAcquisition() {
+    const params = new URLSearchParams(window.location.search);
+    const keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+    const existing = sessionStorage.getItem('ta_acquisition');
+    if (existing) return JSON.parse(existing);
 
-// Define different layouts/positions for each slide
-const slideLayouts = [
-    // Slide 0 - Default layout
-    [
-        { left: '-50px', top: '150px', width: '280px', height: '400px', opacity: 1 },
-        { left: '10%', top: '180px', width: '300px', height: '420px', opacity: 1 },
-        { left: '30%', top: '120px', width: '380px', height: '500px', opacity: 1 },
-        { right: '20%', top: '140px', width: '300px', height: '450px', opacity: 1 },
-        { right: '5%', top: '160px', width: '250px', height: '500px', opacity: 1 },
-        { right: '-30px', bottom: '200px', width: '200px', height: '280px', opacity: 1 }
-    ],
-    // Slide 1 - Shifted left
-    [
-        { left: '-150px', top: '150px', width: '280px', height: '400px', opacity: 0.5 },
-        { left: '-50px', top: '180px', width: '300px', height: '420px', opacity: 1 },
-        { left: '15%', top: '120px', width: '380px', height: '500px', opacity: 1 },
-        { left: '45%', top: '140px', width: '300px', height: '450px', opacity: 1 },
-        { right: '10%', top: '160px', width: '250px', height: '500px', opacity: 1 },
-        { right: '-80px', bottom: '200px', width: '200px', height: '280px', opacity: 0.5 }
-    ],
-    // Slide 2 - Shifted more
-    [
-        { left: '-250px', top: '150px', width: '280px', height: '400px', opacity: 0 },
-        { left: '-150px', top: '180px', width: '300px', height: '420px', opacity: 0.5 },
-        { left: '5%', top: '120px', width: '380px', height: '500px', opacity: 1 },
-        { left: '35%', top: '140px', width: '300px', height: '450px', opacity: 1 },
-        { right: '20%', top: '160px', width: '250px', height: '500px', opacity: 1 },
-        { right: '0px', bottom: '200px', width: '200px', height: '280px', opacity: 1 }
-    ],
-    // Slide 3 - Center focus
-    [
-        { left: '-100px', top: '180px', width: '260px', height: '380px', opacity: 0.7 },
-        { left: '8%', top: '150px', width: '320px', height: '440px', opacity: 1 },
-        { left: '28%', top: '130px', width: '400px', height: '480px', opacity: 1 },
-        { right: '18%', top: '150px', width: '320px', height: '430px', opacity: 1 },
-        { right: '3%', top: '180px', width: '270px', height: '480px', opacity: 0.7 },
-        { right: '-50px', bottom: '180px', width: '220px', height: '300px', opacity: 0.5 }
-    ]
-];
-
-function applySlideLayout(index) {
-    const layout = slideLayouts[index];
-
-    heroImages.forEach((img, i) => {
-        if (layout[i]) {
-            const pos = layout[i];
-
-            // Reset positioning
-            img.style.left = pos.left || 'auto';
-            img.style.right = pos.right || 'auto';
-            img.style.top = pos.top || 'auto';
-            img.style.bottom = pos.bottom || 'auto';
-            img.style.width = pos.width;
-            img.style.height = pos.height;
-            img.style.opacity = pos.opacity;
-        }
+    const data = {};
+    keys.forEach((k) => {
+        if (params.get(k)) data[k] = params.get(k);
     });
+    sessionStorage.setItem('ta_acquisition', JSON.stringify(data));
+    return data;
 }
 
-function goToSlide(index) {
-    currentSlide = index;
-    if (currentSlide >= slideLayouts.length) currentSlide = 0;
-    if (currentSlide < 0) currentSlide = slideLayouts.length - 1;
+captureAcquisition();
+trackEvent('landing_page_visit', captureAcquisition());
 
-    applySlideLayout(currentSlide);
-}
-
-function nextSlide() {
-    goToSlide(currentSlide + 1);
-}
-
-function prevSlide() {
-    goToSlide(currentSlide - 1);
-}
-
-function startAutoPlay() {
-    if (!isPaused) {
-        autoPlayInterval = setInterval(nextSlide, slideInterval);
-    }
-}
-
-function stopAutoPlay() {
-    clearInterval(autoPlayInterval);
-}
-
-function togglePause() {
-    isPaused = !isPaused;
-
-    if (isPaused) {
-        stopAutoPlay();
-        pauseBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M6 4L16 10L6 16V4Z" fill="currentColor"/></svg>';
-    } else {
-        startAutoPlay();
-        pauseBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 20 20" fill="none"><rect x="6" y="5" width="3" height="10" rx="1" fill="currentColor"/><rect x="11" y="5" width="3" height="10" rx="1" fill="currentColor"/></svg>';
-    }
-}
-
-// Initialize carousel
-document.addEventListener('DOMContentLoaded', () => {
-    // Start typing animation
-    if (typingElement) {
-        setTimeout(typeText, 1000);
-    }
-
-    // Add transition to hero images for smooth animation
-    heroImages.forEach(img => {
-        img.style.transition = 'all 0.8s ease-in-out';
-    });
-
-    // Set initial layout
-    applySlideLayout(0);
-
-    // Start auto-play
-    startAutoPlay();
-
-    // Event listeners for carousel buttons
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            stopAutoPlay();
-            prevSlide();
-            if (!isPaused) startAutoPlay();
-        });
-    }
-
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            stopAutoPlay();
-            nextSlide();
-            if (!isPaused) startAutoPlay();
-        });
-    }
-
-    if (pauseBtn) {
-        pauseBtn.addEventListener('click', togglePause);
-    }
+// CTA click tracking (any element with data-track)
+document.addEventListener('click', (e) => {
+    const el = e.target.closest('[data-track]');
+    if (el) trackEvent('cta_click', { cta_id: el.dataset.track, cta_label: el.textContent.trim() });
 });
 
-// Mobile menu toggle
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const mainNav = document.querySelector('.main-nav');
+// Scroll depth tracking (25/50/75/100%)
+(function scrollDepthTracker() {
+    const thresholds = [25, 50, 75, 100];
+    const fired = new Set();
+    let ticking = false;
 
-if (mobileMenuBtn) {
+    function check() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? Math.round((scrollTop / docHeight) * 100) : 0;
+        thresholds.forEach((t) => {
+            if (pct >= t && !fired.has(t)) {
+                fired.add(t);
+                trackEvent('scroll_depth', { percent: t });
+            }
+        });
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(check);
+            ticking = true;
+        }
+    }, { passive: true });
+})();
+
+// ================================
+// A/B testing scaffold (headline + CTA copy)
+// ================================
+const TA_VARIANTS = {
+    headline: {
+        A: 'Create your next language lesson in seconds.',
+        B: 'Stop spending hours preparing language lessons.',
+        C: 'Your next lesson is only a prompt away.',
+        D: 'Turn your lesson idea into a PowerPoint in seconds.',
+    },
+    cta: {
+        A: 'Get Early Access',
+        B: 'Create Your First Lesson',
+        C: 'Try Teacher Assistant',
+    },
+};
+
+function pickVariant(group) {
+    const params = new URLSearchParams(window.location.search);
+    const forced = params.get('ta_' + group);
+    if (forced && TA_VARIANTS[group][forced]) return forced;
+
+    const storageKey = 'ta_variant_' + group;
+    const stored = localStorage.getItem(storageKey);
+    if (stored && TA_VARIANTS[group][stored]) return stored;
+
+    const keys = Object.keys(TA_VARIANTS[group]);
+    const assigned = keys[Math.floor(Math.random() * keys.length)];
+    localStorage.setItem(storageKey, assigned);
+    return assigned;
+}
+
+function applyVariants() {
+    const headlineVariant = pickVariant('headline');
+    const ctaVariant = pickVariant('cta');
+
+    // Headline variant only swaps the lead sentence; "Not hours. Seconds."
+    // sub-line stays fixed as the emotional payoff across all variants.
+    if (headlineVariant !== 'A') {
+        const headlineEl = document.getElementById('heroHeadline');
+        if (headlineEl) {
+            headlineEl.innerHTML = `${TA_VARIANTS.headline[headlineVariant]}<br><span class="hero-highlight">Not hours. Seconds.</span>`;
+        }
+    }
+
+    if (ctaVariant !== 'A') {
+        const label = TA_VARIANTS.cta[ctaVariant];
+        document.querySelectorAll('[data-ab-cta]').forEach((el) => {
+            el.textContent = label;
+        });
+    }
+
+    trackEvent('experiment_view', { headline_variant: headlineVariant, cta_variant: ctaVariant });
+}
+
+applyVariants();
+
+// ================================
+// Header scroll shadow
+// ================================
+(function headerScrollShadow() {
+    const header = document.querySelector('.header');
+    if (!header) return;
+    const update = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+})();
+
+// ================================
+// Mobile navigation
+// ================================
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const mobileNav = document.getElementById('mobileNav');
+
+if (mobileMenuBtn && mobileNav) {
     mobileMenuBtn.addEventListener('click', () => {
         mobileMenuBtn.classList.toggle('active');
-        mainNav.classList.toggle('active');
+        mobileNav.classList.toggle('active');
+    });
+
+    mobileNav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+            mobileMenuBtn.classList.remove('active');
+            mobileNav.classList.remove('active');
+        });
     });
 }
 
-// Vimeo playlist: video 1 then video 2, then loop (desktop only)
+// ================================
+// Hero product mockup animation
+// ================================
+(function heroMockup() {
+    const promptEl = document.getElementById('mockupPrompt');
+    const optionsEl = document.getElementById('mockupOptions');
+    const levelEl = document.getElementById('mockupLevel');
+    const topicEl = document.getElementById('mockupTopic');
+    const typeEl = document.getElementById('mockupType');
+    const generateBtn = document.getElementById('mockupGenerateBtn');
+    const spinnerEl = document.getElementById('mockupSpinner');
+    const slidesEl = document.getElementById('mockupSlides');
+    const inputPanel = document.getElementById('mockupInputPanel');
+
+    if (!promptEl || !generateBtn) return;
+
+    const examples = [
+        {
+            prompt: 'Create a B1 English lesson about travelling.',
+            level: 'B1', topic: 'Travelling', type: 'Vocabulary + Speaking',
+            slides: ['Travel Vocabulary', 'Match the Words', 'Discussion Questions', 'Speaking Activity', 'Review'],
+        },
+        {
+            prompt: 'Create a B2 German lesson about climate change.',
+            level: 'B2', topic: 'Climate Change', type: 'Reading + Discussion',
+            slides: ['Key Vocabulary', 'Reading Passage', 'Comprehension Check', 'Discussion Questions', 'Wrap-Up'],
+        },
+        {
+            prompt: 'Create an A2 Spanish lesson on daily routines.',
+            level: 'A2', topic: 'Daily Routines', type: 'Grammar + Practice',
+            slides: ['Present Tense Verbs', 'Example Sentences', 'Fill in the Blanks', 'Pair Practice', 'Review'],
+        },
+    ];
+
+    let exampleIndex = 0;
+    let timer = null;
+
+    function typeInto(el, text, speed, onDone) {
+        let i = 0;
+        el.textContent = '';
+        (function step() {
+            if (i <= text.length) {
+                el.textContent = text.slice(0, i);
+                i++;
+                timer = setTimeout(step, speed);
+            } else if (onDone) {
+                onDone();
+            }
+        })();
+    }
+
+    function resetSlides() {
+        slidesEl.innerHTML = '';
+        slidesEl.hidden = true;
+        inputPanel.hidden = false;
+        optionsEl.classList.remove('is-visible');
+        generateBtn.classList.remove('is-visible', 'is-loading');
+        spinnerEl.hidden = true;
+    }
+
+    function buildSlides(titles) {
+        slidesEl.innerHTML = titles.map((title, i) => `
+            <div class="mockup-slide">
+                <span class="mockup-slide-index">${i + 1}</span>
+                <span class="mockup-slide-title">${title}</span>
+            </div>
+        `).join('');
+    }
+
+    function runCycle() {
+        const example = examples[exampleIndex % examples.length];
+        exampleIndex++;
+
+        resetSlides();
+        levelEl.textContent = example.level;
+        topicEl.textContent = example.topic;
+        typeEl.textContent = example.type;
+
+        typeInto(promptEl, example.prompt, 42, () => {
+            timer = setTimeout(() => {
+                optionsEl.classList.add('is-visible');
+                generateBtn.classList.add('is-visible');
+
+                timer = setTimeout(() => {
+                    generateBtn.classList.add('is-loading');
+                    spinnerEl.hidden = false;
+
+                    timer = setTimeout(() => {
+                        inputPanel.hidden = true;
+                        slidesEl.hidden = false;
+                        buildSlides(example.slides);
+
+                        requestAnimationFrame(() => {
+                            slidesEl.querySelectorAll('.mockup-slide').forEach((slide, i) => {
+                                setTimeout(() => slide.classList.add('is-visible'), i * 120);
+                            });
+                        });
+
+                        timer = setTimeout(runCycle, 4200);
+                    }, 1100);
+                }, 900);
+            }, 500);
+        });
+    }
+
+    // Respect users who've asked for less motion: show a static first example.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const example = examples[0];
+        promptEl.textContent = example.prompt;
+        levelEl.textContent = example.level;
+        topicEl.textContent = example.topic;
+        typeEl.textContent = example.type;
+        optionsEl.classList.add('is-visible');
+        generateBtn.classList.add('is-visible');
+        return;
+    }
+
+    runCycle();
+})();
+
+// ================================
+// FAQ accordion
+// ================================
+document.querySelectorAll('.faq-item').forEach((item) => {
+    const question = item.querySelector('.faq-question');
+    if (!question) return;
+    question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item.active').forEach((i) => {
+            i.classList.remove('active');
+            i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isActive) {
+            item.classList.add('active');
+            question.setAttribute('aria-expanded', 'true');
+            trackEvent('faq_interaction', { question: question.textContent.trim() });
+        }
+    });
+});
+
+// ================================
+// Vimeo playlist (desktop only, product showcase section)
+// ================================
 const vimeoPlaylist = [1186039329, 1186040172];
 let vimeoIndex = 0;
 
@@ -208,33 +310,27 @@ if (vimeoIframe && window.innerWidth >= 768) {
     vimeoIframe.src = vimeoIframe.dataset.src;
 
     const vimeoPlayer = new Vimeo.Player(vimeoIframe);
+    let trackedPlay = false;
 
-    vimeoPlayer.ready().then(function() {
+    vimeoPlayer.ready().then(function () {
         vimeoPlayer.setPlaybackRate(4);
     });
 
-    vimeoPlayer.on('ended', function() {
+    vimeoPlayer.on('play', function () {
+        if (!trackedPlay) {
+            trackedPlay = true;
+            trackEvent('product_demo_play');
+        }
+    });
+
+    vimeoPlayer.on('ended', function () {
         vimeoIndex = (vimeoIndex + 1) % vimeoPlaylist.length;
-        vimeoPlayer.loadVideo(vimeoPlaylist[vimeoIndex]).then(function() {
+        vimeoPlayer.loadVideo(vimeoPlaylist[vimeoIndex]).then(function () {
             vimeoPlayer.setPlaybackRate(4);
             vimeoPlayer.play();
         });
     });
 }
-
-// Ship Features Accordion
-const shipFeatures = document.querySelectorAll('.ship-feature');
-
-shipFeatures.forEach(feature => {
-    const header = feature.querySelector('.ship-feature-header');
-    if (header) {
-        header.addEventListener('click', () => {
-            const isActive = feature.classList.contains('active');
-            shipFeatures.forEach(f => f.classList.remove('active'));
-            if (!isActive) feature.classList.add('active');
-        });
-    }
-});
 
 // ================================
 // Cookie Consent
@@ -251,7 +347,6 @@ const footerCookieSettings = document.getElementById('footerCookieSettings');
 const analyticsCookies = document.getElementById('analyticsCookies');
 const marketingCookies = document.getElementById('marketingCookies');
 
-// Check if user has already made a choice
 function checkCookieConsent() {
     const consent = localStorage.getItem('cookieConsent');
     if (!consent) {
@@ -259,48 +354,34 @@ function checkCookieConsent() {
     }
 }
 
-// Save cookie preferences
 function saveCookiePreferences(analytics, marketing) {
     const preferences = {
         essential: true,
         analytics: analytics,
         marketing: marketing,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
     };
     localStorage.setItem('cookieConsent', JSON.stringify(preferences));
     cookieBanner.classList.remove('show');
     cookieModal.classList.remove('show');
 }
 
-// Accept all cookies
 if (cookieAccept) {
-    cookieAccept.addEventListener('click', () => {
-        saveCookiePreferences(true, true);
-    });
+    cookieAccept.addEventListener('click', () => saveCookiePreferences(true, true));
 }
 
-// Reject all cookies
 if (cookieReject) {
-    cookieReject.addEventListener('click', () => {
-        saveCookiePreferences(false, false);
-    });
+    cookieReject.addEventListener('click', () => saveCookiePreferences(false, false));
 }
 
-// Open settings modal
 if (cookieSettings) {
-    cookieSettings.addEventListener('click', () => {
-        cookieModal.classList.add('show');
-    });
+    cookieSettings.addEventListener('click', () => cookieModal.classList.add('show'));
 }
 
-// Close settings modal
 if (cookieModalClose) {
-    cookieModalClose.addEventListener('click', () => {
-        cookieModal.classList.remove('show');
-    });
+    cookieModalClose.addEventListener('click', () => cookieModal.classList.remove('show'));
 }
 
-// Save preferences from modal
 if (cookieModalSave) {
     cookieModalSave.addEventListener('click', () => {
         saveCookiePreferences(
@@ -310,18 +391,13 @@ if (cookieModalSave) {
     });
 }
 
-// Reject all from modal
 if (cookieModalReject) {
-    cookieModalReject.addEventListener('click', () => {
-        saveCookiePreferences(false, false);
-    });
+    cookieModalReject.addEventListener('click', () => saveCookiePreferences(false, false));
 }
 
-// Footer cookie settings link
 if (footerCookieSettings) {
     footerCookieSettings.addEventListener('click', (e) => {
         e.preventDefault();
-        // Load saved preferences into modal
         const consent = localStorage.getItem('cookieConsent');
         if (consent) {
             const prefs = JSON.parse(consent);
@@ -332,20 +408,16 @@ if (footerCookieSettings) {
     });
 }
 
-// Close modal when clicking outside
 if (cookieModal) {
     cookieModal.addEventListener('click', (e) => {
-        if (e.target === cookieModal) {
-            cookieModal.classList.remove('show');
-        }
+        if (e.target === cookieModal) cookieModal.classList.remove('show');
     });
 }
 
-// Initialize cookie consent check
 checkCookieConsent();
 
 // ================================
-// Trial Signup Modal
+// Trial Signup Modal + qualification survey
 // ================================
 const trialModal = document.getElementById('trialModal');
 const trialModalClose = document.getElementById('trialModalClose');
@@ -355,6 +427,9 @@ const trialSuccess = document.getElementById('trialSuccess');
 const trialSuccessEmail = document.getElementById('trialSuccessEmail');
 const trialReset = document.getElementById('trialReset');
 const trialFormWrap = document.getElementById('trialFormWrap');
+const trialSurvey = document.getElementById('trialSurvey');
+const trialSurveySkip = document.getElementById('trialSurveySkip');
+const trialSurveyThanks = document.getElementById('trialSurveyThanks');
 
 const trialFields = {
     name: {
@@ -366,6 +441,12 @@ const trialFields = {
         error: document.getElementById('trial-err-email'),
     },
 };
+
+// Holds the lead's identity so the (optional) qualification survey can be
+// sent as a follow-up message to the same web-compose contact endpoint.
+let leadContext = { name: '', email: '' };
+const surveyAnswers = {};
+const surveySteps = ['level', 'prep-time', 'wants'];
 
 function validateTrialField(key) {
     const { input, error } = trialFields[key];
@@ -387,19 +468,36 @@ function validateTrialField(key) {
     return valid;
 }
 
+let formStarted = false;
 if (trialFields.name.input) {
     Object.keys(trialFields).forEach((key) => {
         trialFields[key].input.addEventListener('blur', () => validateTrialField(key));
         trialFields[key].input.addEventListener('input', () => {
+            if (!formStarted) {
+                formStarted = true;
+                trackEvent('form_started');
+            }
             if (trialFields[key].input.classList.contains('is-invalid')) validateTrialField(key);
         });
     });
+}
+
+function resetSurvey() {
+    Object.keys(surveyAnswers).forEach((k) => delete surveyAnswers[k]);
+    if (trialSurvey) trialSurvey.hidden = false;
+    if (trialSurveyThanks) trialSurveyThanks.hidden = true;
+    if (trialSurveySkip) trialSurveySkip.hidden = false;
+    document.querySelectorAll('.trial-survey-step').forEach((step, i) => {
+        step.hidden = i !== 0;
+    });
+    document.querySelectorAll('.trial-chip.is-selected').forEach((chip) => chip.classList.remove('is-selected'));
 }
 
 function resetTrialModal() {
     if (trialFormWrap) trialFormWrap.hidden = false;
     if (trialSuccess) trialSuccess.hidden = true;
     if (trialFormError) trialFormError.hidden = true;
+    resetSurvey();
 }
 
 function openTrialModal() {
@@ -407,6 +505,7 @@ function openTrialModal() {
         resetTrialModal();
         trialModal.classList.add('show');
         document.body.style.overflow = 'hidden';
+        trackEvent('trial_modal_open');
     }
 }
 
@@ -429,11 +528,30 @@ function showTrialSuccess(email) {
     if (trialFormWrap) trialFormWrap.hidden = true;
     if (trialSuccessEmail) trialSuccessEmail.textContent = email;
     if (trialSuccess) trialSuccess.hidden = false;
+    trackEvent('email_submitted');
 }
 
-document.querySelectorAll('.btn-primary').forEach(button => {
+async function sendContact(payload) {
+    return fetch('https://web-compose.onrender.com/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+    });
+}
+
+document.querySelectorAll('[data-open-trial]').forEach((button) => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        openTrialModal();
+    });
+});
+
+// Fallback for early-access-style CTAs that predate the data-open-trial hook.
+document.querySelectorAll('.btn-primary').forEach((button) => {
+    if (button.hasAttribute('data-open-trial') || button.closest('#trialModal')) return;
     const label = button.textContent.trim().toLowerCase();
-    if (label.includes('get early access') && !button.closest('#trialModal')) {
+    const opensTrial = label.includes('early access') || label.includes('first lesson') || label.includes('try teacher assistant');
+    if (opensTrial) {
         button.addEventListener('click', (e) => {
             e.preventDefault();
             openTrialModal();
@@ -441,9 +559,7 @@ document.querySelectorAll('.btn-primary').forEach(button => {
     }
 });
 
-if (trialModalClose) {
-    trialModalClose.addEventListener('click', closeTrialModal);
-}
+if (trialModalClose) trialModalClose.addEventListener('click', closeTrialModal);
 
 if (trialModal) {
     trialModal.addEventListener('click', (e) => {
@@ -451,9 +567,7 @@ if (trialModal) {
     });
 }
 
-if (trialReset) {
-    trialReset.addEventListener('click', resetTrialModal);
-}
+if (trialReset) trialReset.addEventListener('click', resetTrialModal);
 
 if (trialForm) {
     trialForm.addEventListener('submit', async (e) => {
@@ -470,18 +584,25 @@ if (trialForm) {
 
         const name = trialFields.name.input.value.trim();
         const email = trialFields.email.input.value.trim();
+        const languageEl = document.getElementById('trialLanguage');
+        const language = languageEl ? languageEl.value : '';
+        const acquisition = captureAcquisition();
+
+        leadContext = { name, email };
+
+        let message = 'Free trial signup request.';
+        if (language) message += `\nLanguage taught: ${language}`;
+        if (Object.keys(acquisition).length) {
+            message += `\nAcquisition: ${JSON.stringify(acquisition)}`;
+        }
 
         try {
-            const res = await fetch('https://web-compose.onrender.com/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    'app-id': 'teacher-assistant',
-                    'service-id': 'trial-signup',
-                    name,
-                    email,
-                    message: 'Free trial signup request.',
-                }),
+            const res = await sendContact({
+                'app-id': 'teacher-assistant',
+                'service-id': 'trial-signup',
+                name,
+                email,
+                message,
             });
 
             if (res.ok) {
@@ -509,14 +630,62 @@ if (trialForm) {
     });
 }
 
+// Qualification survey: chip-based, single click per question, optional.
+document.querySelectorAll('.trial-survey-chips').forEach((group) => {
+    group.addEventListener('click', (e) => {
+        const chip = e.target.closest('.trial-chip');
+        if (!chip) return;
+
+        const field = group.dataset.surveyField;
+        surveyAnswers[field] = chip.textContent.trim();
+        group.querySelectorAll('.trial-chip').forEach((c) => c.classList.remove('is-selected'));
+        chip.classList.add('is-selected');
+
+        const currentIndex = surveySteps.indexOf(field);
+        const nextField = surveySteps[currentIndex + 1];
+
+        setTimeout(() => {
+            const currentStep = document.querySelector(`[data-survey-step="${field}"]`);
+            if (currentStep) currentStep.hidden = true;
+
+            if (nextField) {
+                const nextStep = document.querySelector(`[data-survey-step="${nextField}"]`);
+                if (nextStep) nextStep.hidden = false;
+            } else {
+                finishSurvey();
+            }
+        }, 250);
+    });
+});
+
+function finishSurvey() {
+    if (trialSurveySkip) trialSurveySkip.hidden = true;
+    if (trialSurveyThanks) trialSurveyThanks.hidden = false;
+
+    if (Object.keys(surveyAnswers).length && leadContext.email) {
+        const lines = Object.entries(surveyAnswers).map(([k, v]) => `${k}: ${v}`);
+        sendContact({
+            'app-id': 'teacher-assistant',
+            'service-id': 'trial-signup',
+            name: leadContext.name || 'Teacher Assistant lead',
+            email: leadContext.email,
+            message: `Early access qualification survey.\n${lines.join('\n')}`,
+        }).catch(() => {});
+        trackEvent('qualification_survey_completed', surveyAnswers);
+    }
+}
+
+if (trialSurveySkip) {
+    trialSurveySkip.addEventListener('click', () => {
+        trackEvent('qualification_survey_skipped');
+        if (trialSurvey) trialSurvey.hidden = true;
+    });
+}
+
 // Close modal with Escape key
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        if (trialModal && trialModal.classList.contains('show')) {
-            closeTrialModal();
-        }
-        if (cookieModal && cookieModal.classList.contains('show')) {
-            cookieModal.classList.remove('show');
-        }
+        if (trialModal && trialModal.classList.contains('show')) closeTrialModal();
+        if (cookieModal && cookieModal.classList.contains('show')) cookieModal.classList.remove('show');
     }
 });

@@ -3,250 +3,293 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us — Teacher Assistant</title>
+    <title>About — Teacher Assistant</title>
+    <meta name="description" content="Meet the founder building Teacher Assistant, an AI-powered PowerPoint add-in that helps language teachers prepare lessons faster.">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/about.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="header-container">
-            <!-- Logo -->
             <a href="index.html" class="logo">
-                <img src="assets/logo-web.svg" alt="TA" class="logo-icon">
+                <img src="assets/logo-web.svg" alt="Teacher Assistant" class="logo-icon">
                 <span class="logo-text">Teacher Assistant</span>
             </a>
 
-            <!-- Right Actions -->
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html#showcase" class="nav-link">Product</a></li>
+                    <li class="nav-item"><a href="index.html#how-it-works" class="nav-link">How It Works</a></li>
+                    <li class="nav-item"><a href="index.html#features" class="nav-link">Features</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="index.html#faq" class="nav-link">FAQ</a></li>
+                </ul>
+            </nav>
+
             <div class="header-actions">
-                <a href="#" class="btn btn-primary">Get early access</a>
+                <a href="#" class="btn btn-primary" data-open-trial data-track="cta_nav">Get Early Access</a>
             </div>
 
-            <!-- Mobile Menu Button -->
             <button class="mobile-menu-btn" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
         </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="index.html#showcase" class="mobile-nav-link">Product</a>
+            <a href="index.html#how-it-works" class="mobile-nav-link">How It Works</a>
+            <a href="index.html#features" class="mobile-nav-link">Features</a>
+            <a href="about.html" class="mobile-nav-link">About</a>
+            <a href="index.html#faq" class="mobile-nav-link">FAQ</a>
+            <a href="#" class="btn btn-primary mobile-nav-cta" data-open-trial data-track="cta_nav_mobile">Get Early Access</a>
+        </nav>
     </header>
 
-    <!-- About Hero -->
+    <!-- Hero -->
     <section class="about-hero">
-        <div class="about-hero-container">
-            <p class="about-eyebrow">Our story</p>
-            <h1 class="about-hero-title">Built by teachers, for teachers</h1>
-            <p class="about-hero-subtitle">We started Teacher Assistant because we spent too many Sunday evenings preparing vocabulary sheets instead of enjoying life. We knew there had to be a better way.</p>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="stats-container">
-            <div class="stat-item">
-                <span class="stat-number">2023</span>
-                <span class="stat-label">Founded</span>
+        <div class="about-hero-grid">
+            <div class="about-hero-copy">
+                <p class="section-eyebrow about-eyebrow-left">About Teacher Assistant</p>
+                <h1 class="about-hero-title">I built Teacher Assistant because teachers shouldn't spend their evenings making slides.</h1>
+                <p class="about-hero-subtitle">Teacher Assistant started with a simple observation: too much of a teacher's time goes into preparing materials instead of teaching.</p>
+                <a href="#story" class="btn btn-text">Read the story ↓</a>
             </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-                <span class="stat-number">5,000+</span>
-                <span class="stat-label">Active teachers</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-                <span class="stat-number">6+</span>
-                <span class="stat-label">Languages supported</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-                <span class="stat-number">30 sec</span>
-                <span class="stat-label">Average generation time</span>
+            <div class="about-hero-visual">
+                <div class="avatar-monogram avatar-monogram-lg">IG</div>
+                <p class="about-avatar-caption">Ivan Gavlik · Founder, Teacher Assistant</p>
             </div>
         </div>
     </section>
 
-    <!-- Mission Section -->
-    <section class="systems-section about-mission">
-        <div class="systems-container">
-            <div class="about-mission-grid">
-                <div class="about-mission-quote">
-                    <h2>Language learning changes lives. Teachers deserve tools that match that importance.</h2>
-                </div>
-                <div class="about-mission-text">
-                    <p>We saw the problem firsthand. Language teachers were spending four to six hours every week creating materials from scratch — writing vocabulary lists, crafting grammar exercises, finding appropriate reading texts. Time that could have been spent with students, with family, or simply resting.</p>
-                    <p>So we built Teacher Assistant. A tool that generates complete, CEFR-aligned lesson materials in seconds. Vocabulary builders, grammar explanations, reading passages, and exercises — all tailored to the exact level and language you're teaching.</p>
-                    <p>We're a small team with a focused mission: give language teachers back their time without ever compromising on the quality their students deserve.</p>
-                </div>
-            </div>
+    <!-- Why I Started This -->
+    <section class="founder-letter" id="story">
+        <div class="founder-letter-container">
+            <p>I kept seeing the same problem.</p>
+            <p>Teachers were spending evenings creating vocabulary lists, exercises, presentations and other materials — work that was important, but repetitive.</p>
+            <p>At the same time, AI was becoming capable of generating exactly this kind of content.</p>
+            <p>The problem wasn't whether AI could help. The problem was putting it into a workflow teachers would actually want to use.</p>
+            <p class="founder-letter-emphasis">That's why I started building Teacher Assistant.</p>
         </div>
     </section>
 
-    <!-- Values Section -->
-    <section class="about-values">
-        <div class="systems-container">
-            <div class="about-section-header">
-                <p class="about-eyebrow">What drives us</p>
-                <h2 class="systems-title">Our values</h2>
-            </div>
-            <div class="systems-cards">
-                <!-- Card 1 -->
-                <div class="system-card">
-                    <div class="system-card-icon">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <path d="M16 4L20 12L28 13L22 19L23.5 27L16 23L8.5 27L10 19L4 13L12 12L16 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="system-card-title">Teachers first</h3>
-                    <p class="system-card-desc">Every feature starts with a real classroom need. We talk to teachers constantly and only build what genuinely saves time or improves outcomes.</p>
-                </div>
+    <!-- The Idea: workflow comparison -->
+    <section class="workflow">
+        <div class="workflow-container">
+            <span class="section-eyebrow">The idea</span>
+            <h2 class="section-headline">A workflow teachers would actually want to use.</h2>
 
-                <!-- Card 2 -->
-                <div class="system-card">
-                    <div class="system-card-icon">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <rect x="4" y="4" width="24" height="24" rx="4" stroke="currentColor" stroke-width="2"/>
-                            <path d="M10 16L14 20L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+            <div class="workflow-grid">
+                <div class="workflow-card workflow-old">
+                    <h3 class="workflow-label">Old workflow</h3>
+                    <div class="workflow-chain">
+                        <span class="step-chip">Idea</span>
+                        <span class="workflow-arrow">→</span>
+                        <span class="step-chip">Google</span>
+                        <span class="workflow-arrow">→</span>
+                        <span class="step-chip">Word</span>
+                        <span class="workflow-arrow">→</span>
+                        <span class="step-chip">PowerPoint</span>
+                        <span class="workflow-arrow">→</span>
+                        <span class="step-chip">Copy/Paste</span>
+                        <span class="workflow-arrow">→</span>
+                        <span class="step-chip">Formatting</span>
+                        <span class="workflow-arrow">→</span>
+                        <span class="step-chip">More searching</span>
+                        <span class="workflow-arrow">→</span>
+                        <span class="step-chip">Finally teach</span>
                     </div>
-                    <h3 class="system-card-title">Quality over quantity</h3>
-                    <p class="system-card-desc">We'd rather generate one perfect exercise than ten mediocre ones. Accuracy, CEFR alignment, and pedagogical soundness are non-negotiable.</p>
                 </div>
-
-                <!-- Card 3 -->
-                <div class="system-card">
-                    <div class="system-card-icon">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <path d="M16 4L20 14H28L22 20L24 28L16 24L8 28L10 20L4 14H12L16 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                <div class="workflow-card workflow-new">
+                    <h3 class="workflow-label">Teacher Assistant workflow</h3>
+                    <div class="workflow-chain">
+                        <span class="step-chip step-chip-accent">Idea</span>
+                        <span class="workflow-arrow">→</span>
+                        <span class="step-chip step-chip-accent">Teacher Assistant</span>
+                        <span class="workflow-arrow">→</span>
+                        <span class="step-chip step-chip-accent">Review</span>
+                        <span class="workflow-arrow">→</span>
+                        <span class="step-chip step-chip-accent">Edit</span>
+                        <span class="workflow-arrow">→</span>
+                        <span class="step-chip step-chip-accent">Teach</span>
                     </div>
-                    <h3 class="system-card-title">Keep it simple</h3>
-                    <p class="system-card-desc">Teachers are busy. The tool should feel obvious the first time you use it. No onboarding videos, no 30-page manuals — just describe what you need and get it.</p>
                 </div>
             </div>
+
+            <p class="problem-transition">AI should remove the repetitive work — not remove the teacher.</p>
         </div>
     </section>
 
-    <!-- Testimonial -->
-    <section class="testimonial-section">
-        <div class="testimonial-container">
-            <div class="testimonial-content">
-                <div class="testimonial-quote-icon">
-                    <svg width="100" height="80" viewBox="0 0 100 80" fill="none">
-                        <path d="M0 30C0 13.431 13.431 0 30 0C46.569 0 50 13.431 50 30C50 40 45 50 30 65C25 70 20 75 15 80H0V65C10 55 15 45 15 35C15 32 13 30 10 30H0V30Z" fill="#2DD4BF"/>
-                        <path d="M50 30C50 13.431 63.431 0 80 0C96.569 0 100 13.431 100 30C100 40 95 50 80 65C75 70 70 75 65 80H50V65C60 55 65 45 65 35C65 32 63 30 60 30H50V30Z" fill="#2DD4BF"/>
-                    </svg>
+    <!-- What We're Building -->
+    <section class="about-what">
+        <div class="features-container">
+            <span class="section-eyebrow">What we're building</span>
+            <h2 class="section-headline">A better way to prepare language lessons.</h2>
+            <p class="about-lead-paragraph">Teacher Assistant is an AI-powered lesson preparation tool built specifically for language teachers.</p>
+
+            <div class="features-grid features-grid-narrow">
+                <div class="feature-card">
+                    <div class="feature-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 3l2.5 6.5L22 12l-6.5 2.5L13 21l-2.5-6.5L4 12l6.5-2.5L13 3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+                    <h3 class="feature-title">Generate lesson materials</h3>
+                    <p class="feature-desc">Turn a simple lesson idea into structured teaching materials.</p>
                 </div>
-                <blockquote class="testimonial-text">
-                    Teacher Assistant has completely transformed how I prepare my lessons. What used to take me hours now takes minutes, and my students love the variety of materials.
-                </blockquote>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M4 8l9-4 9 4-9 4-9-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 11v5c0 1.5 2.2 3 5 3s5-1.5 5-3v-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+                    <h3 class="feature-title">Adapt to CEFR levels</h3>
+                    <p class="feature-desc">Create content appropriate for A1 · A2 · B1 · B2 · C1 · C2.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M3 5c0 0 3-2 8-2s8 2 8 2v15c0 0-3-1.5-8-1.5S3 20 3 20V5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M11 3v15" stroke="currentColor" stroke-width="2"/></svg></div>
+                    <h3 class="feature-title">Vocabulary, grammar &amp; more</h3>
+                    <p class="feature-desc">Vocabulary, grammar, reading and exercises — built to fit the lesson.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="3" y="5" width="20" height="13" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 9h20" stroke="currentColor" stroke-width="2"/><rect x="7" y="21" width="12" height="2" rx="1" stroke="currentColor" stroke-width="2"/></svg></div>
+                    <h3 class="feature-title">Works inside PowerPoint</h3>
+                    <p class="feature-desc">Generates directly inside the presentation workflow you already use.</p>
+                </div>
             </div>
-            <div class="testimonial-author">
-                <div class="testimonial-school">
-                    <span class="school-name">International Language Academy</span>
-                </div>
-                <div class="testimonial-person">
-                    <div class="testimonial-avatar">
-                        <img src="https://i.pravatar.cc/80?img=32" alt="Sarah Mitchell">
-                    </div>
-                    <div class="testimonial-info">
-                        <span class="testimonial-name">Sarah Mitchell</span>
-                        <span class="testimonial-title">ESL Teacher</span>
-                    </div>
-                </div>
-            </div>
+
+            <p class="about-showcase-link"><a href="index.html#showcase" class="btn btn-text">See it in action ↓</a></p>
         </div>
     </section>
 
-    <!-- Author Section -->
+    <!-- Meet the Founder -->
     <section class="systems-section about-team">
         <div class="systems-container">
             <div class="about-section-header">
-                <p class="about-eyebrow">The person behind it</p>
-                <h2 class="systems-title">Meet the author</h2>
+                <span class="section-eyebrow">The person behind it</span>
+                <h2 class="systems-title">Meet the founder</h2>
             </div>
             <div class="about-author">
-                <div class="about-author-photo">
-                    <img src="img/me.png" alt="Ivan Gavlik">
-                </div>
+                <div class="avatar-monogram avatar-monogram-md">IG</div>
                 <div class="about-author-body">
                     <h3 class="about-author-name">Ivan Gavlik</h3>
-                    <p class="about-team-role">Senior Software Developer · Rijeka, Croatia</p>
-                    <p class="about-author-bio">I built Teacher Assistant from scratch. I'm a product-focused developer with 10+ years of experience across fintech, e-commerce, and enterprise systems, and I've always believed that good tools should be fast, obvious, and actually solve the problem.</p>
-                    <p class="about-author-bio">Teachers were spending their evenings building vocabulary sheets by hand. Hours of work, every week, before the actual teaching even started. The technology to fix that already existed — it just hadn't been put in the right place. So I built Teacher Assistant to do exactly that: give teachers back their time.</p>
+                    <p class="about-team-role">Founder &amp; Developer · Rijeka, Croatia</p>
+                    <p class="about-author-bio">I'm a software developer who likes building products that remove unnecessary complexity. I've spent more than a decade building software across fintech, e-commerce, and enterprise systems.</p>
+                    <p class="about-author-bio">Teacher Assistant started from a simpler idea: if technology can save a teacher several hours every week, that time is worth giving back.</p>
                     <div class="about-author-links">
                         <a href="https://wortkraftmaster.org" target="_blank" rel="noopener">wortkraftmaster.org</a>
-                        <a href="#" target="_blank" rel="noopener">GitHub</a>
-                        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
-                        <a href="#" target="_blank" rel="noopener">dev.to</a>
+                        <a href="https://github.com/IvanGavlik/" target="_blank" rel="noopener">GitHub</a>
+                        <a href="https://dev.to/ivangavlik" target="_blank" rel="noopener">dev.to</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="languages-section">
-        <div class="languages-background">
-            <div class="lang-box lang-box-1">
-                <p>Join thousands of language teachers worldwide</p>
+    <!-- Why a developer -->
+    <section class="about-honesty">
+        <div class="about-honesty-container">
+            <span class="section-eyebrow">An honest question</span>
+            <h2 class="section-headline">I'm a developer, not a teacher. That's why teachers are part of the process.</h2>
+            <p class="about-lead-paragraph">Teacher Assistant isn't built from assumptions about what teachers need. The product is shaped through conversations, feedback and real usage from language teachers. The goal isn't to tell teachers how they should teach — it's to listen to what takes their time and build tools that make that work easier.</p>
+        </div>
+    </section>
+
+    <!-- Our Principles -->
+    <section class="systems-section about-values">
+        <div class="systems-container">
+            <div class="about-section-header">
+                <span class="section-eyebrow">What we believe</span>
+                <h2 class="systems-title">Our principles</h2>
             </div>
-            <div class="lang-box lang-box-2">
-                <p>Schließen Sie sich Tausenden von Sprachlehrern weltweit an</p>
-            </div>
-            <div class="lang-box lang-box-3">
-                <p>Únete a miles de profesores de idiomas en todo el mundo</p>
-            </div>
-            <div class="lang-box lang-box-4">
-                <p>Rejoignez des milliers de professeurs de langues dans le monde</p>
-            </div>
-            <div class="lang-box lang-box-5">
-                <p>Unisciti a migliaia di insegnanti di lingue in tutto il mondo</p>
-            </div>
-            <div class="lang-box lang-box-6">
-                <p>Junte-se a milhares de professores de idiomas em todo o mundo</p>
-            </div>
-            <div class="lang-box lang-box-7">
-                <p>世界中の何千人もの語学教師に加わりましょう</p>
-            </div>
-            <div class="lang-box lang-box-8">
-                <p>Dünya genelinde binlerce dil öğretmenine katılın</p>
+            <div class="systems-cards systems-cards-4">
+                <div class="system-card">
+                    <div class="system-card-icon">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect x="4" y="7" width="22" height="4" rx="2" stroke="currentColor" stroke-width="2"/><circle cx="11" cy="9" r="3" fill="currentColor"/><rect x="4" y="19" width="22" height="4" rx="2" stroke="currentColor" stroke-width="2"/><circle cx="19" cy="21" r="3" fill="currentColor"/></svg>
+                    </div>
+                    <h3 class="system-card-title">Teachers stay in control</h3>
+                    <p class="system-card-desc">Teacher Assistant generates. The teacher decides.</p>
+                </div>
+                <div class="system-card">
+                    <div class="system-card-icon">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="11" stroke="currentColor" stroke-width="2"/><circle cx="15" cy="15" r="5" stroke="currentColor" stroke-width="2"/><circle cx="15" cy="15" r="1.5" fill="currentColor"/></svg>
+                    </div>
+                    <h3 class="system-card-title">Useful beats impressive</h3>
+                    <p class="system-card-desc">We don't care how clever an AI feature sounds if it doesn't solve a real classroom problem.</p>
+                </div>
+                <div class="system-card">
+                    <div class="system-card-icon">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="4" fill="currentColor"/></svg>
+                    </div>
+                    <h3 class="system-card-title">Simple by default</h3>
+                    <p class="system-card-desc">A teacher shouldn't need a tutorial to create a lesson.</p>
+                </div>
+                <div class="system-card">
+                    <div class="system-card-icon">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><path d="M15 4l3.2 8.2L27 13l-6.8 5.5L22 27l-7-4.5L8 27l1.8-8.5L3 13l8.8-0.8L15 4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3 class="system-card-title">Quality matters</h3>
+                    <p class="system-card-desc">Teaching materials need to be appropriate, understandable and useful — not just generated quickly.</p>
+                </div>
             </div>
         </div>
-        <div class="languages-center">
-            <a href="#" class="btn btn-primary languages-cta">Get early access</a>
+    </section>
+
+    <!-- Building with teachers -->
+    <section class="about-collab">
+        <div class="about-collab-container">
+            <span class="section-eyebrow">Work in progress, on purpose</span>
+            <h2 class="section-headline">We're building Teacher Assistant with teachers, not just for them.</h2>
+            <p class="about-lead-paragraph">The best product ideas don't come from a boardroom — they come from the people using the product. I'm continuously collecting feedback from language teachers about what takes the most time, what they actually need, and what AI gets wrong.</p>
+            <a href="#" class="btn btn-primary btn-large" data-open-trial data-track="cta_about_collab">Become an early tester</a>
+        </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="about-closing">
+        <div class="about-closing-container">
+            <h2 class="about-closing-headline">If you're a language teacher, I'd love to hear from you.</h2>
+            <p class="about-closing-text">Tell me what takes too much time in your lesson preparation. Tell me what you wish your teaching tools could do. Tell me what AI gets wrong.</p>
+            <p class="about-closing-text">Teacher Assistant is still being built, and teacher feedback is one of the most important parts of that process.</p>
+            <div class="about-closing-cta">
+                <a href="#" class="btn btn-primary btn-large" data-open-trial data-track="cta_about_closing">Try Teacher Assistant</a>
+                <a href="contact.html" class="btn btn-text">Contact me</a>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
-            <!-- Logo -->
             <div class="footer-brand">
                 <a href="index.html" class="footer-logo">
                     <img src="assets/logo-web.svg" alt="TA" class="logo-icon">
                     Teacher Assistant
                 </a>
+                <p class="footer-tagline">AI-powered lesson preparation for language teachers.</p>
             </div>
 
-            <!-- Footer Links -->
             <div class="footer-links">
-                <!-- Company Column -->
+                <div class="footer-column">
+                    <h4 class="footer-heading">Product</h4>
+                    <ul class="footer-list">
+                        <li><a href="index.html#showcase">Product</a></li>
+                        <li><a href="index.html#how-it-works">How It Works</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
                 <div class="footer-column">
                     <h4 class="footer-heading">Company</h4>
                     <ul class="footer-list">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="about.html">About</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="support.html">Support</a></li>
                     </ul>
+                </div>
+                <div class="footer-column">
                     <h4 class="footer-heading">Legal</h4>
                     <ul class="footer-list">
                         <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="legal-notice.html">Legal Notice</a></li>
+                        <li><a href="legal-notice.html">Terms of Service</a></li>
                         <li><a href="#" id="footerCookieSettings">Cookie Settings</a></li>
                     </ul>
                 </div>
@@ -320,7 +363,7 @@
         <div class="trial-modal-content">
             <button class="trial-modal-close" id="trialModalClose">&times;</button>
 
-            <p class="trial-eyebrow">Free trial &middot; No credit card required</p>
+            <p class="trial-eyebrow">Free during early access &middot; No credit card required</p>
             <h2 class="trial-title">Get early access</h2>
 
             <div id="trialFormWrap">
@@ -337,6 +380,18 @@
                             <span class="trial-field-error" id="trial-err-email"></span>
                         </div>
                     </div>
+                    <div class="trial-field">
+                        <label for="trialLanguage">What language do you teach? <span class="trial-optional">(optional)</span></label>
+                        <select id="trialLanguage">
+                            <option value="">Select a language</option>
+                            <option value="English">English</option>
+                            <option value="German">German</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="French">French</option>
+                            <option value="Italian">Italian</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
                     <ul class="trial-trust">
                         <li>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -350,14 +405,14 @@
                                 <circle cx="8" cy="8" r="7" fill="#2DD4BF" fill-opacity="0.15"/>
                                 <path d="M4.5 8.5L6.5 10.5L11.5 5.5" stroke="#2DD4BF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                            A1–C2, 6+ languages supported
+                            A1–C2, multiple languages supported
                         </li>
                         <li>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                 <circle cx="8" cy="8" r="7" fill="#2DD4BF" fill-opacity="0.15"/>
                                 <path d="M4.5 8.5L6.5 10.5L11.5 5.5" stroke="#2DD4BF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                            Trusted by language teachers
+                            Built for language teachers
                         </li>
                     </ul>
                     <p class="trial-form-error" id="trialFormError" hidden></p>
@@ -377,11 +432,56 @@
                 </div>
                 <h3 class="trial-success-title">You're in! Check your inbox.</h3>
                 <p class="trial-success-text">We've sent the install link to <strong id="trialSuccessEmail"></strong>. It takes about 2 minutes to set up.</p>
+
+                <div class="trial-survey" id="trialSurvey">
+                    <p class="trial-survey-intro">Quick question (20 seconds, optional) — helps us build the right thing:</p>
+
+                    <div class="trial-survey-step" data-survey-step="level">
+                        <p class="trial-survey-question">What level do you teach most often?</p>
+                        <div class="trial-survey-chips" data-survey-field="level">
+                            <button type="button" class="trial-chip">A1</button>
+                            <button type="button" class="trial-chip">A2</button>
+                            <button type="button" class="trial-chip">B1</button>
+                            <button type="button" class="trial-chip">B2</button>
+                            <button type="button" class="trial-chip">C1</button>
+                            <button type="button" class="trial-chip">C2</button>
+                            <button type="button" class="trial-chip">Multiple levels</button>
+                        </div>
+                    </div>
+
+                    <div class="trial-survey-step" data-survey-step="prep-time" hidden>
+                        <p class="trial-survey-question">How much time do you spend preparing lessons each week?</p>
+                        <div class="trial-survey-chips" data-survey-field="prep-time">
+                            <button type="button" class="trial-chip">Less than 2 hours</button>
+                            <button type="button" class="trial-chip">2–5 hours</button>
+                            <button type="button" class="trial-chip">5–10 hours</button>
+                            <button type="button" class="trial-chip">More than 10 hours</button>
+                        </div>
+                    </div>
+
+                    <div class="trial-survey-step" data-survey-step="wants" hidden>
+                        <p class="trial-survey-question">What would you most like Teacher Assistant to help you create?</p>
+                        <div class="trial-survey-chips" data-survey-field="wants">
+                            <button type="button" class="trial-chip">Complete lessons</button>
+                            <button type="button" class="trial-chip">Vocabulary</button>
+                            <button type="button" class="trial-chip">Grammar</button>
+                            <button type="button" class="trial-chip">Exercises</button>
+                            <button type="button" class="trial-chip">Quizzes</button>
+                            <button type="button" class="trial-chip">Speaking activities</button>
+                            <button type="button" class="trial-chip">Reading activities</button>
+                            <button type="button" class="trial-chip">Homework</button>
+                        </div>
+                    </div>
+
+                    <p class="trial-survey-thanks" id="trialSurveyThanks" hidden>Thanks — that really helps.</p>
+                    <button type="button" class="trial-survey-skip" id="trialSurveySkip">Skip</button>
+                </div>
+
                 <button class="trial-success-reset" id="trialReset">Send to a different email</button>
             </div>
         </div>
     </div>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>

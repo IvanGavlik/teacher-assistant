@@ -391,230 +391,70 @@ img {
     color: var(--color-border);
 }
 
-/* Hero product mockup */
+/* Hero product photo (links out to the AppSource listing) */
 .hero-visual {
     display: flex;
     justify-content: center;
 }
 
-.mockup {
+.hero-photo {
     position: relative;
+    display: block;
     width: 100%;
     max-width: 480px;
-}
-
-.mockup-glow {
-    position: absolute;
-    inset: -40px;
-    background: radial-gradient(circle at 50% 30%, rgba(45, 212, 191, 0.16), transparent 70%);
-    z-index: -1;
-}
-
-.mockup-window {
-    background-color: var(--color-white);
     border-radius: var(--radius-md);
-    border: 1px solid var(--color-border);
-    border-top: 3px solid var(--color-accent);
-    box-shadow: var(--shadow-lg);
     overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.mockup-titlebar {
+.hero-photo:hover,
+.hero-photo:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg), 0 30px 60px rgba(0, 0, 0, 0.14);
+}
+
+.hero-photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+}
+
+.hero-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 40%);
+    pointer-events: none;
+}
+
+.hero-photo-badge {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
     display: flex;
     align-items: center;
-    gap: 7px;
-    padding: 14px 18px;
-    background-color: #fafafa;
-    border-bottom: 1px solid var(--color-border);
-}
-
-.mockup-dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background-color: #d8d8d8;
-}
-
-.mockup-dot-red { background-color: #ff5f57; }
-.mockup-dot-yellow { background-color: #febc2e; }
-.mockup-dot-green { background-color: #28c840; }
-
-.mockup-titlebar-label {
-    margin-left: 8px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--color-gray);
-}
-
-.mockup-body {
-    padding: 28px;
-    min-height: 360px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.mockup-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-
-.mockup-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.75px;
-    color: var(--color-gray);
-}
-
-.mockup-input {
-    min-height: 52px;
-    background-color: var(--color-gray-light);
-    border-radius: 10px;
-    padding: 14px 16px;
-    font-size: 0.9375rem;
-    color: var(--color-black);
-    line-height: 1.4;
-}
-
-.mockup-caret {
-    font-weight: 300;
-    color: var(--color-gray);
-    animation: blink 1s infinite;
-}
-
-@keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
-}
-
-.mockup-options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 10px;
-    opacity: 0;
-    transform: translateY(6px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.mockup-options.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.mockup-option {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    background-color: var(--color-gray-light);
-    border-radius: 8px;
-    padding: 9px 12px;
-}
-
-.mockup-option-label {
-    font-size: 0.6875rem;
-    color: var(--color-gray);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.mockup-option-value {
-    font-size: 0.8125rem;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: var(--shadow-md);
+    font-size: 0.875rem;
     font-weight: 600;
     color: var(--color-black);
 }
 
-.mockup-generate-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 6px;
-    padding: 13px;
-    border-radius: 9px;
-    background-color: var(--color-accent-dark);
-    color: var(--color-white);
-    font-size: 0.9375rem;
-    font-weight: 600;
-    opacity: 0;
-    transform: translateY(6px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
+.hero-photo-badge svg {
+    flex-shrink: 0;
+    color: var(--color-accent-dark);
 }
 
-.mockup-generate-btn.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.mockup-generate-btn.is-loading .mockup-btn-label {
-    font-size: 0;
-}
-
-.mockup-generate-btn.is-loading .mockup-btn-label::after {
-    content: "Generating…";
-    font-size: 0.9375rem;
-}
-
-.mockup-spinner {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.35);
-    border-top-color: var(--color-white);
-    animation: mockup-spin 0.7s linear infinite;
-}
-
-@keyframes mockup-spin {
-    to { transform: rotate(360deg); }
-}
-
-.mockup-slides {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-.mockup-slide {
-    background-color: var(--color-gray-light);
-    border-radius: 10px;
-    padding: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    opacity: 0;
-    transform: translateY(10px) scale(0.98);
-    transition: opacity 0.35s ease, transform 0.35s ease;
-}
-
-.mockup-slide.is-visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-}
-
-.mockup-slide-index {
-    align-self: flex-start;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: var(--color-accent);
-    color: var(--color-white);
-    font-size: 0.6875rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.mockup-slide-title {
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: var(--color-black);
-    line-height: 1.3;
-}
-
-.mockup-slide:nth-child(5):last-child {
-    grid-column: span 2;
+.hero-photo-badge-arrow {
+    margin-left: auto;
+    color: var(--color-gray);
 }
 
 
@@ -2280,13 +2120,13 @@ img {
         gap: 14px;
     }
 
-    .mockup {
+    .hero-photo {
         max-width: 100%;
     }
 
-    .mockup-body {
-        padding: 20px;
-        min-height: 300px;
+    .hero-photo-badge {
+        font-size: 0.8125rem;
+        padding: 10px 14px;
     }
 
     /* Hide heavy embedded video on mobile for performance */

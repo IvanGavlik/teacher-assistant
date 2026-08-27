@@ -72,7 +72,7 @@ document.addEventListener('click', (e) => {
 })();
 
 // ================================
-// A/B testing scaffold (headline + CTA copy)
+// A/B testing scaffold (headline copy)
 // ================================
 const TA_VARIANTS = {
     headline: {
@@ -80,11 +80,6 @@ const TA_VARIANTS = {
         B: 'Stop spending hours preparing language lessons.',
         C: 'Your next lesson is only a prompt away.',
         D: 'Turn your lesson idea into a PowerPoint in seconds.',
-    },
-    cta: {
-        A: 'Get Early Access',
-        B: 'Create Your First Lesson',
-        C: 'Try Teacher Assistant',
     },
 };
 
@@ -105,7 +100,6 @@ function pickVariant(group) {
 
 function applyVariants() {
     const headlineVariant = pickVariant('headline');
-    const ctaVariant = pickVariant('cta');
 
     // Headline variant only swaps the lead sentence; "Not hours. Seconds."
     // sub-line stays fixed as the emotional payoff across all variants.
@@ -116,14 +110,7 @@ function applyVariants() {
         }
     }
 
-    if (ctaVariant !== 'A') {
-        const label = TA_VARIANTS.cta[ctaVariant];
-        document.querySelectorAll('[data-ab-cta]').forEach((el) => {
-            el.textContent = label;
-        });
-    }
-
-    trackEvent('experiment_view', { headline_variant: headlineVariant, cta_variant: ctaVariant });
+    trackEvent('experiment_view', { headline_variant: headlineVariant });
 }
 
 applyVariants();
@@ -158,126 +145,6 @@ if (mobileMenuBtn && mobileNav) {
         });
     });
 }
-
-// ================================
-// Hero product mockup animation
-// ================================
-(function heroMockup() {
-    const promptEl = document.getElementById('mockupPrompt');
-    const optionsEl = document.getElementById('mockupOptions');
-    const levelEl = document.getElementById('mockupLevel');
-    const topicEl = document.getElementById('mockupTopic');
-    const typeEl = document.getElementById('mockupType');
-    const generateBtn = document.getElementById('mockupGenerateBtn');
-    const spinnerEl = document.getElementById('mockupSpinner');
-    const slidesEl = document.getElementById('mockupSlides');
-    const inputPanel = document.getElementById('mockupInputPanel');
-
-    if (!promptEl || !generateBtn) return;
-
-    const examples = [
-        {
-            prompt: 'Create a B1 English lesson about travelling.',
-            level: 'B1', topic: 'Travelling', type: 'Vocabulary + Speaking',
-            slides: ['Travel Vocabulary', 'Match the Words', 'Discussion Questions', 'Speaking Activity', 'Review'],
-        },
-        {
-            prompt: 'Create a B2 German lesson about climate change.',
-            level: 'B2', topic: 'Climate Change', type: 'Reading + Discussion',
-            slides: ['Key Vocabulary', 'Reading Passage', 'Comprehension Check', 'Discussion Questions', 'Wrap-Up'],
-        },
-        {
-            prompt: 'Create an A2 Spanish lesson on daily routines.',
-            level: 'A2', topic: 'Daily Routines', type: 'Grammar + Practice',
-            slides: ['Present Tense Verbs', 'Example Sentences', 'Fill in the Blanks', 'Pair Practice', 'Review'],
-        },
-    ];
-
-    let exampleIndex = 0;
-    let timer = null;
-
-    function typeInto(el, text, speed, onDone) {
-        let i = 0;
-        el.textContent = '';
-        (function step() {
-            if (i <= text.length) {
-                el.textContent = text.slice(0, i);
-                i++;
-                timer = setTimeout(step, speed);
-            } else if (onDone) {
-                onDone();
-            }
-        })();
-    }
-
-    function resetSlides() {
-        slidesEl.innerHTML = '';
-        slidesEl.hidden = true;
-        inputPanel.hidden = false;
-        optionsEl.classList.remove('is-visible');
-        generateBtn.classList.remove('is-visible', 'is-loading');
-        spinnerEl.hidden = true;
-    }
-
-    function buildSlides(titles) {
-        slidesEl.innerHTML = titles.map((title, i) => `
-            <div class="mockup-slide">
-                <span class="mockup-slide-index">${i + 1}</span>
-                <span class="mockup-slide-title">${title}</span>
-            </div>
-        `).join('');
-    }
-
-    function runCycle() {
-        const example = examples[exampleIndex % examples.length];
-        exampleIndex++;
-
-        resetSlides();
-        levelEl.textContent = example.level;
-        topicEl.textContent = example.topic;
-        typeEl.textContent = example.type;
-
-        typeInto(promptEl, example.prompt, 42, () => {
-            timer = setTimeout(() => {
-                optionsEl.classList.add('is-visible');
-                generateBtn.classList.add('is-visible');
-
-                timer = setTimeout(() => {
-                    generateBtn.classList.add('is-loading');
-                    spinnerEl.hidden = false;
-
-                    timer = setTimeout(() => {
-                        inputPanel.hidden = true;
-                        slidesEl.hidden = false;
-                        buildSlides(example.slides);
-
-                        requestAnimationFrame(() => {
-                            slidesEl.querySelectorAll('.mockup-slide').forEach((slide, i) => {
-                                setTimeout(() => slide.classList.add('is-visible'), i * 120);
-                            });
-                        });
-
-                        timer = setTimeout(runCycle, 4200);
-                    }, 1100);
-                }, 900);
-            }, 500);
-        });
-    }
-
-    // Respect users who've asked for less motion: show a static first example.
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        const example = examples[0];
-        promptEl.textContent = example.prompt;
-        levelEl.textContent = example.level;
-        topicEl.textContent = example.topic;
-        typeEl.textContent = example.type;
-        optionsEl.classList.add('is-visible');
-        generateBtn.classList.add('is-visible');
-        return;
-    }
-
-    runCycle();
-})();
 
 // ================================
 // FAQ accordion

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Shape AI Tools for Language Teachers | Teacher Assistant</title>
+    <meta name="description" content="Tell us what takes the most time when preparing language lessons. A short 3-minute survey to help shape the future of Teacher Assistant.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://teacher-assistant.center/research/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Help Shape AI Tools for Language Teachers | Teacher Assistant">
+    <meta property="og:description" content="What takes you the most time when preparing a lesson? A short 3-minute survey for language teachers.">
+
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/research.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Compact header: logo only, no nav, nothing to click away to -->
+    <header class="r-header">
+        <div class="r-header-inner">
+            <a href="../index.html" class="r-logo" aria-label="Teacher Assistant home">
+                <img src="../assets/logo-web.svg" alt="" class="r-logo-icon">
+                <span class="r-logo-text">Teacher Assistant</span>
+            </a>
+            <span class="r-header-tag">Teacher research</span>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="r-hero" id="rHero">
+        <div class="r-hero-inner">
+            <p class="r-eyebrow">Language teacher research</p>
+            <h1 class="r-hero-title">What takes you the most time when preparing a lesson?</h1>
+            <p class="r-hero-text">I'm building an AI assistant for language teachers, and I don't want to guess what teachers actually need.</p>
+            <p class="r-hero-text">I'm asking teachers around the world about the parts of lesson preparation that take the most time — so I can build the right things first.</p>
+            <p class="r-trust">About 3 minutes · No account required · No sales pitch</p>
+            <button type="button" class="btn btn-primary btn-large r-start-btn" id="rStartBtn">Start the survey →</button>
+        </div>
+    </section>
+
+    <!-- Survey wizard -->
+    <section class="r-survey" id="rSurvey">
+        <div class="r-survey-inner">
+            <div class="r-progress" id="rProgress">
+                <p class="r-progress-label" id="rProgressLabel" role="status" aria-live="polite">Question 1 of 8</p>
+                <div class="r-progress-track" role="progressbar" id="rProgressBar" aria-valuemin="0" aria-valuemax="8" aria-valuenow="1" aria-label="Survey progress">
+                    <div class="r-progress-fill" id="rProgressFill" style="width: 12.5%;"></div>
+                </div>
+            </div>
+
+            <form id="rForm" novalidate>
+                <!-- Honeypot: hidden from real visitors, often auto-filled by bots -->
+                <div class="r-honeypot" aria-hidden="true">
+                    <label for="rWebsite">Leave this field empty</label>
+                    <input type="text" id="rWebsite" name="website" tabindex="-1" autocomplete="off">
+                </div>
+
+                <!-- Step 1: Languages -->
+                <fieldset class="q-step" data-step="0">
+                    <legend class="r-q-title">What do you teach?</legend>
+                    <p class="r-q-support">Select all that apply.</p>
+                    <div class="r-options">
+                        <div class="r-option"><input type="checkbox" name="languages" id="lang-en" value="English"><label for="lang-en"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>English</label></div>
+                        <div class="r-option"><input type="checkbox" name="languages" id="lang-es" value="Spanish"><label for="lang-es"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Spanish</label></div>
+                        <div class="r-option"><input type="checkbox" name="languages" id="lang-fr" value="French"><label for="lang-fr"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>French</label></div>
+                        <div class="r-option"><input type="checkbox" name="languages" id="lang-de" value="German"><label for="lang-de"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>German</label></div>
+                        <div class="r-option"><input type="checkbox" name="languages" id="lang-it" value="Italian"><label for="lang-it"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Italian</label></div>
+                        <div class="r-option"><input type="checkbox" name="languages" id="lang-pt" value="Portuguese"><label for="lang-pt"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Portuguese</label></div>
+                        <div class="r-option"><input type="checkbox" name="languages" id="lang-other" value="Other" data-reveals="rLangOtherField"><label for="lang-other"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Other</label></div>
+                    </div>
+                    <div class="r-other-field" id="rLangOtherField">
+                        <label for="rLangOtherInput" class="visually-hidden">Which language?</label>
+                        <input type="text" id="rLangOtherInput" placeholder="Which language?" maxlength="80">
+                    </div>
+                </fieldset>
+
+                <!-- Step 2: Experience -->
+                <fieldset class="q-step" data-step="1" hidden>
+                    <legend class="r-q-title">How long have you been teaching?</legend>
+                    <div class="r-options">
+                        <div class="r-option"><input type="radio" name="experience" id="exp-1" value="Less than 1 year"><label for="exp-1"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Less than 1 year</label></div>
+                        <div class="r-option"><input type="radio" name="experience" id="exp-2" value="1–3 years"><label for="exp-2"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>1–3 years</label></div>
+                        <div class="r-option"><input type="radio" name="experience" id="exp-3" value="4–10 years"><label for="exp-3"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>4–10 years</label></div>
+                        <div class="r-option"><input type="radio" name="experience" id="exp-4" value="10+ years"><label for="exp-4"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>10+ years</label></div>
+                    </div>
+                </fieldset>
+
+                <!-- Step 3: Biggest time cost -->
+                <fieldset class="q-step" data-step="2" hidden>
+                    <legend class="r-q-title">Think about the last lesson you prepared. What took you the most time?</legend>
+                    <p class="r-q-support">Select all that apply — but if one thing stands out, that's the most useful answer.</p>
+                    <div class="r-options">
+                        <div class="r-option"><input type="checkbox" name="timeCost" id="tc-1" value="Finding lesson ideas"><label for="tc-1"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Finding lesson ideas</label></div>
+                        <div class="r-option"><input type="checkbox" name="timeCost" id="tc-2" value="Finding suitable examples or materials"><label for="tc-2"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Finding suitable examples or materials</label></div>
+                        <div class="r-option"><input type="checkbox" name="timeCost" id="tc-3" value="Creating slides / presentations"><label for="tc-3"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Creating slides / presentations</label></div>
+                        <div class="r-option"><input type="checkbox" name="timeCost" id="tc-4" value="Creating exercises"><label for="tc-4"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Creating exercises</label></div>
+                        <div class="r-option"><input type="checkbox" name="timeCost" id="tc-5" value="Preparing vocabulary activities"><label for="tc-5"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Preparing vocabulary activities</label></div>
+                        <div class="r-option"><input type="checkbox" name="timeCost" id="tc-6" value="Preparing grammar activities"><label for="tc-6"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Preparing grammar activities</label></div>
+                        <div class="r-option"><input type="checkbox" name="timeCost" id="tc-7" value="Preparing speaking activities"><label for="tc-7"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Preparing speaking activities</label></div>
+                        <div class="r-option"><input type="checkbox" name="timeCost" id="tc-8" value="Preparing reading activities"><label for="tc-8"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Preparing reading activities</label></div>
+                        <div class="r-option"><input type="checkbox" name="timeCost" id="tc-9" value="Preparing listening activities"><label for="tc-9"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Preparing listening activities</label></div>
+                        <div class="r-option"><input type="checkbox" name="timeCost" id="tc-10" value="Adapting materials to students' level"><label for="tc-10"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Adapting materials to students' level</label></div>
+                        <div class="r-option"><input type="checkbox" name="timeCost" id="tc-11" value="Finding images or other media"><label for="tc-11"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Finding images or other media</label></div>
+                        <div class="r-option"><input type="checkbox" name="timeCost" id="tc-12" value="Formatting / organizing materials"><label for="tc-12"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Formatting / organizing materials</label></div>
+                        <div class="r-option"><input type="checkbox" name="timeCost" id="tc-13" value="Something else" data-reveals="rTimeCostOtherField"><label for="tc-13"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Something else</label></div>
+                    </div>
+                    <div class="r-other-field" id="rTimeCostOtherField">
+                        <label for="rTimeCostOtherInput" class="visually-hidden">What was it?</label>
+                        <input type="text" id="rTimeCostOtherInput" placeholder="What was it?" maxlength="120">
+                    </div>
+                </fieldset>
+
+                <!-- Step 4: Tell me more (optional) -->
+                <div class="q-step" data-step="3" hidden>
+                    <span class="r-q-optional-tag">Optional</span>
+                    <h2 class="r-q-title">Tell me a little more about that.</h2>
+                    <p class="r-q-support">What did you actually have to do?</p>
+                    <label for="rMoreDetail" class="visually-hidden">Tell me a little more</label>
+                    <textarea class="r-textarea" id="rMoreDetail" maxlength="600" placeholder="For example: &quot;I spent about 30 minutes finding a suitable reading text and then another 20 minutes adapting it for my B1 students.&quot;"></textarea>
+                </div>
+
+                <!-- Step 5: Frequency -->
+                <fieldset class="q-step" data-step="4" hidden>
+                    <legend class="r-q-title">How often does this kind of work happen?</legend>
+                    <div class="r-options">
+                        <div class="r-option"><input type="radio" name="frequency" id="freq-1" value="Almost every lesson"><label for="freq-1"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Almost every lesson</label></div>
+                        <div class="r-option"><input type="radio" name="frequency" id="freq-2" value="Several times a week"><label for="freq-2"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Several times a week</label></div>
+                        <div class="r-option"><input type="radio" name="frequency" id="freq-3" value="About once a week"><label for="freq-3"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>About once a week</label></div>
+                        <div class="r-option"><input type="radio" name="frequency" id="freq-4" value="A few times a month"><label for="freq-4"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A few times a month</label></div>
+                        <div class="r-option"><input type="radio" name="frequency" id="freq-5" value="Rarely"><label for="freq-5"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Rarely</label></div>
+                    </div>
+                </fieldset>
+
+                <!-- Step 6: Prep time -->
+                <fieldset class="q-step" data-step="5" hidden>
+                    <legend class="r-q-title">Roughly how long does it take you to prepare a typical lesson?</legend>
+                    <div class="r-options">
+                        <div class="r-option"><input type="radio" name="prepTime" id="prep-1" value="Less than 15 minutes"><label for="prep-1"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Less than 15 minutes</label></div>
+                        <div class="r-option"><input type="radio" name="prepTime" id="prep-2" value="15–30 minutes"><label for="prep-2"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>15–30 minutes</label></div>
+                        <div class="r-option"><input type="radio" name="prepTime" id="prep-3" value="30–60 minutes"><label for="prep-3"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>30–60 minutes</label></div>
+                        <div class="r-option"><input type="radio" name="prepTime" id="prep-4" value="1–2 hours"><label for="prep-4"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>1–2 hours</label></div>
+                        <div class="r-option"><input type="radio" name="prepTime" id="prep-5" value="More than 2 hours"><label for="prep-5"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>More than 2 hours</label></div>
+                    </div>
+                </fieldset>
+
+                <!-- Step 7: Current tools -->
+                <fieldset class="q-step" data-step="6" hidden>
+                    <legend class="r-q-title">What do you currently use to help prepare lessons?</legend>
+                    <p class="r-q-support">Select all that apply.</p>
+                    <div class="r-options">
+                        <div class="r-option"><input type="checkbox" name="tools" id="tool-1" value="ChatGPT"><label for="tool-1"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>ChatGPT</label></div>
+                        <div class="r-option"><input type="checkbox" name="tools" id="tool-2" value="Google Gemini"><label for="tool-2"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Google Gemini</label></div>
+                        <div class="r-option"><input type="checkbox" name="tools" id="tool-3" value="Claude"><label for="tool-3"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Claude</label></div>
+                        <div class="r-option"><input type="checkbox" name="tools" id="tool-4" value="Canva"><label for="tool-4"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Canva</label></div>
+                        <div class="r-option"><input type="checkbox" name="tools" id="tool-5" value="PowerPoint / PowerPoint templates"><label for="tool-5"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>PowerPoint / PowerPoint templates</label></div>
+                        <div class="r-option"><input type="checkbox" name="tools" id="tool-6" value="Textbook or publisher materials"><label for="tool-6"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Textbook or publisher materials</label></div>
+                        <div class="r-option"><input type="checkbox" name="tools" id="tool-7" value="Online teacher resources"><label for="tool-7"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Online teacher resources</label></div>
+                        <div class="r-option"><input type="checkbox" name="tools" id="tool-8" value="Other AI tools"><label for="tool-8"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Other AI tools</label></div>
+                        <div class="r-option"><input type="checkbox" name="tools" id="tool-9" value="I don't use any tools"><label for="tool-9"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>I don't use any tools</label></div>
+                        <div class="r-option"><input type="checkbox" name="tools" id="tool-10" value="Other"><label for="tool-10"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Other</label></div>
+                    </div>
+                </fieldset>
+
+                <!-- Step 8: Dream feature (optional) -->
+                <div class="q-step" data-step="7" hidden>
+                    <span class="r-q-optional-tag">Optional</span>
+                    <h2 class="r-q-title">If an AI assistant could save you 30 minutes every time you prepared a lesson, what would you want it to do?</h2>
+                    <p class="r-q-support">Don't worry about whether it's technically possible. Just tell us what would save you the most time.</p>
+                    <label for="rDreamFeature" class="visually-hidden">What would you want it to do?</label>
+                    <textarea class="r-textarea" id="rDreamFeature" maxlength="600" placeholder="Tell us what would help most..."></textarea>
+                </div>
+
+                <!-- Step 9: Interest (optional, bonus — not part of the numbered progress) -->
+                <fieldset class="q-step" data-step="8" hidden>
+                    <p class="r-bonus-label">Almost done</p>
+                    <legend class="r-q-title">Would you be interested in trying a tool based on what teachers tell me?</legend>
+                    <div class="r-options">
+                        <div class="r-option"><input type="radio" name="interest" id="int-yes" value="Yes"><label for="int-yes"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Yes</label></div>
+                        <div class="r-option"><input type="radio" name="interest" id="int-maybe" value="Maybe"><label for="int-maybe"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Maybe</label></div>
+                        <div class="r-option"><input type="radio" name="interest" id="int-not" value="Not right now"><label for="int-not"><span class="r-option-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Not right now</label></div>
+                    </div>
+                </fieldset>
+
+                <!-- Step 10: Email (optional, only shown if interest === Yes) -->
+                <div class="q-step" data-step="9" hidden>
+                    <p class="r-bonus-label">Almost done</p>
+                    <h2 class="r-q-title">Want to hear what I build?</h2>
+                    <p class="r-q-support">If you'd like, leave your email and I'll let you know when the next version is ready.</p>
+                    <label for="rEmail" class="visually-hidden">Your email (optional)</label>
+                    <input type="email" class="r-email-input" id="rEmail" placeholder="Your email (optional)" autocomplete="email">
+                </div>
+
+                <div class="r-nav">
+                    <button type="button" class="r-back-btn" id="rBackBtn" hidden>← Back</button>
+                    <button type="button" class="btn btn-primary r-continue-btn" id="rContinueBtn">Continue →</button>
+                </div>
+                <p class="r-inline-error" id="rInlineError" role="alert" hidden></p>
+                <p class="r-privacy-note">Your answers are used to understand language teachers' needs and improve Teacher Assistant. Your email is optional. <a href="../privacy-policy.html">Privacy Policy</a></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Thank-you screen (hidden until submission) -->
+    <section class="r-thanks" id="rThanks" hidden>
+        <div class="r-thanks-inner">
+            <div class="r-thanks-icon">
+                <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+                    <circle cx="28" cy="28" r="28" fill="#2DD4BF" fill-opacity="0.15"/>
+                    <circle cx="28" cy="28" r="19" fill="#2DD4BF"/>
+                    <path d="M19 28.5L25 34.5L37 21" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h1 class="r-thanks-title">Thank you — this is genuinely useful.</h1>
+            <p class="r-thanks-text">Your answers will help me decide what to build next for language teachers.</p>
+            <div class="r-thanks-product">
+                <h2 class="r-thanks-product-title">Want to see what I'm building?</h2>
+                <p class="r-thanks-product-desc">Teacher Assistant is an AI-powered lesson-planning tool designed to help language teachers spend less time on repetitive preparation.</p>
+                <a href="../index.html" class="btn btn-primary" id="rProductLink">See Teacher Assistant →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="r-footer">
+        <p class="r-footer-text">© <span id="rYear"></span> Teacher Assistant · <a href="../privacy-policy.html">Privacy Policy</a></p>
+    </footer>
+
+    <!-- Cookie Consent Banner (required so main.js's consent-gated analytics can run) -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h3 class="cookie-title">We value your privacy</h3>
+                <p class="cookie-description">We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.</p>
+            </div>
+            <div class="cookie-actions">
+                <button class="cookie-btn cookie-btn-settings" id="cookieSettings">Cookie Settings</button>
+                <button class="cookie-btn cookie-btn-reject" id="cookieReject">Reject All</button>
+                <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div class="cookie-modal" id="cookieModal">
+        <div class="cookie-modal-content">
+            <div class="cookie-modal-header">
+                <h3>Cookie Settings</h3>
+                <button class="cookie-modal-close" id="cookieModalClose">&times;</button>
+            </div>
+            <div class="cookie-modal-body">
+                <div class="cookie-option">
+                    <div class="cookie-option-info">
+                        <h4>Essential Cookies</h4>
+                        <p>These cookies are necessary for the website to function and cannot be switched off.</p>
+                    </div>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" checked disabled>
+                        <span class="cookie-toggle-slider always-on"></span>
+                    </label>
+                </div>
+                <div class="cookie-option">
+                    <div class="cookie-option-info">
+                        <h4>Analytics Cookies</h4>
+                        <p>These cookies help us understand how visitors interact with our website.</p>
+                    </div>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" id="analyticsCookies">
+                        <span class="cookie-toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="cookie-option">
+                    <div class="cookie-option-info">
+                        <h4>Marketing Cookies</h4>
+                        <p>These cookies are used to deliver personalized advertisements.</p>
+                    </div>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" id="marketingCookies">
+                        <span class="cookie-toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="cookie-modal-footer">
+                <button class="cookie-btn cookie-btn-reject" id="cookieModalReject">Reject All</button>
+                <button class="cookie-btn cookie-btn-accept" id="cookieModalSave">Save Preferences</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/research.js"></script>
+</body>
+</html>

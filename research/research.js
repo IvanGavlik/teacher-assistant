@@ -44,11 +44,13 @@
 
     const STORAGE_KEY = 'ta_research_state';
     const SUBMITTED_KEY = 'ta_research_submitted';
+    const LEAD_FIRED_KEY = 'ta_research_lead_fired';
     const loadStart = Date.now();
 
     let currentIndex = 0;
     let started = false;
     let wasRestored = false;
+    let isSubmitting = false;
 
     trackEvent('research_page_view');
 
@@ -327,7 +329,32 @@
         return lines.join('\n').slice(0, 2000);
     }
 
-    function submitSurvey() {
+    // ---- Meta Pixel "Lead" conversion ----
+    // Fires once, only after the backend confirms the response was actually
+    // saved (HTTP 200 from /api/contact). Never fires on click, on validation
+    // failure, on a network/backend error, or more than once per visitor.
+    function hasLeadAlreadyFired() {
+        try {
+            return !!sessionStorage.getItem(LEAD_FIRED_KEY);
+        } catch {
+            return false;
+        }
+    }
+
+    function fireLeadEvent() {
+        if (hasLeadAlreadyFired()) return;
+        try { sessionStorage.setItem(LEAD_FIRED_KEY, '1'); } catch { /* ignore */ }
+        if (typeof fbq === 'function') fbq('track', 'Lead');
+    }
+
+    async function submitSurvey() {
+        // Guards double-click / repeated-Enter: the synchronous part of this
+        // function (through the `await`) always completes before a second
+        // queued click can re-enter it, so this flag alone prevents re-submission.
+        if (isSubmitting) return;
+        isSubmitting = true;
+        continueBtn.disabled = true;
+
         const answers = collectAllAnswers();
 
         trackEvent('survey_submitted');
@@ -338,27 +365,44 @@
             sessionStorage.removeItem(STORAGE_KEY);
         } catch { /* ignore */ }
 
+        // The thank-you screen shows immediately regardless of backend outcome —
+        // that UX decision is unchanged. The Lead pixel event is separate and
+        // strictly gated on a confirmed-successful save below.
         showThanks(true);
 
-        if (isLikelySpam()) return;
+        if (isLikelySpam()) {
+            isSubmitting = false;
+            return;
+        }
 
         // Same shared contact endpoint (and same name/email requirements) as the
         // site's other forms. The survey itself never requires an email from the
         // visitor, so a placeholder fills the backend's required field when none
         // was given — it's not a real address, just a valid-format value so the
-        // response still gets emailed. The thank-you screen never depends on this
-        // call succeeding.
-        fetch('https://web-compose.onrender.com/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                'app-id': 'teacher-assistant',
-                'service-id': 'research',
-                name: 'Teacher Assistant research',
-                email: answers.email || 'no-email-provided@teacher-assistant.center',
-                message: buildMessage(answers),
-            }),
-        }).catch(() => { /* best-effort */ });
+        // response still gets emailed.
+        try {
+            const res = await fetch('https://web-compose.onrender.com/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    'app-id': 'teacher-assistant',
+                    'service-id': 'research',
+                    name: 'Teacher Assistant research',
+                    email: answers.email || 'no-email-provided@teacher-assistant.center',
+                    message: buildMessage(answers),
+                }),
+            });
+
+            // res.ok (HTTP 200) is the backend's confirmation that the response
+            // was validated and successfully saved/delivered. Anything else
+            // (400/422/429/500, or the fetch throwing on a network failure) must
+            // not count as a Lead.
+            if (res.ok) fireLeadEvent();
+        } catch {
+            // Network failure — no Lead, per spec.
+        } finally {
+            isSubmitting = false;
+        }
     }
 
     function showThanks(animate) {

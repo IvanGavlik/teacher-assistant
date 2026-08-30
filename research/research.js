@@ -9,20 +9,33 @@
 
     const TOTAL_CORE = 8;
 
-    // Order matches the DOM (data-step="0..9"). "bonus" steps sit after the
-    // 8 numbered questions and aren't reflected in the progress bar.
+    // Order matches the DOM (data-step="0..8"). The "bonus" step (email) sits
+    // after the 8 numbered research questions and isn't reflected in the
+    // progress bar — there's no product-interest gating anymore, it's just
+    // always the last optional step before submit. The qualitative question
+    // sits right after the task pick (step 3) while it's fresh, and frequency
+    // + time-spent are combined onto one screen since they're both short and
+    // both refer to the same task.
     const STEPS = [
         { key: 'languages', type: 'checkbox', name: 'languages', required: true, event: 'question_1_completed' },
         { key: 'experience', type: 'radio', name: 'experience', required: true, event: 'question_2_completed' },
-        { key: 'timeCost', type: 'checkbox', name: 'timeCost', required: true, event: 'question_3_completed' },
+        { key: 'topTask', type: 'radio', name: 'topTask', required: true, event: 'question_3_completed' },
         { key: 'moreDetail', type: 'textarea', required: false, event: 'question_4_completed' },
-        { key: 'frequency', type: 'radio', name: 'frequency', required: true, event: 'question_5_completed' },
-        { key: 'prepTime', type: 'radio', name: 'prepTime', required: true, event: 'question_6_completed' },
+        { key: 'frequencyAndTime', type: 'multi-radio', names: ['frequency', 'timeSpent'], required: true, event: 'question_5_completed' },
+        { key: 'frustration', type: 'radio', name: 'frustration', required: true, event: 'question_6_completed' },
         { key: 'tools', type: 'checkbox', name: 'tools', required: true, event: 'question_7_completed' },
-        { key: 'dreamFeature', type: 'textarea', required: false, event: 'question_8_completed' },
-        { key: 'interest', type: 'radio', name: 'interest', required: false, bonus: true },
+        { key: 'eliminate', type: 'textarea', required: false, event: 'question_8_completed' },
         { key: 'email', type: 'email', required: false, bonus: true },
     ];
+
+    // Steps whose "Other" / "Something else" option requires the paired text
+    // field once selected — keeps the exported data usable instead of a bare
+    // "Other" with no context.
+    const OTHER_FIELDS = {
+        languages: { triggerId: 'lang-other', inputId: 'rLangOtherInput' },
+        topTask: { triggerId: 'tt-13', inputId: 'rTopTaskOtherInput' },
+        tools: { triggerId: 'tool-11', inputId: 'rToolsOtherInput' },
+    };
 
     const steps = Array.from(form.querySelectorAll('.q-step'));
     const hero = document.getElementById('rHero');
@@ -87,14 +100,15 @@
             languages: getChecked('languages'),
             languagesOther: val('rLangOtherInput'),
             experience: getRadio('experience'),
-            timeCost: getChecked('timeCost'),
-            timeCostOther: val('rTimeCostOtherInput'),
-            moreDetail: val('rMoreDetail'),
+            topTask: getRadio('topTask'),
+            topTaskOther: val('rTopTaskOtherInput'),
             frequency: getRadio('frequency'),
-            prepTime: getRadio('prepTime'),
+            timeSpent: getRadio('timeSpent'),
+            frustration: getRadio('frustration'),
+            moreDetail: val('rMoreDetail'),
             tools: getChecked('tools'),
-            dreamFeature: val('rDreamFeature'),
-            interest: getRadio('interest'),
+            toolsOther: val('rToolsOtherInput'),
+            eliminate: val('rEliminate'),
             email: val('rEmail'),
         };
     }
@@ -103,16 +117,35 @@
         setChecked('languages', a.languages || []);
         setVal('rLangOtherInput', a.languagesOther);
         setRadio('experience', a.experience);
-        setChecked('timeCost', a.timeCost || []);
-        setVal('rTimeCostOtherInput', a.timeCostOther);
-        setVal('rMoreDetail', a.moreDetail);
+        setRadio('topTask', a.topTask);
+        setVal('rTopTaskOtherInput', a.topTaskOther);
         setRadio('frequency', a.frequency);
-        setRadio('prepTime', a.prepTime);
+        setRadio('timeSpent', a.timeSpent);
+        setRadio('frustration', a.frustration);
+        setVal('rMoreDetail', a.moreDetail);
         setChecked('tools', a.tools || []);
-        setVal('rDreamFeature', a.dreamFeature);
-        setRadio('interest', a.interest);
+        setVal('rToolsOtherInput', a.toolsOther);
+        setVal('rEliminate', a.eliminate);
         setVal('rEmail', a.email);
         refreshOtherFieldVisibility();
+    }
+
+    // Human-readable label for the task chosen in step 3 (topTask), used to
+    // make the frequency/time-spent questions obviously refer back to it.
+    function getTopTaskLabel() {
+        const raw = getRadio('topTask');
+        if (!raw) return '';
+        if (raw === 'Something else') {
+            const other = val('rTopTaskOtherInput');
+            return other || 'that task';
+        }
+        return raw;
+    }
+
+    function updateTaskReferences() {
+        const label = getTopTaskLabel() || 'the task you just selected';
+        const el = document.getElementById('rFreqTimeTaskLabel');
+        if (el) el.textContent = label;
     }
 
     // ---- "Other" / "Something else" inline text reveal ----
@@ -166,18 +199,8 @@
     }
 
     // ---- wizard navigation ----
-    function willShowEmailStep() {
-        return getRadio('interest') === 'Yes';
-    }
-
-    function isLastVisibleStep(index) {
-        if (index === STEPS.length - 1) return true; // email step
-        if (index === STEPS.length - 2 && !willShowEmailStep()) return true; // interest step, email will be skipped
-        return false;
-    }
-
     function updateContinueLabel() {
-        continueBtn.textContent = isLastVisibleStep(currentIndex) ? 'Submit my answers →' : 'Continue →';
+        continueBtn.textContent = currentIndex === STEPS.length - 1 ? 'Submit my answers →' : 'Continue →';
     }
 
     function showStep(index, opts) {
@@ -185,6 +208,7 @@
         steps.forEach((el, i) => { el.hidden = i !== index; });
         backBtn.hidden = index === 0;
         inlineError.hidden = true;
+        updateTaskReferences();
 
         const step = STEPS[index];
         progressWrap.hidden = !!step.bonus;
@@ -206,12 +230,29 @@
         }
     }
 
+    // Returns null when valid, or a friendly message to show otherwise.
     function validateStep(index) {
         const step = STEPS[index];
-        if (!step.required) return true;
-        if (step.type === 'checkbox') return getChecked(step.name).length > 0;
-        if (step.type === 'radio') return !!getRadio(step.name);
-        return true;
+        if (step.required) {
+            if (step.type === 'checkbox' && getChecked(step.name).length === 0) {
+                return 'Please choose at least one option to continue.';
+            }
+            if (step.type === 'radio' && !getRadio(step.name)) {
+                return 'Please choose one option to continue.';
+            }
+            if (step.type === 'multi-radio' && step.names.some((n) => !getRadio(n))) {
+                return 'Please choose one option to continue.';
+            }
+        }
+        const other = OTHER_FIELDS[step.key];
+        if (other) {
+            const trigger = document.getElementById(other.triggerId);
+            const input = document.getElementById(other.inputId);
+            if (trigger && trigger.checked && input && !input.value.trim()) {
+                return 'Please tell us what you mean by "Other."';
+            }
+        }
+        return null;
     }
 
     function showError(msg) {
@@ -219,14 +260,27 @@
         inlineError.hidden = false;
     }
 
+    // On a multi-radio step, focuses the first sub-group that's still unanswered
+    // rather than always jumping to the first input on the step.
+    function focusFirstUnansweredField(index) {
+        const step = STEPS[index];
+        if (step.type === 'multi-radio') {
+            const missingName = step.names.find((n) => !getRadio(n));
+            const el = missingName && form.querySelector(`input[name="${missingName}"]`);
+            if (el) { el.focus({ preventScroll: true }); return; }
+        }
+        const firstField = steps[index].querySelector('input');
+        if (firstField) firstField.focus({ preventScroll: true });
+    }
+
     function goNext() {
         const index = currentIndex;
         const step = STEPS[index];
 
-        if (!validateStep(index)) {
-            showError('Please choose at least one answer to continue.');
-            const firstField = steps[index].querySelector('input');
-            if (firstField) firstField.focus({ preventScroll: true });
+        const errorMsg = validateStep(index);
+        if (errorMsg) {
+            showError(errorMsg);
+            focusFirstUnansweredField(index);
             return;
         }
         inlineError.hidden = true;
@@ -234,10 +288,6 @@
 
         const nextIndex = index + 1;
         if (nextIndex >= STEPS.length) {
-            submitSurvey();
-            return;
-        }
-        if (STEPS[nextIndex].key === 'email' && !willShowEmailStep()) {
             submitSurvey();
             return;
         }
@@ -291,37 +341,43 @@
         return values.length ? values.join('; ') : '—';
     }
 
+    function topTaskLabel(answers) {
+        if (!answers.topTask) return '—';
+        if (answers.topTask === 'Something else') return answers.topTaskOther || 'Something else (unspecified)';
+        return answers.topTask;
+    }
+
     function buildMessage(answers) {
         const languages = joinOrDash(answers.languages, answers.languagesOther);
-        const timeCost = joinOrDash(answers.timeCost, answers.timeCostOther);
-        const tools = answers.tools && answers.tools.length ? answers.tools.join('; ') : '—';
+        const topTask = topTaskLabel(answers);
+        const tools = joinOrDash(answers.tools, answers.toolsOther);
 
         const lines = [
             'Language teacher research survey response',
             '',
             `Languages taught: ${languages}`,
             `Teaching experience: ${answers.experience || '—'}`,
-            `Biggest time cost: ${timeCost}`,
-            `More detail: ${answers.moreDetail || '—'}`,
-            `Frequency: ${answers.frequency || '—'}`,
-            `Prep time per lesson: ${answers.prepTime || '—'}`,
-            `Current tools: ${tools}`,
-            `Dream AI feature: ${answers.dreamFeature || '—'}`,
-            `Interested in trying it: ${answers.interest || '—'}`,
+            `Primary time-consuming task: ${topTask}`,
+            `Frequency of that task: ${answers.frequency || '—'}`,
+            `Time spent on that task: ${answers.timeSpent || '—'}`,
+            `Frustration (1-5): ${answers.frustration || '—'}`,
+            `What they actually did: ${answers.moreDetail || '—'}`,
+            `Current tools/workflow: ${tools}`,
+            `Would eliminate: ${answers.eliminate || '—'}`,
             '',
             '--- CSV row (paste into a spreadsheet) ---',
-            'timestamp,languages,experience,biggest_time_cost,more_detail,frequency,prep_time,tools,dream_feature,interested,email',
+            'timestamp,languages,experience,primary_task,frequency,time_spent,frustration,qualitative_detail,tools,eliminate,email',
             [
                 new Date().toISOString(),
                 csvField(languages),
                 csvField(answers.experience),
-                csvField(timeCost),
-                csvField(answers.moreDetail),
+                csvField(topTask),
                 csvField(answers.frequency),
-                csvField(answers.prepTime),
+                csvField(answers.timeSpent),
+                csvField(answers.frustration),
+                csvField(answers.moreDetail),
                 csvField(tools),
-                csvField(answers.dreamFeature),
-                csvField(answers.interest),
+                csvField(answers.eliminate),
                 csvField(answers.email),
             ].join(','),
         ];

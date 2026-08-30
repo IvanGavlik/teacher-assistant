@@ -192,6 +192,27 @@ fieldset.q-step {
     margin-bottom: 10px;
 }
 
+/* Sub-groups within a combined step (e.g. frequency + time-spent on one screen) */
+fieldset.r-subgroup {
+    border: none;
+    margin: 0 0 24px;
+    padding: 0;
+    min-width: 0;
+}
+
+fieldset.r-subgroup:last-child {
+    margin-bottom: 0;
+}
+
+.r-subgroup legend {
+    padding: 0;
+    width: 100%;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-black);
+    margin-bottom: 12px;
+}
+
 /* Option cards (checkbox / radio) */
 .r-options {
     display: flex;
@@ -405,7 +426,12 @@ fieldset.q-step {
     color: var(--color-black);
 }
 
-/* "Almost done" bonus steps (interest / email) get a lighter label than the numbered progress bar */
+/* Dynamic reference to the task chosen in step 3, echoed back on steps 4 and 5 */
+.r-task-ref {
+    color: var(--color-accent-dark);
+}
+
+/* "Almost done" bonus step (email) gets a lighter label than the numbered progress bar */
 .r-bonus-label {
     font-size: 0.8125rem;
     font-weight: 600;

@@ -221,6 +221,41 @@ function checkCookieConsent() {
     }
 }
 
+function marketingAllowed() {
+    try {
+        const consent = JSON.parse(localStorage.getItem('cookieConsent') || 'null');
+        return !!(consent && consent.marketing);
+    } catch {
+        return false;
+    }
+}
+
+// Meta Pixel — only on pages that declare <meta name="meta-pixel-id">, and only once the
+// visitor has accepted marketing cookies (on load, or right after they accept)
+function loadMetaPixel() {
+    const idTag = document.querySelector('meta[name="meta-pixel-id"]');
+    if (!idTag || !marketingAllowed() || window.fbq) return;
+
+    // Meta's standard snippet, with the script appended to <head>
+    const fbq = window.fbq = function () {
+        fbq.callMethod ? fbq.callMethod.apply(fbq, arguments) : fbq.queue.push(arguments);
+    };
+    if (!window._fbq) window._fbq = fbq;
+    fbq.push = fbq;
+    fbq.loaded = true;
+    fbq.version = '2.0';
+    fbq.queue = [];
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://connect.facebook.net/en_US/fbevents.js';
+    document.head.appendChild(script);
+
+    window.fbq('init', idTag.content);
+    window.fbq('track', 'PageView');
+}
+
+loadMetaPixel();
+
 function saveCookiePreferences(analytics, marketing) {
     const preferences = {
         essential: true,
@@ -231,6 +266,7 @@ function saveCookiePreferences(analytics, marketing) {
     localStorage.setItem('cookieConsent', JSON.stringify(preferences));
     cookieBanner.classList.remove('show');
     cookieModal.classList.remove('show');
+    loadMetaPixel();
 }
 
 if (cookieAccept) {

@@ -72,7 +72,13 @@
                     <p>Games you create are kept on our server so that students can open them through the QR code on the slide. Anyone with the link or QR code can open a game. Games are removed when our server restarts.</p>
 
                     <h3 class="legal-section-subtitle">Documents you upload</h3>
-                    <p>If you attach a document (a PDF "book") in the add-in, the file is uploaded to our AI provider, OpenAI, and indexed so that your slides and games can use its content. The file is deleted automatically 7 days after upload, and its search index is deleted 3 days after it was last used. Please only upload documents you have the right to use, and do not upload documents containing personal data about your students.</p>
+                    <p>If you attach a document (a PDF "book") in the add-in, we turn it into searchable text so that your slides and games can use its content:</p>
+                    <ul>
+                        <li>The PDF is sent to Microsoft Azure AI Document Intelligence (EU region) to recognise its text, which is needed for scanned books. Microsoft deletes the file and the result after processing.</li>
+                        <li>The recognised text, and images of the pages for improving the layout, are sent to our AI provider, OpenAI. The text is stored there and indexed. If text recognition is not available, the PDF itself is sent to OpenAI instead.</li>
+                        <li>Our server keeps the PDF only while it is being processed.</li>
+                    </ul>
+                    <p>The stored text is deleted automatically 29 days after upload, and its search index is deleted 3 days after it was last used. During those 29 days, if someone uploads exactly the same file again (recognised by a fingerprint of its content, not by its name), they receive the already-converted text instead of a new conversion. To limit abuse, we count new uploads per IP address per day; these counts are kept only in our server's memory and reset daily. Please only upload documents you have the right to use, and do not upload documents containing personal data about your students.</p>
 
                     <h3 class="legal-section-subtitle">Request logs and feedback</h3>
                     <p>To find and fix problems with generated content, each add-in request and the AI's answer (shortened to 2,000 characters) is sent to us as a log message by email. Feedback you give in the add-in (ratings and comments) is sent the same way. These logs do not include your name or email address.</p>
@@ -138,18 +144,20 @@
                     <p>We share your data only where necessary to operate the service:</p>
                     <ul>
                         <li><strong>OpenAI (AI provider)</strong> — your requests, settings, slide content you ask to edit, and uploaded documents are sent to OpenAI's API to generate content. Under OpenAI's API terms this data is not used to train their models. OpenAI may keep it for up to 30 days, for abuse monitoring and so that a conversation can continue.</li>
+                        <li><strong>Microsoft Azure (text recognition)</strong> — uploaded documents are sent to Azure AI Document Intelligence in the EU to recognise their text; Microsoft deletes them after processing and does not use them to train models</li>
                         <li><strong>Render (hosting)</strong> — hosts the add-in and our server</li>
                         <li><strong>Google (Gmail)</strong> — delivers request logs, feedback and contact form messages to our inbox</li>
                         <li><strong>Legal authorities</strong> — where required by applicable law or court order</li>
                     </ul>
-                    <p>All third-party processors are required to maintain appropriate technical and organisational security measures. OpenAI, Render and Google may process data outside the European Union, including in the United States, under the safeguards set out in their data processing terms.</p>
+                    <p>All third-party processors are required to maintain appropriate technical and organisational security measures. Microsoft Azure processes uploaded documents in the European Union. OpenAI, Render and Google may process data outside the European Union, including in the United States, under the safeguards set out in their data processing terms.</p>
                 </div>
 
                 <!-- Data Retention -->
                 <div class="legal-section">
                     <h2 class="legal-section-title">Data Retention</h2>
                     <ul>
-                        <li><strong>Uploaded documents</strong> — deleted 7 days after upload; their search index is deleted 3 days after it was last used</li>
+                        <li><strong>Uploaded documents</strong> — the PDF is kept on our server only while it is processed; Microsoft Azure deletes it after text recognition; the converted text is deleted 29 days after upload (and may be reused for an identical upload until then); its search index is deleted 3 days after it was last used</li>
+                        <li><strong>Upload counts per IP address</strong> — kept in server memory only, reset daily</li>
                         <li><strong>Games</strong> — kept until our server restarts</li>
                         <li><strong>Request logs and feedback</strong> — up to 90 days</li>
                         <li><strong>Data held by OpenAI</strong> — up to 30 days</li>
